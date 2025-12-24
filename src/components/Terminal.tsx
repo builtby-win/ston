@@ -25,6 +25,17 @@ const allItems = [...socialLinks, ...apps];
 export default function Terminal() {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [showCursor, setShowCursor] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile on mount
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Blinking cursor effect
   useEffect(() => {
@@ -155,11 +166,19 @@ export default function Terminal() {
 
       {/* Instructions */}
       <div className="mt-12 text-[var(--color-term-fg-muted)] text-sm">
-        <span className="opacity-60">Press</span>
-        <kbd className="mx-1 px-1.5 py-0.5 bg-[var(--color-term-bg-lighter)] rounded text-xs">Tab</kbd>
-        <span className="opacity-60">to navigate,</span>
-        <kbd className="mx-1 px-1.5 py-0.5 bg-[var(--color-term-bg-lighter)] rounded text-xs">Enter/Click</kbd>
-        <span className="opacity-60">to open</span>
+        {isMobile ? (
+          <>
+            <span className="opacity-60">Tap to switch, tap again to open</span>
+          </>
+        ) : (
+          <>
+            <span className="opacity-60">Press</span>
+            <kbd className="mx-1 px-1.5 py-0.5 bg-[var(--color-term-bg-lighter)] rounded text-xs">Tab</kbd>
+            <span className="opacity-60">to navigate,</span>
+            <kbd className="mx-1 px-1.5 py-0.5 bg-[var(--color-term-bg-lighter)] rounded text-xs">Enter/Click</kbd>
+            <span className="opacity-60">to open</span>
+          </>
+        )}
       </div>
     </div>
   );

@@ -1,0 +1,38 @@
+---
+import '../styles/global.css';
+import Terminal from '../components/Terminal';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- JetBrains Mono font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+    <!-- Primary Meta Tags -->
+    <title>builtby.win</title>
+    <meta name="title" content="builtby.win" />
+    <meta name="description" content="Apps and tools built by Winston" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://builtby.win" />
+    <meta property="og:title" content="builtby.win" />
+    <meta property="og:description" content="Apps and tools built by Winston" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://builtby.win" />
+    <meta property="twitter:title" content="builtby.win" />
+    <meta property="twitter:description" content="Apps and tools built by Winston" />
+  </head>
+  <body>
+    <Terminal client:load />
+  </body>
+</html>

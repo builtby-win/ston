@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@theme {
+  /* Terminal-style Typography */
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', Menlo, Monaco, 'Courier New', monospace;
+
+  /* Terminal Colors - inspired by popular terminal themes */
+  --color-term-bg: #0d1117;
+  --color-term-bg-lighter: #161b22;
+  --color-term-fg: #e6edf3;
+  --color-term-fg-muted: #7d8590;
+
+  /* Directory/folder colors (teal/cyan) */
+  --color-term-dir: #7ee787;
+
+  /* File/link colors (blue) */
+  --color-term-link: #58a6ff;
+
+  /* Branch indicator (magenta/pink) */
+  --color-term-branch: #f778ba;
+
+  /* Prompt arrow (cyan) */
+  --color-term-prompt: #79c0ff;
+
+  /* Selection/highlight */
+  --color-term-selection: #264f78;
+  --color-term-selection-border: #58a6ff;
+
+  /* Yellow for special items */
+  --color-term-yellow: #d29922;
+
+  /* Orange for executables */
+  --color-term-orange: #ffa657;
+
+  /* Semantic Colors */
+  --color-background: var(--color-term-bg);
+  --color-foreground: var(--color-term-fg);
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: var(--font-mono);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+
+  ::selection {
+    background-color: var(--color-term-selection);
+  }
+}

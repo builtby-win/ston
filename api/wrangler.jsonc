@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "builtby-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-12-24",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  // Custom domain: Add api.builtby.win via Cloudflare Dashboard > Workers > builtby-api > Triggers > Custom Domains
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "builtby-db",
+      "database_id": "cbe50011-619e-4457-9720-0bce4903dfb9",
+      "migrations_dir": "drizzle"
+    }
+  ]
+}

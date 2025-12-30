@@ -1,0 +1,7 @@
+packages:
+  - portfolio
+  - marketing/*
+
+onlyBuiltDependencies:
+  - '@biomejs/biome'
+  - esbuild

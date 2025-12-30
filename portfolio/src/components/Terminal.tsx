@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
+import { FaInstagram, FaYoutube, FaGithub, FaRocket } from "react-icons/fa";
 
 interface TerminalItem {
 	name: string;
 	url: string;
 	type: "social" | "app";
-	icon?: string;
+	icon?: React.ReactNode;
 	color?: string;
 	description?: string;
 }
@@ -15,7 +16,7 @@ const socialLinks: TerminalItem[] = [
 		url: "https://instagram.com/winnieletsgo",
 		type: "social",
 		color: "var(--color-term-branch)",
-		icon: "📷",
+		icon: <FaInstagram />,
 		description: "short form video about development",
 	},
 	{
@@ -23,7 +24,7 @@ const socialLinks: TerminalItem[] = [
 		url: "https://youtube.com/@winnieletsgo",
 		type: "social",
 		color: "var(--color-term-orange)",
-		icon: "▶️",
+		icon: <FaYoutube />,
 		description: "long form videos about life",
 	},
 	{
@@ -31,13 +32,21 @@ const socialLinks: TerminalItem[] = [
 		url: "https://github.com/snoolord",
 		type: "social",
 		color: "var(--color-term-fg)",
-		icon: "⚙️",
+		icon: <FaGithub />,
 		description: "my public repositories",
+	},
+	{
+		name: "builtby-win",
+		url: "https://github.com/builtby-win",
+		type: "social",
+		color: "var(--color-term-fg)",
+		icon: <FaGithub />,
+		description: "main organization repository",
 	},
 ];
 
 const apps: TerminalItem[] = [
-	// { name: 'back2vibing', url: 'https://back2vibing.com', type: 'app', color: 'var(--color-term-dir)', icon: '🎵' },
+	// { name: 'back2vibing', url: 'https://back2vibing.com', type: 'app', color: 'var(--color-term-dir)', icon: <FaMusic /> },
 	{
 		name: "import-magic",
 		url: "https://importmagic.app",
@@ -45,6 +54,14 @@ const apps: TerminalItem[] = [
 		color: "var(--color-term-link)",
 		icon: "✨",
 		description: "a file transfer app like shotput pro or hedge offshoot",
+	},
+	{
+		name: "areyougo.ing",
+		url: "https://areyougo.ing/",
+		type: "app",
+		color: "var(--color-term-orange)",
+		icon: <FaRocket />,
+		description: "a whimsical app for planning adventures",
 	},
 ];
 

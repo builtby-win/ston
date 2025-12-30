@@ -28,14 +28,6 @@ const socialLinks: TerminalItem[] = [
 		description: "long form videos about life",
 	},
 	{
-		name: "github",
-		url: "https://github.com/snoolord",
-		type: "social",
-		color: "var(--color-term-fg)",
-		icon: <FaGithub />,
-		description: "my public repositories",
-	},
-	{
 		name: "builtby-win",
 		url: "https://github.com/builtby-win",
 		type: "social",
@@ -186,13 +178,13 @@ export default function Terminal() {
 								onMouseEnter={() => !isMobile && handleItemHover(globalIndex)}
 								onFocus={() => !isMobile && handleItemHover(globalIndex)}
 								className={`
-                  text-left transition-all duration-100 outline-none
+                  text-left transition-all duration-100 outline-none flex items-center
                   ${isSelected ? "ring-2 ring-[var(--color-term-selection-border)] bg-[var(--color-term-selection)] px-2 -mx-2 rounded" : ""}
                 `}
 								style={{ color: item.color }}
 								tabIndex={-1}
 							>
-								{item.icon && <span className="mr-2">{item.icon}</span>}
+								{item.icon && <span className="mr-2 inline-flex">{item.icon}</span>}
 								{item.name}
 							</button>
 						);
@@ -217,13 +209,13 @@ export default function Terminal() {
 								onMouseEnter={() => !isMobile && handleItemHover(globalIndex)}
 								onFocus={() => !isMobile && handleItemHover(globalIndex)}
 								className={`
-                  text-left transition-all duration-100 outline-none
+                  text-left transition-all duration-100 outline-none flex items-center
                   ${isSelected ? "ring-2 ring-[var(--color-term-selection-border)] bg-[var(--color-term-selection)] px-2 -mx-2 rounded" : ""}
                 `}
 								style={{ color: item.color }}
 								tabIndex={-1}
 							>
-								{item.icon && <span className="mr-2">{item.icon}</span>}
+								{item.icon && <span className="mr-2 inline-flex">{item.icon}</span>}
 								{item.name}
 							</button>
 						);

@@ -51,7 +51,7 @@ const apps: TerminalItem[] = [
 		name: "areyougo.ing",
 		url: "https://areyougo.ing/",
 		type: "app",
-		color: "var(--color-term-orange)",
+		color: "var(--color-term-dir)",
 		icon: <FaRocket />,
 		description: "a whimsical app for planning adventures",
 	},

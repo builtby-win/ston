@@ -1,6 +1,7 @@
 {
   "name": "ston-monorepo",
   "version": "0.0.1",
+  "packageManager": "pnpm@10.26.1",
   "private": true,
   "scripts": {
     "dev:portfolio": "pnpm --filter @ston/portfolio dev",

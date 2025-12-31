@@ -1,0 +1,118 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const apps = [
+  {
+    name: 'import-magic',
+    url: 'https://importmagic.app',
+    emoji: '✨',
+    color: 'var(--color-term-link)',
+    tagline: 'file transfer for professionals',
+    description: 'a file transfer app like shotput pro or hedge offshoot. designed for photographers, videographers, and anyone who needs reliable media ingestion with verification.',
+  },
+  {
+    name: 'areyougo.ing',
+    url: 'https://areyougo.ing/',
+    emoji: '🚀',
+    color: 'var(--color-term-dir)',
+    tagline: 'plan adventures together',
+    description: 'a whimsical app for planning adventures. create trips, invite friends, and coordinate plans without the chaos of group chats.',
+  },
+];
+---
+
+<BlogLayout
+  title="apps"
+  description="Apps and tools built by Winston"
+  pathSegments={[{ name: 'apps', href: null }]}
+  backHref="/ston"
+>
+  <header class="page-header">
+    <h1>apps/</h1>
+    <p class="page-description">things i've built</p>
+  </header>
+
+  <ul class="apps-list">
+    {apps.map((app) => (
+      <li class="app-item">
+        <a href={app.url} target="_blank" rel="noopener noreferrer" class="app-link">
+          <span class="app-emoji">{app.emoji}</span>
+          <span class="app-name" style={`color: ${app.color}`}>{app.name}</span>
+          <span class="app-tagline">{app.tagline}</span>
+        </a>
+        <p class="app-description">{app.description}</p>
+      </li>
+    ))}
+  </ul>
+</BlogLayout>
+
+<style>
+  .page-header {
+    margin-bottom: 3rem;
+  }
+
+  .page-header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-term-dir);
+    margin: 0 0 0.5rem 0;
+  }
+
+  .page-description {
+    color: var(--color-term-fg-muted);
+    font-size: 0.875rem;
+    margin: 0;
+  }
+
+  .apps-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .app-item {
+    border-left: 2px solid var(--color-term-fg-muted);
+    padding-left: 1rem;
+  }
+
+  .app-link {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .app-emoji {
+    font-size: 1rem;
+  }
+
+  .app-name {
+    font-weight: 500;
+    transition: opacity 0.15s;
+  }
+
+  .app-link:hover .app-name {
+    opacity: 0.8;
+  }
+
+  .app-tagline {
+    color: var(--color-term-fg-muted);
+    font-size: 0.875rem;
+  }
+
+  .app-tagline::before {
+    content: '— ';
+  }
+
+  .app-description {
+    color: var(--color-term-fg-muted);
+    font-size: 0.875rem;
+    margin: 0;
+    line-height: 1.6;
+  }
+</style>

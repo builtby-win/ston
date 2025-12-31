@@ -1,0 +1,108 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const socials = [
+  {
+    name: 'instagram',
+    handle: '@winnieletsgo',
+    url: 'https://instagram.com/winnieletsgo',
+    icon: 'FaInstagram',
+    color: 'var(--color-term-branch)',
+    description: 'short form video about development - reels, stories, and behind the scenes of building apps and tools',
+  },
+  {
+    name: 'youtube',
+    handle: '@winnieletsgo',
+    url: 'https://youtube.com/@winnieletsgo',
+    icon: 'FaYoutube',
+    color: 'var(--color-term-orange)',
+    description: 'long form videos about life - vlogs, tutorials, and deeper dives into projects and experiences',
+  },
+];
+---
+
+<BlogLayout
+  title="socials"
+  description="Social links and profiles"
+  pathSegments={[{ name: 'socials', href: null }]}
+  backHref="/ston"
+>
+  <header class="page-header">
+    <h1>socials/</h1>
+    <p class="page-description">where to find me online</p>
+  </header>
+
+  <ul class="socials-list">
+    {socials.map((social) => (
+      <li class="social-item">
+        <a href={social.url} target="_blank" rel="noopener noreferrer" class="social-link">
+          <span class="social-name" style={`color: ${social.color}`}>{social.name}</span>
+          <span class="social-handle">{social.handle}</span>
+        </a>
+        <p class="social-description">{social.description}</p>
+      </li>
+    ))}
+  </ul>
+</BlogLayout>
+
+<style>
+  .page-header {
+    margin-bottom: 3rem;
+  }
+
+  .page-header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-term-dir);
+    margin: 0 0 0.5rem 0;
+  }
+
+  .page-description {
+    color: var(--color-term-fg-muted);
+    font-size: 0.875rem;
+    margin: 0;
+  }
+
+  .socials-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .social-item {
+    border-left: 2px solid var(--color-term-fg-muted);
+    padding-left: 1rem;
+  }
+
+  .social-link {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+  }
+
+  .social-name {
+    font-weight: 500;
+    transition: opacity 0.15s;
+  }
+
+  .social-link:hover .social-name {
+    opacity: 0.8;
+  }
+
+  .social-handle {
+    color: var(--color-term-fg-muted);
+    font-size: 0.875rem;
+  }
+
+  .social-description {
+    color: var(--color-term-fg-muted);
+    font-size: 0.875rem;
+    margin: 0;
+    line-height: 1.6;
+  }
+</style>

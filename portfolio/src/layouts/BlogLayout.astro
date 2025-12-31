@@ -1,0 +1,138 @@
+---
+import '../styles/global.css';
+
+interface PathSegment {
+  name: string;
+  href: string | null;
+}
+
+interface Props {
+  title: string;
+  description?: string;
+  pathSegments?: PathSegment[];
+  backHref?: string;
+}
+
+const {
+  title,
+  description = 'Daily findings and learnings',
+  pathSegments = [],
+  backHref = '/ston'
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+    <title>{title} | ston</title>
+    <meta name="title" content={`${title} | ston`} />
+    <meta name="description" content={description} />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content={`${title} | ston`} />
+    <meta property="og:description" content={description} />
+
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:title" content={`${title} | ston`} />
+    <meta property="twitter:description" content={description} />
+  </head>
+  <body>
+    <div class="blog-container">
+      <nav class="terminal-header">
+        <span class="prompt-arrow">→</span>
+        <a href="/ston" class="path-base">~/builtby.win/ston</a>{pathSegments.map((segment) => (
+          segment.href ? (
+            <a href={segment.href} class="path-segment">/{segment.name}</a>
+          ) : (
+            <span class="path-current">/{segment.name}</span>
+          )
+        ))}
+        <span class="git-info">git:(<span class="branch">main</span>)</span>
+      </nav>
+      <a href={backHref} class="back-link">← cd ../</a>
+      <main class="blog-content">
+        <slot />
+      </main>
+    </div>
+  </body>
+</html>
+
+<style>
+  .blog-container {
+    max-width: 65ch;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    min-height: 100vh;
+  }
+
+  .terminal-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .prompt-arrow {
+    color: var(--color-term-prompt);
+    margin-right: 0.5rem;
+  }
+
+  .path-base {
+    color: var(--color-term-dir);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .path-base:hover {
+    color: var(--color-term-link);
+  }
+
+  .path-segment {
+    color: var(--color-term-dir);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .path-segment:hover {
+    color: var(--color-term-link);
+  }
+
+  .path-current {
+    color: var(--color-term-fg-muted);
+  }
+
+  .git-info {
+    color: var(--color-term-fg-muted);
+    margin-left: 0.5rem;
+  }
+
+  .branch {
+    color: var(--color-term-branch);
+  }
+
+  .back-link {
+    display: inline-block;
+    color: var(--color-term-fg-muted);
+    text-decoration: none;
+    font-size: 0.875rem;
+    margin-bottom: 2.5rem;
+    transition: color 0.15s;
+  }
+
+  .back-link:hover {
+    color: var(--color-term-link);
+  }
+
+  .blog-content {
+    line-height: 1.7;
+  }
+</style>

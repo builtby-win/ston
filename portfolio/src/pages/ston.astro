@@ -1,6 +1,20 @@
 ---
 import '../styles/global.css';
 import Terminal from '../components/Terminal';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3)
+  .map(post => {
+    const dateStr = post.data.date.toISOString().split('T')[0];
+    return {
+      title: post.data.title,
+      slug: post.slug,
+      date: dateStr,
+      url: `/ston/blog/${dateStr}/${post.slug}`
+    };
+  });
 ---
 
 <!doctype html>
@@ -33,6 +47,6 @@ import Terminal from '../components/Terminal';
     <meta property="twitter:description" content="Apps and tools built by Winston" />
   </head>
   <body>
-    <Terminal client:load />
+    <Terminal client:load blogPosts={posts} />
   </body>
 </html>

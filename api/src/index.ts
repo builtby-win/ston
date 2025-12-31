@@ -22,17 +22,22 @@ app.use(
   '*',
   cors({
     origin: (origin) => {
-      if (!origin) return null
+      // No origin header (same-origin or non-browser request)
+      if (!origin) return '*'
+      // Production domains
       if (origin.endsWith('.builtby.win') || origin === 'https://builtby.win') {
         return origin
       }
-      // Allow localhost for development
-      if (origin.includes('localhost')) {
+      // Allow all localhost/127.0.0.1 for development
+      if (origin.startsWith('http://localhost') || origin.startsWith('http://127.0.0.1')) {
         return origin
       }
-      return null
+      // Allow for API testing tools
+      return '*'
     },
     credentials: true,
+    allowHeaders: ['Content-Type', 'Authorization'],
+    allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   })
 )
 

@@ -57,7 +57,42 @@ const apps: TerminalItem[] = [
 	},
 ];
 
-const allItems = [...socialLinks, ...apps];
+const repos: TerminalItem[] = [
+	{
+		name: "configs",
+		url: "https://github.com/builtby-win/configs",
+		type: "app",
+		color: "var(--color-term-fg)",
+		icon: <FaGithub />,
+		description: "sensible biome configs",
+	},
+	{
+		name: "skills",
+		url: "https://github.com/builtby-win/skills",
+		type: "app",
+		color: "var(--color-term-fg)",
+		icon: <FaGithub />,
+		description: "useful claude skills to streamline development",
+	},
+	{
+		name: "generate-app-cli",
+		url: "https://github.com/builtby-win/generate-app-cli",
+		type: "app",
+		color: "var(--color-term-fg)",
+		icon: <FaGithub />,
+		description: "cli to generate production ready desktop and web app boilerplates",
+	},
+	{
+		name: "ston",
+		url: "https://github.com/builtby-win/ston",
+		type: "app",
+		color: "var(--color-term-fg)",
+		icon: <FaGithub />,
+		description: "this portfolio website code that's open source",
+	},
+];
+
+const allItems = [...socialLinks, ...apps, ...repos];
 
 export default function Terminal() {
 	const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
@@ -193,13 +228,44 @@ export default function Terminal() {
 			</div>
 
 			{/* Apps section */}
-			<div className="mb-8">
+			<div className="mb-6">
 				<div className="text-[var(--color-term-fg-muted)] mb-2 text-sm">
 					apps/
 				</div>
 				<div className="flex flex-wrap gap-x-8 gap-y-2 pl-4">
 					{apps.map((item, idx) => {
 						const globalIndex = socialLinks.length + idx;
+						const isSelected = selectedIndex === globalIndex;
+						return (
+							<button
+								type="button"
+								key={item.name}
+								onClick={(e) => handleItemClick(e, item.url, globalIndex)}
+								onMouseEnter={() => !isMobile && handleItemHover(globalIndex)}
+								onFocus={() => !isMobile && handleItemHover(globalIndex)}
+								className={`
+                  text-left transition-all duration-100 outline-none flex items-center
+                  ${isSelected ? "ring-2 ring-[var(--color-term-selection-border)] bg-[var(--color-term-selection)] px-2 -mx-2 rounded" : ""}
+                `}
+								style={{ color: item.color }}
+								tabIndex={-1}
+							>
+								{item.icon && <span className="mr-2 inline-flex">{item.icon}</span>}
+								{item.name}
+							</button>
+						);
+					})}
+				</div>
+			</div>
+
+			{/* Repos section */}
+			<div className="mb-8">
+				<div className="text-[var(--color-term-fg-muted)] mb-2 text-sm">
+					repos/
+				</div>
+				<div className="flex flex-wrap gap-x-8 gap-y-2 pl-4">
+					{repos.map((item, idx) => {
+						const globalIndex = socialLinks.length + apps.length + idx;
 						const isSelected = selectedIndex === globalIndex;
 						return (
 							<button

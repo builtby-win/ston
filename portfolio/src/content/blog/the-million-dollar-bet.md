@@ -16,7 +16,7 @@ My mom has the most incredible work ethic and dedication to work that I have eve
 
 It's a crazy bet because for the past couple years, I've made a grand total of $94 as a solo dev/entrepreneur.
 
-But like I mentioned in my previous post [hello world](/blog/hello-world), I really feel like 2026 is going to be my year.
+But like I mentioned in my previous post [hello world](/ston/blog/2025-12-31/hello-world), I really feel like 2026 is going to be my year.
 
 My mom has always taught me these things: be healthy, try my best, be safe, and most importantly don't be lazy. She's never cared whether I'm a success or a loser.
 

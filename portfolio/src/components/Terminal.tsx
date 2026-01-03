@@ -37,10 +37,10 @@ const sectionHeaders: TerminalItem[] = [
 	},
 	{
 		name: "repos/",
-		url: "https://github.com/builtby-win",
+		url: "/ston/repos",
 		type: "header",
 		color: "var(--color-term-fg-muted)",
-		isInternal: false,
+		isInternal: true,
 	},
 ];
 
@@ -95,6 +95,14 @@ const apps: TerminalItem[] = [
 ];
 
 const repos: TerminalItem[] = [
+	{
+		name: "dotfiles",
+		url: "https://github.com/builtby-win/dotfiles",
+		type: "app",
+		color: "var(--color-term-fg)",
+		icon: <FaGithub />,
+		description: "my dev environment",
+	},
 	{
 		name: "configs",
 		url: "https://github.com/builtby-win/configs",

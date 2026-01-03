@@ -1,0 +1,151 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const repos = [
+  {
+    name: 'dotfiles',
+    url: 'https://github.com/builtby-win/dotfiles',
+    tagline: 'my dev environment',
+    description: 'my personal development setup - zsh, tmux, and all the little tweaks that make coding feel like home. optimized for vibe coding with claude code and back2vibing.',
+  },
+  {
+    name: 'configs',
+    url: 'https://github.com/builtby-win/configs',
+    tagline: 'sensible biome configs',
+    description: 'drop-in biome configurations for typescript projects. strict but pragmatic - catches real bugs without fighting you on formatting opinions.',
+  },
+  {
+    name: 'skills',
+    url: 'https://github.com/builtby-win/skills',
+    tagline: 'claude code skills',
+    description: 'custom claude skills to streamline development workflows. includes commit helpers, code review prompts, and project scaffolding commands.',
+  },
+  {
+    name: 'generate-app-cli',
+    url: 'https://github.com/builtby-win/generate-app-cli',
+    tagline: 'app boilerplate generator',
+    description: 'cli tool to scaffold production-ready desktop and web apps. optimized for ai-assisted development - clean architecture that claude can understand and extend.',
+  },
+  {
+    name: 'ston',
+    url: 'https://github.com/builtby-win/ston',
+    tagline: 'this website',
+    description: 'the source code for this portfolio. built with astro, react, and tailwind. features a terminal-style ui with keyboard navigation.',
+  },
+];
+---
+
+<BlogLayout
+  title="repos"
+  description="Open source repositories by Winston"
+  pathSegments={[{ name: 'repos', href: null }]}
+  backHref="/ston"
+>
+  <header class="page-header">
+    <h1>repos/</h1>
+    <p class="page-description">open source things i've made</p>
+  </header>
+
+  <ul class="repos-list">
+    {repos.map((repo) => (
+      <li class="repo-item">
+        <a href={repo.url} target="_blank" rel="noopener noreferrer" class="repo-link">
+          <span class="repo-name">{repo.name}</span>
+          <span class="repo-tagline">{repo.tagline}</span>
+        </a>
+        <p class="repo-description">{repo.description}</p>
+      </li>
+    ))}
+  </ul>
+
+  <div class="github-link">
+    <a href="https://github.com/builtby-win" target="_blank" rel="noopener noreferrer">
+      view all repos on github →
+    </a>
+  </div>
+</BlogLayout>
+
+<style>
+  .page-header {
+    margin-bottom: 3rem;
+  }
+
+  .page-header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-term-dir);
+    margin: 0 0 0.5rem 0;
+  }
+
+  .page-description {
+    color: var(--color-term-fg-muted);
+    font-size: 0.875rem;
+    margin: 0;
+  }
+
+  .repos-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .repo-item {
+    border-left: 2px solid var(--color-term-fg-muted);
+    padding-left: 1rem;
+  }
+
+  .repo-link {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .repo-name {
+    font-weight: 500;
+    color: var(--color-term-fg);
+    transition: opacity 0.15s;
+  }
+
+  .repo-link:hover .repo-name {
+    opacity: 0.8;
+  }
+
+  .repo-tagline {
+    color: var(--color-term-fg-muted);
+    font-size: 0.875rem;
+  }
+
+  .repo-tagline::before {
+    content: '— ';
+  }
+
+  .repo-description {
+    color: var(--color-term-fg-muted);
+    font-size: 0.875rem;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .github-link {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-term-fg-muted);
+  }
+
+  .github-link a {
+    color: var(--color-term-link);
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: opacity 0.15s;
+  }
+
+  .github-link a:hover {
+    opacity: 0.8;
+  }
+</style>

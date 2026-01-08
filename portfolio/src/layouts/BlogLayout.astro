@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import Lightbox from '../components/Lightbox.astro';
 
 interface PathSegment {
   name: string;
@@ -62,6 +63,7 @@ const {
         <slot />
       </main>
     </div>
+    <Lightbox />
   </body>
 </html>
 

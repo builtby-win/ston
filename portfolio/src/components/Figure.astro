@@ -1,0 +1,72 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  caption?: string;
+  type?: 'image' | 'video';
+  poster?: string;
+  loading?: 'lazy' | 'eager';
+}
+
+const {
+  src,
+  alt,
+  caption,
+  type = 'image',
+  poster,
+  loading = 'lazy',
+} = Astro.props;
+---
+
+<figure class="media-figure">
+  {type === 'image' ? (
+    <img
+      src={src}
+      alt={alt}
+      loading={loading}
+      decoding="async"
+      data-lightbox="true"
+    />
+  ) : (
+    <video
+      src={src}
+      poster={poster}
+      controls
+      preload="metadata"
+      playsinline
+    >
+      Your browser does not support video.
+    </video>
+  )}
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>
+
+<style>
+  .media-figure {
+    margin: 2em 0;
+  }
+
+  .media-figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.375rem;
+    cursor: zoom-in;
+  }
+
+  .media-figure video {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.375rem;
+  }
+
+  .media-figure img:hover {
+    opacity: 0.95;
+  }
+
+  .media-figure figcaption {
+    color: var(--color-term-fg-muted);
+    font-size: 0.875rem;
+    margin-top: 0.5em;
+    text-align: center;
+  }
+</style>

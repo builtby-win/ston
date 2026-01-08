@@ -75,7 +75,14 @@ const socialLinks: TerminalItem[] = [
 ];
 
 const apps: TerminalItem[] = [
-	// { name: 'back2vibing', url: 'https://back2vibing.com', type: 'app', color: 'var(--color-term-dir)', icon: <FaMusic /> },
+	{
+		name: "back2vibing",
+		url: "https://back2vibing.builtby.win/",
+		type: "app",
+		color: "var(--color-term-dir)",
+		icon: "⚡",
+		description: "superpower your AI workflow and easily juggle 10+ claude code, gemini, codex, or cursor sessions all at once.",
+	},
 	{
 		name: "import-magic",
 		url: "https://importmagic.app",

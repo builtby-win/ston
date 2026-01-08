@@ -6,7 +6,7 @@ tags: ["coding", "meta"]
 ---
 
 🎆 2026 is going to be my year.
-I've been vibe coding an insane amount recently, building [import-magic](https://importmagic.app), [back2vibing](https://github.com/snoolord/back2vibing-releases/releases/tag/v0.5.2), and [areyougo.ing](https://areyougo.ing) with my friend Nikita. (We just started building this last Friday on 2025/12/26, thank you 2x Claude Christmas gift 🎄)
+I've been vibe coding an insane amount recently, building [import-magic](https://importmagic.app), [back2vibing](https://back2vibing.builtby.win/), and [areyougo.ing](https://areyougo.ing) with my friend Nikita. (We just started building this last Friday on 2025/12/26, thank you 2x Claude Christmas gift 🎄)
 
 I even made my first sale this year on Import Magic. I can't believe someone really paid $90 for an app that I made.
 
@@ -16,7 +16,7 @@ Purely coding and building things but not doing anything to share them.
 
 Even though I haven't been sharing things, I really feel the momentum is going to be crazy for me next year.
 
-I paid for Claude Max and I've been going crazy mode, building 4 different projects simultaneously with multiple terminals at once (thanks to [back2vibing](https://github.com/snoolord/back2vibing-releases/releases/tag/v0.5.2)).
+I paid for Claude Max and I've been going crazy mode, building 4 different projects simultaneously with multiple terminals at once (thanks to [back2vibing](https://back2vibing.builtby.win/)).
 
 I have no idea how to market my stuff, but honestly I've been having so much fun coding and building things, I don't think I can do anything else, so for now...
 
@@ -30,7 +30,7 @@ I've been building so many things, it's so fun and invigorating that I can have 
 
 I am overall just so hyped about what I'm working on and just need to start sharing because it's pretty friggin' lit.
 
-If you haven't tried Claude Code or Gemini CLI yet, you should get on that ASAP and give [back2vibing](https://github.com/snoolord/back2vibing-releases/releases/tag/v0.5.2) a try. Seriously, it's 5-10xed my productivity. Instead of waiting around for Claude to finish, I just fire up 3-4 more terminals simultaneously and work on more stuff. Or I just watch YouTube while it's cooking and get pinged when it's ready to review.
+If you haven't tried Claude Code or Gemini CLI yet, you should get on that ASAP and give [back2vibing](https://back2vibing.builtby.win/) a try. Seriously, it's 5-10xed my productivity. Instead of waiting around for Claude to finish, I just fire up 3-4 more terminals simultaneously and work on more stuff. Or I just watch YouTube while it's cooking and get pinged when it's ready to review.
 
 I also built some boilerplates for building web apps and desktop apps that I've optimized for AI agents to build apps crazy fast.
 

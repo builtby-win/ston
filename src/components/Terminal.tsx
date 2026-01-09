@@ -308,7 +308,7 @@ export default function Terminal({ blogPosts = [] }: TerminalProps) {
 			<div className="pl-5">
 			{/* Blog section */}
 			<div className="mb-6">
-				<div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+				<div className="flex flex-col items-start gap-y-2">
 					{(() => {
 						const headerIndex = 0; // blog/ is at index 0
 						const isHeaderSelected = selectedIndex === headerIndex;
@@ -339,14 +339,14 @@ export default function Terminal({ blogPosts = [] }: TerminalProps) {
 								onMouseEnter={() => !isMobile && handleItemHover(globalIndex)}
 								onFocus={() => !isMobile && handleItemHover(globalIndex)}
 								className={`
-									text-left transition-all duration-100 outline-none flex items-center
+									text-left transition-all duration-100 outline-none flex items-center max-w-[200px]
 									${isSelected ? "ring-2 ring-[var(--color-term-selection-border)] bg-[var(--color-term-selection)] px-2 -mx-2 rounded" : ""}
 								`}
 								style={{ color: item.color }}
 								tabIndex={-1}
 							>
-								{item.icon && <span className="mr-2 inline-flex">{item.icon}</span>}
-								{item.name}
+								{item.icon && <span className="mr-2 inline-flex shrink-0">{item.icon}</span>}
+								<span className="truncate">{item.name}</span>
 							</button>
 						);
 					})}

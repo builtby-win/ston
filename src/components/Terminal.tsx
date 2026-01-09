@@ -144,6 +144,16 @@ const repos: TerminalItem[] = [
 	},
 ];
 
+// Truncate text in the middle to fit a max length
+const truncateMiddle = (text: string, maxLength: number): string => {
+	if (text.length <= maxLength) return text;
+	const ellipsis = "…";
+	const charsToShow = maxLength - ellipsis.length;
+	const frontChars = Math.ceil(charsToShow / 2);
+	const backChars = Math.floor(charsToShow / 2);
+	return text.slice(0, frontChars) + ellipsis + text.slice(-backChars);
+};
+
 export default function Terminal({ blogPosts = [] }: TerminalProps) {
 	const blogItems: TerminalItem[] = useMemo(() =>
 		blogPosts.map(post => ({
@@ -296,7 +306,7 @@ export default function Terminal({ blogPosts = [] }: TerminalProps) {
 						className="ml-1"
 						style={{ color: allItems[selectedIndex].color }}
 					>
-						{getItemPath(selectedIndex)}
+						{truncateMiddle(getItemPath(selectedIndex), 30)}
 					</span>
 				)}
 				<span
@@ -308,7 +318,7 @@ export default function Terminal({ blogPosts = [] }: TerminalProps) {
 			<div className="pl-5">
 			{/* Blog section */}
 			<div className="mb-6">
-				<div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+				<div className="flex items-start gap-x-2">
 					{(() => {
 						const headerIndex = 0; // blog/ is at index 0
 						const isHeaderSelected = selectedIndex === headerIndex;
@@ -319,7 +329,7 @@ export default function Terminal({ blogPosts = [] }: TerminalProps) {
 								onMouseEnter={() => !isMobile && handleItemHover(headerIndex)}
 								onFocus={() => !isMobile && handleItemHover(headerIndex)}
 								className={`
-									transition-all duration-100 outline-none font-medium
+									transition-all duration-100 outline-none font-medium shrink-0
 									${isHeaderSelected ? "ring-2 ring-[var(--color-term-selection-border)] bg-[var(--color-term-selection)] px-2 -mx-2 rounded text-[var(--color-term-link)]" : "text-[var(--color-term-link)] hover:text-[var(--color-term-purple)] hover:underline"}
 								`}
 								tabIndex={-1}
@@ -328,28 +338,29 @@ export default function Terminal({ blogPosts = [] }: TerminalProps) {
 							</button>
 						);
 					})()}
-					{blogItems.map((item, idx) => {
-						const globalIndex = 1 + idx; // starts after blog/ header
-						const isSelected = selectedIndex === globalIndex;
-						return (
-							<button
-								type="button"
-								key={item.url}
-								onClick={(e) => handleItemClick(e, item, globalIndex)}
-								onMouseEnter={() => !isMobile && handleItemHover(globalIndex)}
-								onFocus={() => !isMobile && handleItemHover(globalIndex)}
-								className={`
-									text-left transition-all duration-100 outline-none flex items-center
-									${isSelected ? "ring-2 ring-[var(--color-term-selection-border)] bg-[var(--color-term-selection)] px-2 -mx-2 rounded" : ""}
-								`}
-								style={{ color: item.color }}
-								tabIndex={-1}
-							>
-								{item.icon && <span className="mr-2 inline-flex">{item.icon}</span>}
-								{item.name}
-							</button>
-						);
-					})}
+					<div className="flex flex-col gap-y-1">
+						{blogItems.map((item, idx) => {
+							const globalIndex = 1 + idx; // starts after blog/ header
+							const isSelected = selectedIndex === globalIndex;
+							return (
+								<button
+									type="button"
+									key={item.url}
+									onClick={(e) => handleItemClick(e, item, globalIndex)}
+									onMouseEnter={() => !isMobile && handleItemHover(globalIndex)}
+									onFocus={() => !isMobile && handleItemHover(globalIndex)}
+									className={`
+										text-left transition-all duration-100 outline-none flex items-center 										${isSelected ? "ring-2 ring-[var(--color-term-selection-border)] bg-[var(--color-term-selection)] px-2 -mx-2 rounded" : ""}
+									`}
+									style={{ color: item.color }}
+									tabIndex={-1}
+								>
+									{item.icon && <span className="mr-2 inline-flex">{item.icon}</span>}
+									{item.name}
+								</button>
+							);
+						})}
+					</div>
 				</div>
 			</div>
 

@@ -40,27 +40,37 @@ Whether or not I succeed, the goal is not a pre-requisite for my inner peace, se
 
 Each time I summitted the mountain, I only saw off in the distance that there was another peak to climb.
 
-I measure myself by how I take each step. I can wait and I can walk, so the only thing between me and the top is time.
+I measure myself by how I take each step.
+
+I see that things are rarely so straightforward and good things take time.
+
+I can wait and I can walk, so the only thing between me and the top is time.
 
 ## make some space
 
-<iframe width="100%" height="400" src="https://www.youtube.com/embed/le-vty-28o0" title="Alan Watts - Out of Your Mind" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="100%" height="400" src="https://www.youtube.com/embed/le-vty-28o0" title="Midnight Gospel - Spaciousness" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-When I was depressed, all I wanted to was be "cured". I couldn't accept that I was depressed and wanted to be "fixed" and "happy" again.
+There was a time when I was very depressed, all I wanted to was be "cured". I couldn't accept that I was depressed and wanted to be "fixed" and "happy" again.
 I tried lots of things and read studies to **research** how I could cure myself
 
 I tried walking 10k steps everyday.
 
 I started taking fish oil.
 
-I was on anti-depressants.
+I got married.
+
+I got promoted.
+
+I took anti-depressants.
 
 I went to therapy.
 
 I tried meditation.
 
 Nothing helped. I made no room for this depression in my life.
-I pretended like everything was okay while it wasn't at all. I remember when everything changed it was at a lunch with some friends and they asked me how I was. I have no idea why but I just blurted
+I pretended like everything was okay while it wasn't at all. I remember when everything changed it was at a lunch with some friends and they asked me how I was. I have no idea why..
+
+but I just blurted out:
 
 "honestly, things have not been good lately, I've been really depressed".
 
@@ -72,7 +82,9 @@ I couldn't make space for anything or let anything go, so I just kept getting in
 
 So I say, feel it all. Don't reject, don't judge. Make space for it.
 
-Let it come in and let it go out just as easily as it came in. Like the ebb and flow of the waves.
+Let it come in and let it go out just as easily as it came in.
+
+It ebbs, it flows, it breathes in, it breathes out.
 
 You'll see. There's room for you. There's room for me.
 
@@ -95,10 +107,9 @@ By the time we got to China, my grandpa couldn't speak anymore. It was after a c
 I started smiling so big and he smiled so big back at me. We both started laughing and I'll never forget it for the rest of my life. All the years apart and all the drama yet he is still my grandpa and I'm still his grandson.
 
 He was not a perfect person, my dad always tells me that I get my short temper from him, so I'm sure he messed up how he loved a lot of people.
-But his love continues through his wife, me, my dad, my cousin, my aunt, and the rest of our family.
-I'll always be thankful for this lesson that he left with me before he passed.
+But his love continues through me and it's my responsibility to keep filtering that love so I can leave it better than how I received it.
 
-Always try to leave more love.
+爷爷，謝謝你，我想你
 
 ## thank you
 

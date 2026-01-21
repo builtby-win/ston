@@ -1,0 +1,179 @@
+---
+import BlogLayout from "../../layouts/BlogLayout.astro";
+
+const projects = [
+    {
+        name: "back2vibing",
+        url: "https://back2vibing.builtby.win/",
+        description:
+            "i use claude code, gemini, opencode, and ampcode daily so i built this to super optimize my workflow. i love it so much that i hate when i work on it because it doesn't work when i'm developing.",
+    },
+    {
+        name: "this site's blog",
+        url: "/ston/blog",
+        description:
+            "i love to write and reflect on what i'm learning and life in general.",
+    },
+    {
+        name: "import magic",
+        url: "https://importmagic.app",
+        description:
+            "in another life, i always had a camera in my hand, so i built this to hyper optimize my offloading workflow after taking a bunch of pictures and videos on trips. now i'm adding features as i need them and working to market this as i begin to do content creation again.",
+    },
+    {
+        name: "areyougo.ing",
+        url: "https://areyougo.ing/",
+        description:
+            "my friend nikita and i love going to live music events, so we're building a way for friends to easily connect about the events they are going to/are interested in going to. we're working on some really cool stuff!! if you like concerts, go check it out!",
+    },
+    {
+        name: "zero stack",
+        url: "https://zerostack.builtby.win/",
+        description:
+            "in my years of hyper-optimizing my stack for web apps, i've found the absolute cheapest way to ship a side project for a whopping total of $0. i'm working on shipping this AI ready template for anyone to quickly build apps without thinking about the infrastructure or cost because everything works.",
+    },
+    {
+        name: "desktop boilerplate",
+        url: null,
+        description:
+            "name tbd but i think everyone is obsessed with saas but i've always gravitated towards desktop apps. i've had extensive experience working in tauri and electron. i found that desktop apps are great because they do not need to have a server and can operate completely offline. the thing with being an engineer is the server always gotta be online, flashbacks to 3am oncall pages is not the life i want to live. i feel that shipping a mostly bug free product that works offline is a huge pressure release as an engineer because if it works... it just works. so i'm hyper-optimizing this boilerplate with all my learnings so that i can teach people how to build desktop apps FAST and for CHEAP.",
+    },
+];
+---
+
+<BlogLayout
+    title="about"
+    description="About builtby.win and what Winston is building"
+    pathSegments={[{ name: "about", href: null }]}
+    backHref="/ston"
+>
+    <header class="page-header">
+        <h1>about/</h1>
+        <p class="page-description">now</p>
+    </header>
+
+    <section class="intro-section">
+        <p>
+            hi, i'm winston, thanks for visiting. built by win/ston is my
+            personal site, a collection of apps i'm currently building, and the
+            homebase for anything that i find cool/am excited about
+        </p>
+    </section>
+
+    <section class="currently-working">
+        <h2>currently working on:</h2>
+
+        <ul class="projects-list">
+            {
+                projects.map((project) => (
+                    <li class="project-item">
+                        <div class="project-header">
+                            {project.url ? (
+                                <a
+                                    href={project.url}
+                                    target={
+                                        project.url.startsWith("http")
+                                            ? "_blank"
+                                            : undefined
+                                    }
+                                    rel={
+                                        project.url.startsWith("http")
+                                            ? "noopener noreferrer"
+                                            : undefined
+                                    }
+                                    class="project-name"
+                                >
+                                    {project.name}
+                                </a>
+                            ) : (
+                                <span class="project-name">{project.name}</span>
+                            )}
+                        </div>
+                        <p class="project-description">{project.description}</p>
+                    </li>
+                ))
+            }
+        </ul>
+    </section>
+</BlogLayout>
+
+<style>
+    .page-header {
+        margin-bottom: 2rem;
+    }
+
+    .page-header h1 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--color-term-dir);
+        margin: 0 0 0.5rem 0;
+    }
+
+    .page-description {
+        color: var(--color-term-fg-muted);
+        font-size: 0.875rem;
+        margin: 0;
+    }
+
+    .intro-section {
+        margin-bottom: 3rem;
+    }
+
+    .intro-section p {
+        color: var(--color-term-fg);
+        font-size: 0.95rem;
+        line-height: 1.7;
+        margin: 0;
+    }
+
+    .currently-working {
+        margin-top: 3rem;
+    }
+
+    .currently-working h2 {
+        font-size: 1rem;
+        font-weight: 500;
+        color: var(--color-term-dir);
+        margin: 0 0 1.5rem 0;
+    }
+
+    .projects-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .project-item {
+        border-left: 2px solid var(--color-term-fg-muted);
+        padding-left: 1rem;
+    }
+
+    .project-header {
+        display: flex;
+        align-items: baseline;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .project-name {
+        font-weight: 500;
+        color: var(--color-term-link);
+        text-decoration: none;
+        transition: opacity 0.15s;
+    }
+
+    .project-name:hover {
+        opacity: 0.8;
+    }
+
+    .project-description {
+        color: var(--color-term-fg);
+        font-size: 0.875rem;
+        margin: 0;
+        line-height: 1.6;
+        opacity: 0.85;
+    }
+</style>

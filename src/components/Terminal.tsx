@@ -154,6 +154,15 @@ const repos: TerminalItem[] = [
 
 const pinned: TerminalItem[] = [
   {
+    name: 'about',
+    url: '/ston/about',
+    type: 'page',
+    color: 'var(--color-term-dir)',
+    icon: <HiDocumentText />,
+    description: 'now',
+    isInternal: true,
+  },
+  {
     name: 'loose rules (to live by)',
     url: '/ston/blog/2026-01-12/loose-rules',
     type: 'blog',

@@ -27,7 +27,7 @@ the difference is staggering because claude code is basically unusable compared 
 
 since the start of 2026, claude code has kind of just become shitty at least at a non-enterprise level.
 
-this is echoed a million times over on the r/claude_code subreddit about usage limits becoming extremely tight and most people are ridiculous to expect a $20/month plan should let them build facebook in a one shot prompt, but there is something genuinely wrong with claude code.
+this is echoed a million times over on the [r/ClaudeCode](https://www.reddit.com/r/ClaudeCode/) about usage limits becoming extremely tight and most people are ridiculous to expect a $20/month plan should let them build facebook in a one shot prompt, but there is something genuinely wrong with claude code.
 
 i don't know if it's them tightening up the bootstraps or claude code is running into some serious, serious AI slop tech debt, but i can't even get through 30 minutes of vibe coding on claude without absolutely decimating my 5 hour limit while on gemini i can literally code the entire day and only hit the limit a couple times.
 
@@ -47,11 +47,11 @@ but both of us found that this weekend that gemini servers are getting absolutel
 
 maybe google will start tightening up its bootstraps and push people to pay for their google AI ultra plan as well? i think it would be wise for google to use its war chest to completely overtake anthropic while claude code is getting some bad press.
 
-## google should eat anthropic's lunch
+## google might eat anthropic's lunch
 
 claude code with opus 4.5 is sooooo good, but after playing around with gemini for almost a month... i'm frankly blown away at the quality of code generated combined with the extremely generous limits.
 
-Gemini built this entire blog, the marketing site for [back2vibing](https://back2vibing.builtby.win), and most of the UI for [areyougo.ing](https://areyougo.ing). all on the $20 plan... it's a serious powerhouse.
+gemini built this entire [blog](https://github.com/builtby-win/ston), the marketing site for [back2vibing](https://back2vibing.builtby.win), and most of the UI for [areyougo.ing](https://areyougo.ing). all on the $20 plan... it's a serious powerhouse.
 
 but even with its unlimited money reserves, google's struggling to keep up with demand. people have an unquenchable thirst for cheap AI coding models.
 

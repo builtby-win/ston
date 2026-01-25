@@ -1,7 +1,7 @@
 ---
 title: "claude code is going to lose (at this rate)"
 date: 2026-01-24
-description: "why i'm vibing with gemini now and why i think claude code's strategy is backfiring hard"
+description: "maybe the start of searching for profitability?"
 tags: ["ai", "claude-code", "gemini", "opinion", "tooling"]
 draft: false
 ---

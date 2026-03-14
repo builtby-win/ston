@@ -6,6 +6,14 @@ tags: ["ai", "claude-code", "codex", "gemini", "workflow", "tooling"]
 draft: false
 ---
 
+```mermaid
+%%{init: {'theme': 'dark', 'themeVariables': { 'fontSize': '16px' }}}%%
+graph LR
+    A[Traditional Coding] -- Syntax & Boilerplate --> B((The Human))
+    C[2026 Vibe Coding] -- Thinking & Steering --> B
+    D[AI Agents] -- Execution & Implementation --> B
+```
+
 ![how i use workmux and conductor to manage agents](/blog/babysitting-agents.gif)
 
 i don't think i've written a line of code in the past 3 months.
@@ -16,27 +24,14 @@ opus 4.6, gpt-5.4, and gemini 3.1 pro are pretty insane, but i still find myself
 even with insane planning using plan mode, superpowers:planning, gsd, bmad, spec-kit, etc whatever, you can really only one-shot like 90% of the entire feature, then that last 10% is still the same yak-shaving that has been around in software engineering for decades.
 
 i used to hear all the time that the first 10% is hard, the middle 80% is easy, and the last 10% is the hardest.
-to me it's changed that first 90% is trivial and the last 10% is even harder now because
+to me it's changed that first 90% is trivial and the last 10% is even harder now.
 
-```mermaid
-%%{init: {'theme': 'dark', 'themeVariables': { 'fontSize': '16px' }}}%%
-graph TD
-    subgraph Autonomous [First 90%: Autonomous Phase]
-        A[Idea/Plan] --> B[Boilerplate Generation]
-        B --> C[Component Structure]
-        C --> D[Base Logic]
-    end
-    subgraph Manual [Last 10%: The Babysitting Phase]
-        D --> E{Integration & Quality}
-        E -->|Conflict| F[Manual Conflict Resolution]
-        E -->|Context Rot| G[Context Steering]
-        E -->|Broke Tests| H[Fixing Edge Cases]
-        F --> I[Final Polish]
-        G --> I
-        H --> I
-        I --> J[Production Ready]
-    end
-```
+| Phase | Easy Now (The 90%) | Hard Now (The 10%) |
+| :--- | :--- | :--- |
+| **Logic** | Writing boilerplate & base functions | Integrating across complex systems |
+| **Context** | Planning the initial roadmap | Fighting context rot & steering loops |
+| **Verification** | Running simple unit tests | Setting up reliable end-to-end environments |
+| **Delivery** | Generating the feature code | Merging 10 features without collisions |
 
 1. 10x the features means 10x the bugs
 2. our systems are getting exponentially complex far more than the context window of one agent can allow
@@ -46,21 +41,6 @@ we have new challenges like merging 10 different features that would each have t
 i found that i have been spending most of my time in this last 10%, baby-sitting agents to make sure that these features get over the finish line.
 so i want to share my workflow on how i manage multiple agents across many projects without losing my mind.
 
-### context rot and steering
-one of the biggest issues with letting agents run wild is "context rot." if you leave an agent alone too long, it starts compacting its own history until it’s not actually useful anymore. it gets stuck. steering it in real-time is the only way to keep the inertia going. 
-
-```mermaid
-%%{init: {'theme': 'dark', 'themeVariables': { 'fontSize': '16px' }}}%%
-graph LR
-    A[Fresh Context] --> B[High Agent Velocity]
-    B --> C[Working...]
-    C --> D[History Compacts]
-    D --> E{Context Rot}
-    E -->|Stuck / Circular Loops| F[Cry for help]
-    F --> G[Human Diaper Change]
-    G --> A
-```
-
 honestly, i’m much more productive with "vibe coding" because traditional coding has just become too time-consuming. the mental friction of switching from "thinking about the architecture" to "typing out the boilerplate" is an inertia-killer. i'd rather spend my time thinking and steering.
 
 ```mermaid
@@ -68,17 +48,13 @@ honestly, i’m much more productive with "vibe coding" because traditional codi
 mindmap
     root((2026 Agent Stack))
         Foundation
-            Ghostty [Terminal]
-            tmux [Multiplexer]
+            Ghostty
+            tmux
         Playpen
-            Workmux [Worktree Manager]
-            Conductor [Track/Track Planner]
-        Execution
-            Claude Code
-            Gemini CLI
-            Codex
+            Workmux
+            Conductor
         Monitoring
-            back2vibing [Session Dock / Baby Monitor]
+            back2vibing
 ```
 
 ### the playpen: worktrees + [workmux](https://github.com/raine/workmux)/[conductor](https://www.conductor.build/)
@@ -93,10 +69,9 @@ workmux and conductor do all the heavy lifting of setting up worktrees, copying 
 %%{init: {'theme': 'dark', 'themeVariables': { 'fontSize': '16px' }}}%%
 graph TD
     A[New Task] --> B[Conductor / Workmux]
-    B --> C[Create Worktree]
-    C --> D[Copy .env]
-    D --> E[Open tmux playpen]
-    E --> F[Agent begins working]
+    B --> C[Isolated Worktree]
+    C --> D[tmux Playpen]
+    D --> E[Agent Active]
 ```
 
 i personally switch off between conductor and workmux depending on what i'm working on.
@@ -122,12 +97,10 @@ when a baby starts crying, i jump into that specific tmux pane, change its diape
 ```mermaid
 %%{init: {'theme': 'dark', 'themeVariables': { 'fontSize': '16px' }}}%%
 graph TD
-    A[Agent Cooking] --> B{back2vibing Monitor}
-    B -->|Agent blocked/Needs input| C[Cry for help]
-    C --> D[Human Steering / Change Diaper]
-    D --> E[Nudge / Feed Docs]
-    E --> A
-    B -->|Agent Done| F[Merge PR]
+    A[Agent Cooking] --> B{back2vibing}
+    B -->|Blocked/Cry| C[Human Steering]
+    C --> A
+    B -->|Done| D[Merge PR]
 ```
 
 ### the 2026 stack

@@ -18,6 +18,26 @@ even with insane planning using plan mode, superpowers:planning, gsd, bmad, spec
 i used to hear all the time that the first 10% is hard, the middle 80% is easy, and the last 10% is the hardest.
 to me it's changed that first 90% is trivial and the last 10% is even harder now because
 
+```mermaid
+%%{init: {'theme': 'dark', 'themeVariables': { 'fontSize': '16px' }}}%%
+graph TD
+    subgraph Autonomous [First 90%: Autonomous Phase]
+        A[Idea/Plan] --> B[Boilerplate Generation]
+        B --> C[Component Structure]
+        C --> D[Base Logic]
+    end
+    subgraph Manual [Last 10%: The Babysitting Phase]
+        D --> E{Integration & Quality}
+        E -->|Conflict| F[Manual Conflict Resolution]
+        E -->|Context Rot| G[Context Steering]
+        E -->|Broke Tests| H[Fixing Edge Cases]
+        F --> I[Final Polish]
+        G --> I
+        H --> I
+        I --> J[Production Ready]
+    end
+```
+
 1. 10x the features means 10x the bugs
 2. our systems are getting exponentially complex far more than the context window of one agent can allow
 
@@ -25,6 +45,41 @@ we have new challenges like merging 10 different features that would each have t
 
 i found that i have been spending most of my time in this last 10%, baby-sitting agents to make sure that these features get over the finish line.
 so i want to share my workflow on how i manage multiple agents across many projects without losing my mind.
+
+### context rot and steering
+one of the biggest issues with letting agents run wild is "context rot." if you leave an agent alone too long, it starts compacting its own history until it’s not actually useful anymore. it gets stuck. steering it in real-time is the only way to keep the inertia going. 
+
+```mermaid
+%%{init: {'theme': 'dark', 'themeVariables': { 'fontSize': '16px' }}}%%
+graph LR
+    A[Fresh Context] --> B[High Agent Velocity]
+    B --> C[Working...]
+    C --> D[History Compacts]
+    D --> E{Context Rot}
+    E -->|Stuck / Circular Loops| F[Cry for help]
+    F --> G[Human Diaper Change]
+    G --> A
+```
+
+honestly, i’m much more productive with "vibe coding" because traditional coding has just become too time-consuming. the mental friction of switching from "thinking about the architecture" to "typing out the boilerplate" is an inertia-killer. i'd rather spend my time thinking and steering.
+
+```mermaid
+%%{init: {'theme': 'dark', 'themeVariables': { 'fontSize': '16px' }}}%%
+mindmap
+    root((2026 Agent Stack))
+        Foundation
+            Ghostty [Terminal]
+            tmux [Multiplexer]
+        Playpen
+            Workmux [Worktree Manager]
+            Conductor [Track/Track Planner]
+        Execution
+            Claude Code
+            Gemini CLI
+            Codex
+        Monitoring
+            back2vibing [Session Dock / Baby Monitor]
+```
 
 ### the playpen: worktrees + [workmux](https://github.com/raine/workmux)/[conductor](https://www.conductor.build/)
 

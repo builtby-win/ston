@@ -6,13 +6,9 @@ tags: ["ai", "claude-code", "codex", "gemini", "workflow", "tooling"]
 draft: false
 ---
 
-```mermaid
-%%{init: {'theme': 'dark', 'themeVariables': { 'fontSize': '16px' }}}%%
-graph LR
-    A[Traditional Coding] -- Syntax & Boilerplate --> B((The Human))
-    C[2026 Vibe Coding] -- Thinking & Steering --> B
-    D[AI Agents] -- Execution & Implementation --> B
-```
+import { AgentFlow } from "../../components/AgentFlow.tsx";
+
+<AgentFlow client:load />
 
 ![how i use workmux and conductor to manage agents](/blog/babysitting-agents.gif)
 
@@ -25,37 +21,18 @@ even with insane planning using plan mode, superpowers:planning, gsd, bmad, spec
 
 i used to hear all the time that the first 10% is hard, the middle 80% is easy, and the last 10% is the hardest.
 to me it's changed that first 90% is trivial and the last 10% is even harder now.
+10x the features means 10x the bugs
 
-| Phase | Easy Now (The 90%) | Hard Now (The 10%) |
-| :--- | :--- | :--- |
-| **Logic** | Writing boilerplate & base functions | Integrating across complex systems |
-| **Context** | Planning the initial roadmap | Fighting context rot & steering loops |
-| **Verification** | Running simple unit tests | Setting up reliable end-to-end environments |
-| **Delivery** | Generating the feature code | Merging 10 features without collisions |
+| Phase            | Easy Now (The 90%)                   | Hard Now (The 10%)                          |
+| :--------------- | :----------------------------------- | :------------------------------------------ |
+| **Logic**        | Writing boilerplate & base functions | Integrating across complex systems          |
+| **Context**      | Planning the initial roadmap         | Fighting context rot & steering loops       |
+| **Verification** | Running simple unit tests            | Setting up reliable end-to-end environments |
+| **Delivery**     | Generating the feature code          | Merging 10 features without collisions      |
 
-1. 10x the features means 10x the bugs
-2. our systems are getting exponentially complex far more than the context window of one agent can allow
-
-we have new challenges like merging 10 different features that would each have taken weeks to build on the same day and not breaking anything or setting up a reliable testing environment so that we can trust the agent can test with.
-
+the problem with software engineering has changed completely in the past 3 months.
 i found that i have been spending most of my time in this last 10%, baby-sitting agents to make sure that these features get over the finish line.
 so i want to share my workflow on how i manage multiple agents across many projects without losing my mind.
-
-honestly, i’m much more productive with "vibe coding" because traditional coding has just become too time-consuming. the mental friction of switching from "thinking about the architecture" to "typing out the boilerplate" is an inertia-killer. i'd rather spend my time thinking and steering.
-
-```mermaid
-%%{init: {'theme': 'dark', 'themeVariables': { 'fontSize': '16px' }}}%%
-mindmap
-    root((2026 Agent Stack))
-        Foundation
-            Ghostty
-            tmux
-        Playpen
-            Workmux
-            Conductor
-        Monitoring
-            back2vibing
-```
 
 ### the playpen: worktrees + [workmux](https://github.com/raine/workmux)/[conductor](https://www.conductor.build/)
 
@@ -67,11 +44,10 @@ workmux and conductor do all the heavy lifting of setting up worktrees, copying 
 
 ```mermaid
 %%{init: {'theme': 'dark', 'themeVariables': { 'fontSize': '16px' }}}%%
-graph TD
-    A[New Task] --> B[Conductor / Workmux]
-    B --> C[Isolated Worktree]
-    C --> D[tmux Playpen]
-    D --> E[Agent Active]
+graph LR
+    A[New Task] --> B[Isolated Worktree]
+    B --> C[tmux Playpen]
+    C --> D[Agent Working]
 ```
 
 i personally switch off between conductor and workmux depending on what i'm working on.
@@ -96,18 +72,17 @@ when a baby starts crying, i jump into that specific tmux pane, change its diape
 
 ```mermaid
 %%{init: {'theme': 'dark', 'themeVariables': { 'fontSize': '16px' }}}%%
-graph TD
+graph LR
     A[Agent Cooking] --> B{back2vibing}
-    B -->|Blocked/Cry| C[Human Steering]
-    C --> A
-    B -->|Done| D[Merge PR]
+    B -->|Steer| A
+    B -->|Done| C[Merge PR]
 ```
 
 ### the 2026 stack
 
 you never know if an agent is going to take 1 minute or 30 minutes to finish, so you have to be ready to jump in at any time. when you multiple this timer by many agents, it can add up quickly to a lot of context switching and brain overload.
 
-i found that using this workflow is the only way for me to address things as fast as possible without melting my brain.
+i found that i have been spending most of my time in this last 10%, baby-sitting agents to make sure that these features get over the finish line.
 
 - **[ghostty](https://ghostty.org) + [tmux](https://github.com/tmux/tmux)**: the foundation.
 - **[workmux](https://github.com/raine/workmux)**: the playpen generator.

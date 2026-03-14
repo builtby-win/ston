@@ -6,7 +6,10 @@ tags: ["ai", "claude-code", "codex", "gemini", "workflow", "tooling"]
 draft: false
 ---
 
+![how i use workmux and conductor to manage agents](/blog/babysitting-agents.gif)
+
 i don't think i've written a line of code in the past 3 months.
+
 everything in the industry is moving so fast and i can't help but feel like i'm falling behind if i'm not min/maxing an autonomous coding agent that is working almost 24/7 without any human intervention, but i just don't think we are there yet.
 opus 4.6, gpt-5.4, and gemini 3.1 pro are pretty insane, but i still find myself babysitting them all day.
 
@@ -29,9 +32,18 @@ a pattern has emerged in agentic workflows where every agent gets its own git wo
 each agent works on its own isolated version of the codebase, so agents don't step on each other's toes.
 there are many TUIs and GUIs that do this for you. i highly recommend [conductor](https://www.conductor.build/) as a GUI and [workmux](https://github.com/raine/workmux) if you're more comfortable in the terminal.
 
-![how i use workmux and conductor to manage agents](/blog/babysitting-agents.gif)
-
 workmux and conductor do all the heavy lifting of setting up worktrees, copying .env variables, and getting the dev environment ready for you.
+
+```mermaid
+%%{init: {'theme': 'dark', 'themeVariables': { 'fontSize': '16px' }}}%%
+graph TD
+    A[New Task] --> B[Conductor / Workmux]
+    B --> C[Create Worktree]
+    C --> D[Copy .env]
+    D --> E[Open tmux playpen]
+    E --> F[Agent begins working]
+```
+
 i personally switch off between conductor and workmux depending on what i'm working on.
 
 for each worktree, i either start off with opencode w/ GPT-5.4 plan mode + superpowers:planning, claude code plan mode + superpowers:planning, or gemini with conductor to plan out the feature work or bug fix.
@@ -44,8 +56,6 @@ once we have fleshed out the plan as much as possible, we unleash our agents to 
 
 i still don't feel comfortable letting agents build out the entire plan if it's really complex because everytime i let it run automomously for 2 hours with subagents, i probably had to spend just as much time unraveling why it wasn't working after it was finished.
 
-![floating dock demo showing the back2vibing session dock](/blog/floating-dock-demo.gif)
-
 i like giving the agents as small as tasks as possible and letting them work on separate parts simultaneously, setting milestones to check in on their progress and verify things are working instead of letting them code everything at once.
 
 i am still the bottleneck in my workflow and i'm okay with that for now because i feel that being able to steer and correct the agents on complex features and tasks saves me a lot of time in the last 10%.
@@ -53,6 +63,17 @@ i am still the bottleneck in my workflow and i'm okay with that for now because 
 in the background i have back2vibing, which is basically my global baby monitor. i can have 4 or 5 different agents running in their own worktree playpens simultaneously. back2vibing lets me see which one is "crying" or needs to be "fed"—usually when an agent needs my input during planning, is waiting for permission to do something, or is done.
 
 when a baby starts crying, i jump into that specific tmux pane, change its diaper (fix the context it's missing), feed it (give it the right docs or a nudge in the right direction), and then go back to my own thing.
+
+```mermaid
+%%{init: {'theme': 'dark', 'themeVariables': { 'fontSize': '16px' }}}%%
+graph TD
+    A[Agent Cooking] --> B{back2vibing Monitor}
+    B -->|Agent blocked/Needs input| C[Cry for help]
+    C --> D[Human Steering / Change Diaper]
+    D --> E[Nudge / Feed Docs]
+    E --> A
+    B -->|Agent Done| F[Merge PR]
+```
 
 ### the 2026 stack
 

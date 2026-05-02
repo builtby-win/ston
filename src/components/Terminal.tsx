@@ -5,11 +5,16 @@ import { HiDocumentText } from 'react-icons/hi'
 interface TerminalItem {
   name: string
   url: string
-  type: 'social' | 'app' | 'blog' | 'header'
+  type: 'social' | 'app' | 'blog' | 'header' | 'page'
   icon?: React.ReactNode
   color?: string
   description?: string
   isInternal?: boolean
+}
+
+interface TerminalSection {
+  header: TerminalItem
+  items: TerminalItem[]
 }
 
 // Section header items (tabbable)
@@ -45,6 +50,13 @@ const sectionHeaders: TerminalItem[] = [
   {
     name: 'repos/',
     url: '/ston/repos',
+    type: 'header',
+    color: 'var(--color-term-fg-muted)',
+    isInternal: true,
+  },
+  {
+    name: 'misc/',
+    url: '/ston/misc',
     type: 'header',
     color: 'var(--color-term-fg-muted)',
     isInternal: true,
@@ -152,6 +164,18 @@ const repos: TerminalItem[] = [
   },
 ]
 
+const misc: TerminalItem[] = [
+  {
+    name: 'fonts',
+    url: '/ston/misc/fonts',
+    type: 'page',
+    color: 'var(--color-term-purple)',
+    icon: <HiDocumentText />,
+    description: 'typefaces i like for videos, sites, and experiments',
+    isInternal: true,
+  },
+]
+
 const pinned: TerminalItem[] = [
   {
     name: 'about',
@@ -183,6 +207,18 @@ const truncateMiddle = (text: string, maxLength: number): string => {
   return text.slice(0, frontChars) + ellipsis + text.slice(-backChars)
 }
 
+const normalizeSearchText = (text: string) => text.toLowerCase().replace(/\s+/g, ' ').trim()
+
+const isEditableTarget = (target: EventTarget | null) => {
+  if (!(target instanceof HTMLElement)) return false
+  return (
+    target.isContentEditable ||
+    target instanceof HTMLInputElement ||
+    target instanceof HTMLTextAreaElement ||
+    target instanceof HTMLSelectElement
+  )
+}
+
 export default function Terminal({ blogPosts = [] }: TerminalProps) {
   const blogItems: TerminalItem[] = useMemo(
     () =>
@@ -198,21 +234,22 @@ export default function Terminal({ blogPosts = [] }: TerminalProps) {
     [blogPosts],
   )
 
-  // Build allItems with headers interleaved: [pinnedHeader, ...pinned, blogHeader, ...blogItems, ...]
-  const allItems = useMemo(
+  const sections = useMemo<TerminalSection[]>(
     () => [
-      sectionHeaders[0], // pinned/
-      ...pinned,
-      sectionHeaders[1], // blog/
-      ...blogItems,
-      sectionHeaders[2], // socials/
-      ...socialLinks,
-      sectionHeaders[3], // apps/
-      ...apps,
-      sectionHeaders[4], // repos/
-      ...repos,
+      { header: sectionHeaders[0], items: pinned },
+      { header: sectionHeaders[1], items: blogItems },
+      { header: sectionHeaders[2], items: socialLinks },
+      { header: sectionHeaders[3], items: apps },
+      { header: sectionHeaders[4], items: repos },
+      { header: sectionHeaders[5], items: misc },
     ],
     [blogItems],
+  )
+
+  // Build allItems with headers interleaved: [pinnedHeader, ...pinned, blogHeader, ...blogItems, ...]
+  const allItems = useMemo(
+    () => sections.flatMap((section) => [section.header, ...section.items]),
+    [sections],
   )
 
   // Get the full path including section prefix for the selected item
@@ -221,33 +258,75 @@ export default function Terminal({ blogPosts = [] }: TerminalProps) {
       const item = allItems[index]
 
       // Find which section this item belongs to
-      let sectionPrefix = ''
-      if (index <= pinned.length) {
-        sectionPrefix = 'pinned/'
-      } else if (index <= 1 + pinned.length + 1 + blogItems.length) {
-        sectionPrefix = 'blog/'
-      } else if (index <= 1 + pinned.length + 1 + blogItems.length + 1 + socialLinks.length) {
-        sectionPrefix = 'socials/'
-      } else if (
-        index <=
-        1 + pinned.length + 1 + blogItems.length + 1 + socialLinks.length + 1 + apps.length
-      ) {
-        sectionPrefix = 'apps/'
-      } else {
-        sectionPrefix = 'repos/'
+      let cursor = 0
+
+      for (const section of sections) {
+        if (index === cursor) {
+          return section.header.name
+        }
+
+        const itemStartIndex = cursor + 1
+        const itemEndIndex = itemStartIndex + section.items.length
+
+        if (index >= itemStartIndex && index < itemEndIndex) {
+          return section.header.name + item.name
+        }
+
+        cursor = itemEndIndex
       }
 
-      // Headers already have the slash, other items need the prefix
-      if (item.type === 'header') {
-        return item.name
-      }
-      return sectionPrefix + item.name
+      return item.name
     },
-    [allItems, blogItems.length, socialLinks.length, apps.length],
+    [allItems, sections],
   )
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null)
+  const [searchQuery, setSearchQuery] = useState('')
   const [showCursor, setShowCursor] = useState(true)
   const [isMobile, setIsMobile] = useState(false)
+
+  const normalizedSearchQuery = normalizeSearchText(searchQuery)
+
+  const filteredIndices = useMemo(() => {
+    if (!normalizedSearchQuery) return allItems.map((_, index) => index)
+
+    return allItems.reduce<number[]>((matches, item, index) => {
+      const searchableText = normalizeSearchText(
+        [getItemPath(index), item.name, item.description ?? '', item.type].join(' '),
+      )
+
+      if (searchableText.includes(normalizedSearchQuery)) {
+        matches.push(index)
+      }
+
+      return matches
+    }, [])
+  }, [allItems, getItemPath, normalizedSearchQuery])
+
+  const visibleIndices = useMemo(() => {
+    if (!normalizedSearchQuery) return filteredIndices
+
+    const visible = new Set(filteredIndices)
+    let nextHeaderIndex = 0
+
+    for (const section of sections) {
+      const headerIndex = nextHeaderIndex
+      const itemStartIndex = headerIndex + 1
+      const itemEndIndex = itemStartIndex + section.items.length
+      const hasVisibleChild = filteredIndices.some(
+        (index) => index >= itemStartIndex && index < itemEndIndex,
+      )
+
+      if (hasVisibleChild) {
+        visible.add(headerIndex)
+      }
+
+      nextHeaderIndex = itemEndIndex
+    }
+
+    return Array.from(visible).sort((a, b) => a - b)
+  }, [filteredIndices, normalizedSearchQuery, sections])
+
+  const visibleIndexSet = useMemo(() => new Set(visibleIndices), [visibleIndices])
 
   // Detect mobile on mount
   useEffect(() => {
@@ -277,28 +356,80 @@ export default function Terminal({ blogPosts = [] }: TerminalProps) {
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
+      if (isEditableTarget(e.target) || e.metaKey || e.ctrlKey || e.altKey) return
+
       if (e.key === 'Tab') {
         e.preventDefault()
+        const navigableIndices =
+          filteredIndices.length > 0 ? filteredIndices : allItems.map((_, index) => index)
+
         if (e.shiftKey) {
           // Shift+Tab: go backwards
           setSelectedIndex((prev) => {
-            if (prev === null || prev === 0) return allItems.length - 1
-            return prev - 1
+            if (prev === null) return navigableIndices[navigableIndices.length - 1]
+            const currentPosition = navigableIndices.indexOf(prev)
+            if (currentPosition <= 0) return navigableIndices[navigableIndices.length - 1]
+            return navigableIndices[currentPosition - 1]
           })
         } else {
           // Tab: go forwards
           setSelectedIndex((prev) => {
-            if (prev === null) return 0
-            return (prev + 1) % allItems.length
+            if (prev === null) return navigableIndices[0]
+            const currentPosition = navigableIndices.indexOf(prev)
+            if (currentPosition === -1 || currentPosition === navigableIndices.length - 1) {
+              return navigableIndices[0]
+            }
+            return navigableIndices[currentPosition + 1]
           })
         }
       } else if (e.key === 'Enter' && selectedIndex !== null) {
+        e.preventDefault()
         navigateToItem(allItems[selectedIndex])
       } else if (e.key === 'Escape') {
+        e.preventDefault()
+        setSearchQuery('')
         setSelectedIndex(null)
+      } else if (e.key === 'Backspace' && searchQuery.length > 0) {
+        e.preventDefault()
+        const nextQuery = searchQuery.slice(0, -1)
+        const normalizedNextQuery = normalizeSearchText(nextQuery)
+        const nextMatches = normalizedNextQuery
+          ? allItems.reduce<number[]>((matches, item, index) => {
+              const searchableText = normalizeSearchText(
+                [getItemPath(index), item.name, item.description ?? '', item.type].join(' '),
+              )
+
+              if (searchableText.includes(normalizedNextQuery)) {
+                matches.push(index)
+              }
+
+              return matches
+            }, [])
+          : []
+
+        setSearchQuery(nextQuery)
+        setSelectedIndex(nextMatches[0] ?? null)
+      } else if (e.key.length === 1) {
+        e.preventDefault()
+        const nextQuery = searchQuery + e.key
+        const normalizedNextQuery = normalizeSearchText(nextQuery)
+        const nextMatches = allItems.reduce<number[]>((matches, item, index) => {
+          const searchableText = normalizeSearchText(
+            [getItemPath(index), item.name, item.description ?? '', item.type].join(' '),
+          )
+
+          if (searchableText.includes(normalizedNextQuery)) {
+            matches.push(index)
+          }
+
+          return matches
+        }, [])
+
+        setSearchQuery(nextQuery)
+        setSelectedIndex(nextMatches[0] ?? null)
       }
     },
-    [selectedIndex, allItems, navigateToItem],
+    [selectedIndex, filteredIndices, allItems, navigateToItem, searchQuery, getItemPath],
   )
 
   useEffect(() => {
@@ -346,9 +477,15 @@ export default function Terminal({ blogPosts = [] }: TerminalProps) {
         </div>
         {isMobile && <br />}
         <span className={isMobile ? '' : 'ml-2'}>cd</span>
-        {selectedIndex !== null && (
-          <span className="ml-1" style={{ color: allItems[selectedIndex].color }}>
-            {truncateMiddle(getItemPath(selectedIndex), 30)}
+        {(searchQuery || selectedIndex !== null) && (
+          <span
+            className="ml-1"
+            style={{
+              color:
+                selectedIndex !== null ? allItems[selectedIndex].color : 'var(--color-term-fg)',
+            }}
+          >
+            {truncateMiddle(searchQuery || getItemPath(selectedIndex ?? 0), 30)}
           </span>
         )}
         <span
@@ -357,9 +494,9 @@ export default function Terminal({ blogPosts = [] }: TerminalProps) {
       </div>
 
       {/* Sections container - aligned with prompt */}
-      <div className="pl-5">
+      <div className="pl-5 min-h-[28rem]">
         {/* Pinned section */}
-        <div className="mb-6">
+        <div className={visibleIndexSet.has(0) ? 'mb-6' : 'hidden'}>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
             {(() => {
               const headerIndex = 0 // pinned/ is at index 0
@@ -373,6 +510,7 @@ export default function Terminal({ blogPosts = [] }: TerminalProps) {
                   className={`
 									transition-all duration-100 outline-none font-medium
 									${isHeaderSelected ? 'ring-2 ring-[var(--color-term-selection-border)] bg-[var(--color-term-selection)] px-2 -mx-2 rounded text-[var(--color-term-link)]' : 'text-[var(--color-term-link)] hover:text-[var(--color-term-purple)] hover:underline'}
+									${visibleIndexSet.has(headerIndex) ? '' : 'hidden'}
 								`}
                   tabIndex={-1}
                 >
@@ -393,6 +531,7 @@ export default function Terminal({ blogPosts = [] }: TerminalProps) {
                   className={`
 									text-left transition-all duration-100 outline-none flex items-center
 									${isSelected ? 'ring-2 ring-[var(--color-term-selection-border)] bg-[var(--color-term-selection)] px-2 -mx-2 rounded' : ''}
+									${visibleIndexSet.has(globalIndex) ? '' : 'hidden'}
 								`}
                   style={{ color: item.color }}
                   tabIndex={-1}
@@ -406,7 +545,7 @@ export default function Terminal({ blogPosts = [] }: TerminalProps) {
         </div>
 
         {/* Blog section */}
-        <div className="mb-6">
+        <div className={visibleIndexSet.has(1 + pinned.length) ? 'mb-6' : 'hidden'}>
           <div className="flex items-start gap-x-2">
             {(() => {
               const headerIndex = 1 + pinned.length // blog/ header index
@@ -420,6 +559,7 @@ export default function Terminal({ blogPosts = [] }: TerminalProps) {
                   className={`
 									transition-all duration-100 outline-none font-medium shrink-0
 									${isHeaderSelected ? 'ring-2 ring-[var(--color-term-selection-border)] bg-[var(--color-term-selection)] px-2 -mx-2 rounded text-[var(--color-term-link)]' : 'text-[var(--color-term-link)] hover:text-[var(--color-term-purple)] hover:underline'}
+									${visibleIndexSet.has(headerIndex) ? '' : 'hidden'}
 								`}
                   tabIndex={-1}
                 >
@@ -440,6 +580,7 @@ export default function Terminal({ blogPosts = [] }: TerminalProps) {
                     onFocus={() => !isMobile && handleItemHover(globalIndex)}
                     className={`
 										text-left transition-all duration-100 outline-none flex items-center 										${isSelected ? 'ring-2 ring-[var(--color-term-selection-border)] bg-[var(--color-term-selection)] px-2 -mx-2 rounded' : ''}
+										${visibleIndexSet.has(globalIndex) ? '' : 'hidden'}
 									`}
                     style={{ color: item.color }}
                     tabIndex={-1}
@@ -454,7 +595,11 @@ export default function Terminal({ blogPosts = [] }: TerminalProps) {
         </div>
 
         {/* Socials section */}
-        <div className="mb-6">
+        <div
+          className={
+            visibleIndexSet.has(1 + pinned.length + 1 + blogItems.length) ? 'mb-6' : 'hidden'
+          }
+        >
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
             {(() => {
               const headerIndex = 1 + pinned.length + 1 + blogItems.length // socials/ header index
@@ -468,6 +613,7 @@ export default function Terminal({ blogPosts = [] }: TerminalProps) {
                   className={`
 									transition-all duration-100 outline-none font-medium
 									${isHeaderSelected ? 'ring-2 ring-[var(--color-term-selection-border)] bg-[var(--color-term-selection)] px-2 -mx-2 rounded text-[var(--color-term-link)]' : 'text-[var(--color-term-link)] hover:text-[var(--color-term-purple)] hover:underline'}
+									${visibleIndexSet.has(headerIndex) ? '' : 'hidden'}
 								`}
                   tabIndex={-1}
                 >
@@ -488,6 +634,7 @@ export default function Terminal({ blogPosts = [] }: TerminalProps) {
                   className={`
 									text-left transition-all duration-100 outline-none flex items-center
 									${isSelected ? 'ring-2 ring-[var(--color-term-selection-border)] bg-[var(--color-term-selection)] px-2 -mx-2 rounded' : ''}
+									${visibleIndexSet.has(globalIndex) ? '' : 'hidden'}
 								`}
                   style={{ color: item.color }}
                   tabIndex={-1}
@@ -501,7 +648,13 @@ export default function Terminal({ blogPosts = [] }: TerminalProps) {
         </div>
 
         {/* Apps section */}
-        <div className="mb-6">
+        <div
+          className={
+            visibleIndexSet.has(1 + pinned.length + 1 + blogItems.length + 1 + socialLinks.length)
+              ? 'mb-6'
+              : 'hidden'
+          }
+        >
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
             {(() => {
               const headerIndex = 1 + pinned.length + 1 + blogItems.length + 1 + socialLinks.length // apps/ header index
@@ -515,6 +668,7 @@ export default function Terminal({ blogPosts = [] }: TerminalProps) {
                   className={`
 									transition-all duration-100 outline-none font-medium
 									${isHeaderSelected ? 'ring-2 ring-[var(--color-term-selection-border)] bg-[var(--color-term-selection)] px-2 -mx-2 rounded text-[var(--color-term-link)]' : 'text-[var(--color-term-link)] hover:text-[var(--color-term-purple)] hover:underline'}
+									${visibleIndexSet.has(headerIndex) ? '' : 'hidden'}
 								`}
                   tabIndex={-1}
                 >
@@ -536,6 +690,7 @@ export default function Terminal({ blogPosts = [] }: TerminalProps) {
                   className={`
 									text-left transition-all duration-100 outline-none flex items-center
 									${isSelected ? 'ring-2 ring-[var(--color-term-selection-border)] bg-[var(--color-term-selection)] px-2 -mx-2 rounded' : ''}
+									${visibleIndexSet.has(globalIndex) ? '' : 'hidden'}
 								`}
                   style={{ color: item.color }}
                   tabIndex={-1}
@@ -549,11 +704,19 @@ export default function Terminal({ blogPosts = [] }: TerminalProps) {
         </div>
 
         {/* Repos section */}
-        <div className="mb-8">
+        <div
+          className={
+            visibleIndexSet.has(
+              1 + pinned.length + 1 + blogItems.length + 1 + socialLinks.length + 1 + apps.length,
+            )
+              ? 'mb-6'
+              : 'hidden'
+          }
+        >
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
             {(() => {
               const headerIndex =
-                1 + pinned.length + 1 + blogItems.length + 1 + socialLinks.length + 1 + apps.length // repos/ header index
+                1 + pinned.length + 1 + blogItems.length + 1 + socialLinks.length + 1 + apps.length
               const isHeaderSelected = selectedIndex === headerIndex
               return (
                 <button
@@ -564,6 +727,7 @@ export default function Terminal({ blogPosts = [] }: TerminalProps) {
                   className={`
 									transition-all duration-100 outline-none font-medium
 									${isHeaderSelected ? 'ring-2 ring-[var(--color-term-selection-border)] bg-[var(--color-term-selection)] px-2 -mx-2 rounded text-[var(--color-term-link)]' : 'text-[var(--color-term-link)] hover:text-[var(--color-term-purple)] hover:underline'}
+									${visibleIndexSet.has(headerIndex) ? '' : 'hidden'}
 								`}
                   tabIndex={-1}
                 >
@@ -594,6 +758,95 @@ export default function Terminal({ blogPosts = [] }: TerminalProps) {
                   className={`
 									text-left transition-all duration-100 outline-none flex items-center
 									${isSelected ? 'ring-2 ring-[var(--color-term-selection-border)] bg-[var(--color-term-selection)] px-2 -mx-2 rounded' : ''}
+									${visibleIndexSet.has(globalIndex) ? '' : 'hidden'}
+								`}
+                  style={{ color: item.color }}
+                  tabIndex={-1}
+                >
+                  {item.icon && <span className="mr-2 inline-flex">{item.icon}</span>}
+                  {item.name}
+                </button>
+              )
+            })}
+          </div>
+        </div>
+
+        {/* Misc section */}
+        <div
+          className={
+            visibleIndexSet.has(
+              1 +
+                pinned.length +
+                1 +
+                blogItems.length +
+                1 +
+                socialLinks.length +
+                1 +
+                apps.length +
+                1 +
+                repos.length,
+            )
+              ? 'mb-8'
+              : 'hidden'
+          }
+        >
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+            {(() => {
+              const headerIndex =
+                1 +
+                pinned.length +
+                1 +
+                blogItems.length +
+                1 +
+                socialLinks.length +
+                1 +
+                apps.length +
+                1 +
+                repos.length
+              const isHeaderSelected = selectedIndex === headerIndex
+              return (
+                <button
+                  type="button"
+                  onClick={(e) => handleItemClick(e, sectionHeaders[5], headerIndex)}
+                  onMouseEnter={() => !isMobile && handleItemHover(headerIndex)}
+                  onFocus={() => !isMobile && handleItemHover(headerIndex)}
+                  className={`
+									transition-all duration-100 outline-none font-medium
+									${isHeaderSelected ? 'ring-2 ring-[var(--color-term-selection-border)] bg-[var(--color-term-selection)] px-2 -mx-2 rounded text-[var(--color-term-link)]' : 'text-[var(--color-term-link)] hover:text-[var(--color-term-purple)] hover:underline'}
+									${visibleIndexSet.has(headerIndex) ? '' : 'hidden'}
+								`}
+                  tabIndex={-1}
+                >
+                  misc/
+                </button>
+              )
+            })()}
+            {misc.map((item, idx) => {
+              const globalIndex =
+                1 +
+                pinned.length +
+                1 +
+                blogItems.length +
+                1 +
+                socialLinks.length +
+                1 +
+                apps.length +
+                1 +
+                repos.length +
+                1 +
+                idx
+              const isSelected = selectedIndex === globalIndex
+              return (
+                <button
+                  type="button"
+                  key={item.name}
+                  onClick={(e) => handleItemClick(e, item, globalIndex)}
+                  onMouseEnter={() => !isMobile && handleItemHover(globalIndex)}
+                  onFocus={() => !isMobile && handleItemHover(globalIndex)}
+                  className={`
+									text-left transition-all duration-100 outline-none flex items-center
+									${isSelected ? 'ring-2 ring-[var(--color-term-selection-border)] bg-[var(--color-term-selection)] px-2 -mx-2 rounded' : ''}
+									${visibleIndexSet.has(globalIndex) ? '' : 'hidden'}
 								`}
                   style={{ color: item.color }}
                   tabIndex={-1}
@@ -607,6 +860,12 @@ export default function Terminal({ blogPosts = [] }: TerminalProps) {
         </div>
 
         {/* Description */}
+        {normalizedSearchQuery && filteredIndices.length === 0 && (
+          <div className="mt-4 text-[var(--color-term-fg-muted)] text-sm">
+            No matches. Press Esc to clear.
+          </div>
+        )}
+
         {selectedIndex !== null && allItems[selectedIndex].description && (
           <div className="mt-4 text-[var(--color-term-fg-muted)] text-sm">
             {allItems[selectedIndex].description}
@@ -622,15 +881,20 @@ export default function Terminal({ blogPosts = [] }: TerminalProps) {
           </>
         ) : (
           <>
-            <span className="opacity-60">Press</span>
+            <span className="opacity-60">Type to filter,</span>
             <kbd className="mx-1 px-1.5 py-0.5 bg-[var(--color-term-bg-lighter)] rounded text-xs">
               Tab
             </kbd>
-            <span className="opacity-60">to navigate,</span>
+            <span className="opacity-60">to cycle,</span>
+            <span className="opacity-60 ml-1">press</span>
             <kbd className="mx-1 px-1.5 py-0.5 bg-[var(--color-term-bg-lighter)] rounded text-xs">
-              Enter/Click
+              Enter
             </kbd>
-            <span className="opacity-60">to open</span>
+            <span className="opacity-60">to open,</span>
+            <kbd className="mx-1 px-1.5 py-0.5 bg-[var(--color-term-bg-lighter)] rounded text-xs">
+              Esc
+            </kbd>
+            <span className="opacity-60">to clear</span>
           </>
         )}
       </div>

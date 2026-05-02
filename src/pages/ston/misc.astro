@@ -1,0 +1,104 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const collections = [
+  {
+    name: 'fonts',
+    href: '/ston/misc/fonts',
+    tagline: 'typefaces for videos and experiments',
+    description: 'fonts i keep coming back to for edits, sites, thumbnails, and interface experiments.',
+  },
+];
+---
+
+<BlogLayout
+  title="misc"
+  description="Curated links to things Winston likes and uses"
+  pathSegments={[{ name: 'misc', href: null }]}
+  backHref="/ston"
+>
+  <header class="page-header">
+    <h1>misc/</h1>
+    <p class="page-description">cool stuff i use or want to remember</p>
+  </header>
+
+  <ul class="misc-list">
+    {collections.map((collection) => (
+      <li class="misc-item">
+        <a href={collection.href} class="misc-link">
+          <span class="misc-name">{collection.name}/</span>
+          <span class="misc-tagline">{collection.tagline}</span>
+        </a>
+        <p class="misc-description">{collection.description}</p>
+      </li>
+    ))}
+  </ul>
+</BlogLayout>
+
+<style>
+  .page-header {
+    margin-bottom: 3rem;
+  }
+
+  .page-header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-term-dir);
+    margin: 0 0 0.5rem 0;
+  }
+
+  .page-description {
+    color: var(--color-term-fg-muted);
+    font-size: 0.875rem;
+    margin: 0;
+  }
+
+  .misc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .misc-item {
+    border-left: 2px solid var(--color-term-fg-muted);
+    padding-left: 1rem;
+  }
+
+  .misc-link {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .misc-name {
+    color: var(--color-term-purple);
+    font-weight: 500;
+    transition: opacity 0.15s;
+  }
+
+  .misc-link:hover .misc-name {
+    opacity: 0.8;
+  }
+
+  .misc-tagline {
+    color: var(--color-term-fg-muted);
+    font-size: 0.875rem;
+  }
+
+  .misc-tagline::before {
+    content: '— ';
+  }
+
+  .misc-description {
+    color: var(--color-term-fg-muted);
+    font-size: 0.875rem;
+    margin: 0;
+    line-height: 1.6;
+  }
+</style>

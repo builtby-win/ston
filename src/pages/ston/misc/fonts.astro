@@ -1,0 +1,173 @@
+---
+import BlogLayout from '../../../layouts/BlogLayout.astro';
+
+const fonts = [
+  {
+    name: 'Tex Gyre Heros',
+    source: 'Open Foundry / GUST',
+    url: 'https://open-foundry.com/fonts/tex-gyre-heros',
+    vibe: 'neutral grotesk, clean captions, interface-y video overlays',
+    previewImage: '/images/font-previews/tex-gyre-heros.png',
+    note: 'GUST Font License v1.0. Link out first; self-host only after checking the license terms.',
+  },
+  {
+    name: 'ZT Bros Oskon 90s',
+    source: 'DaFont / Zelow Type',
+    url: 'https://www.dafont.com/zt-bros-oskon-90s.font',
+    vibe: '90s display energy for thumbnails, loud title cards, and weird little moments',
+    previewImage: '/images/font-previews/zt-bros-oskon-90s.png',
+    note: 'DaFont lists six free styles, with the full family sold separately. Verify the author/readme before embedding.',
+  },
+];
+---
+
+<BlogLayout
+  title="fonts"
+  description="Fonts Winston likes for videos, sites, and experiments"
+  pathSegments={[
+    { name: 'misc', href: '/ston/misc' },
+    { name: 'fonts', href: null },
+  ]}
+  backHref="/ston/misc"
+>
+  <header class="page-header">
+    <h1>fonts/</h1>
+    <p class="page-description">typefaces i like for videos, sites, and experiments</p>
+  </header>
+
+  <div class="font-list">
+    {fonts.map((font) => (
+      <article class="font-card">
+        <img
+          src={font.previewImage}
+          alt={`${font.name} static preview image`}
+          width="1600"
+          height="720"
+          loading="lazy"
+          decoding="async"
+          class="font-preview"
+        />
+
+        <div class="font-meta">
+          <div>
+            <h2>{font.name}</h2>
+            <p class="font-source">{font.source}</p>
+          </div>
+          <a href={font.url} target="_blank" rel="noopener noreferrer" class="source-link">
+            view source →
+          </a>
+        </div>
+
+        <p class="font-vibe">{font.vibe}</p>
+        <p class="font-note">{font.note}</p>
+      </article>
+    ))}
+  </div>
+
+  <p class="embed-note">
+    previews are generated locally from the font files, then saved as static images. the font
+    files themselves are not hosted on this site.
+  </p>
+</BlogLayout>
+
+<style>
+  .page-header {
+    margin-bottom: 3rem;
+  }
+
+  .page-header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-term-dir);
+    margin: 0 0 0.5rem 0;
+  }
+
+  .page-description {
+    color: var(--color-term-fg-muted);
+    font-size: 0.875rem;
+    margin: 0;
+  }
+
+  .font-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .font-card {
+    border: 1px solid #30363d;
+    border-left: 2px solid var(--color-term-purple);
+    border-radius: 0.5rem;
+    background: var(--color-term-bg-lighter);
+    overflow: hidden;
+  }
+
+  .font-preview {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #30363d;
+  }
+
+  .font-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 1.25rem 0;
+  }
+
+  .font-meta h2 {
+    color: var(--color-term-fg);
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 0.25rem;
+  }
+
+  .font-source,
+  .font-vibe,
+  .font-note,
+  .embed-note {
+    color: var(--color-term-fg-muted);
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+
+  .font-source {
+    margin: 0;
+  }
+
+  .source-link {
+    color: var(--color-term-link);
+    text-decoration: none;
+    font-size: 0.875rem;
+    white-space: nowrap;
+    transition: opacity 0.15s;
+  }
+
+  .source-link:hover {
+    opacity: 0.8;
+  }
+
+  .font-vibe {
+    margin: 1rem 1.25rem 0;
+  }
+
+  .font-note {
+    margin: 0.75rem 1.25rem 1.25rem;
+    padding-top: 0.75rem;
+    border-top: 1px dotted #30363d;
+  }
+
+  .embed-note {
+    margin: 2rem 0 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid #30363d;
+  }
+
+  @media (max-width: 640px) {
+    .font-meta {
+      flex-direction: column;
+    }
+  }
+</style>

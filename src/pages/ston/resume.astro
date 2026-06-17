@@ -1,0 +1,298 @@
+---
+import BlogLayout from "../../layouts/BlogLayout.astro";
+
+const ic = [
+    {
+        name: "back2vibing",
+        tag: "independent",
+        url: "https://back2vibing.builtby.win/",
+        description:
+            "i was spending way too much time combing through terminal tabs to babysit my agents. i built back2vibing so i can see what every agent is doing, get notified when they need me, and jump straight into the right session.",
+        linkUrl: null,
+        linkLabel: null,
+    },
+    {
+        name: "areyougo.ing",
+        tag: "independent",
+        url: "https://areyougo.ing/",
+        description:
+            "there's magic in bumping into a friend at a live music event or fomo in finding out a homie went without you. areyougo.ing works by syncing ticket emails and marking attendance automatically, so you never miss out",
+        linkUrl: null,
+        linkLabel: null,
+    },
+    {
+        name: "zero stack",
+        tag: "independent",
+        url: "https://zerostack.builtby.win/",
+        description:
+            "a reusable boilerplate i built to scaffold websites quickly on cloudflare with auth, payments, and email set up in under 10 minutes.",
+        linkUrl: null,
+        linkLabel: null,
+    },
+    {
+        name: "import magic",
+        tag: "independent",
+        url: "https://importmagic.app",
+        description:
+            "i got really into cameras during the pandemic and convinced myself i was going to become a youtuber. instead, i built import magic to automate offloading photos/videos and catch duplicates because doing it in finder was painfully slow.",
+        linkUrl: null,
+        linkLabel: null,
+    },
+    {
+        name: "youtube",
+        tag: "creator",
+        url: "https://youtube.com/@winnieletsgo",
+        description:
+            "i always wanted to make videos, so before i turned 30 i made 30 videos in 30 days and grew the channel to around 1k subscribers.",
+        linkUrl: null,
+        linkLabel: null,
+    },
+    {
+        name: "japan + germany launch",
+        tag: "doordash",
+        url: null,
+        description:
+            "i was part of the team leading doordash's japan and germany launches. the hard part was tech debt: localizing copy, supporting different currency, and finding all the weird edge cases that show up when a product goes international.",
+        linkUrl:
+            "https://careersatdoordash.com/blog/overcoming-localization-internalization-challenges/",
+        linkLabel: "i wrote this cringe blog about it here.",
+    },
+    {
+        name: "item modal rebuild",
+        tag: "doordash",
+        url: null,
+        description:
+            "probably the most technically difficult project i've worked on in my career: rebuilding doordash's most complex ui component.",
+        linkUrl:
+            "https://careersatdoordash.com/blog/managing-react-state-using-the-class-pattern/",
+        linkLabel: "i wrote this technical blog about it here.",
+    },
+    {
+        name: "sigfig",
+        tag: "earlier",
+        url: null,
+        description: "software engineer for 1.5 years.",
+        linkUrl: null,
+        linkLabel: null,
+    },
+    {
+        name: "financialforce",
+        tag: "earlier",
+        url: null,
+        description: "software engineer for 1 year.",
+        linkUrl: null,
+        linkLabel: null,
+    },
+];
+
+const leadership = [
+    {
+        name: "gdpr privacy compliance",
+        tag: "doordash",
+        url: null,
+        description:
+            "as we were launching germany, i led a cross-functional team of 15 between legal and engineering to meet eu privacy standards and unblock the germany launch.",
+        linkUrl: null,
+        linkLabel: null,
+    },
+    {
+        name: "japanese dasher payouts",
+        tag: "doordash",
+        url: null,
+        description:
+            "japan was doordash's first country outside north america, and stripe kyc required ids the dasher app didn't support yet. i led a last-minute full-stack team to add the missing id support and ship dasher payouts before launch.",
+        linkUrl: null,
+        linkLabel: null,
+    },
+];
+
+const groups = [
+    { label: "individual contributor", items: ic },
+    { label: "leadership", items: leadership },
+];
+---
+
+<BlogLayout
+    title="resume"
+    description="What Winston has built, as an IC and a leader"
+    pathSegments={[{ name: "resume", href: null }]}
+    backHref="/ston"
+>
+    <header class="page-header">
+        <h1>resume/</h1>
+        <p class="page-description">what i've built</p>
+    </header>
+
+    <section class="intro-section">
+        <p>
+            i've been a software engineer for about 10 years. i studied chemical
+            engineering at ucla and did a coding bootcamp after graduating. here
+            are some things i've built and shipped that i'm really proud of.
+        </p>
+    </section>
+
+    <section class="strengths">
+        <h2>strengths:</h2>
+
+        {
+            groups.map((group) => (
+                <div class="strength-group">
+                    <h3 class="group-label">{group.label}</h3>
+                    <ul class="items-list">
+                        {group.items.map((item) => (
+                            <li class="item">
+                                <div class="item-header">
+                                    {item.url ? (
+                                        <a
+                                            href={item.url}
+                                            target={
+                                                item.url.startsWith("http")
+                                                    ? "_blank"
+                                                    : undefined
+                                            }
+                                            rel={
+                                                item.url.startsWith("http")
+                                                    ? "noopener noreferrer"
+                                                    : undefined
+                                            }
+                                            class="item-name"
+                                        >
+                                            {item.name}
+                                        </a>
+                                    ) : (
+                                        <span class="item-name">
+                                            {item.name}
+                                        </span>
+                                    )}
+                                    <span class="item-tag">{item.tag}</span>
+                                </div>
+                                <p class="item-description">
+                                    {item.description}
+                                    {item.linkUrl && item.linkLabel ? (
+                                        <>
+                                            {" "}
+                                            <a
+                                                href={item.linkUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+                                                {item.linkLabel}
+                                            </a>
+                                        </>
+                                    ) : null}
+                                </p>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            ))
+        }
+    </section>
+</BlogLayout>
+
+<style>
+    .page-header {
+        margin-bottom: 2rem;
+    }
+
+    .page-header h1 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--color-term-dir);
+        margin: 0 0 0.5rem 0;
+    }
+
+    .page-description {
+        color: var(--color-term-fg-muted);
+        font-size: 0.875rem;
+        margin: 0;
+    }
+
+    .intro-section {
+        margin-bottom: 3rem;
+    }
+
+    .intro-section p {
+        color: var(--color-term-fg);
+        font-size: 0.95rem;
+        line-height: 1.7;
+        margin: 0;
+    }
+
+    .strengths {
+        margin-top: 3rem;
+    }
+
+    .strengths h2 {
+        font-size: 1rem;
+        font-weight: 500;
+        color: var(--color-term-dir);
+        margin: 0 0 1.5rem 0;
+    }
+
+    .strength-group {
+        margin-bottom: 2.5rem;
+    }
+
+    .group-label {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: var(--color-term-purple);
+        margin: 0 0 1rem 0;
+    }
+
+    .items-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .item {
+        border-left: 2px solid var(--color-term-fg-muted);
+        padding-left: 1rem;
+    }
+
+    .item-header {
+        display: flex;
+        align-items: baseline;
+        gap: 0.625rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .item-name {
+        font-weight: 500;
+        color: var(--color-term-link);
+        text-decoration: none;
+        transition: opacity 0.15s;
+    }
+
+    a.item-name:hover {
+        opacity: 0.8;
+    }
+
+    .item-tag {
+        font-size: 0.75rem;
+        color: var(--color-term-fg-muted);
+    }
+
+    .item-description {
+        color: var(--color-term-fg);
+        font-size: 0.875rem;
+        margin: 0;
+        line-height: 1.6;
+        opacity: 0.85;
+    }
+
+    .item-description a {
+        color: var(--color-term-link);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+    }
+
+    .item-description a:hover {
+        color: var(--color-term-prompt);
+    }
+</style>

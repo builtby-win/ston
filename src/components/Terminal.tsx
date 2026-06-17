@@ -187,6 +187,15 @@ const pinned: TerminalItem[] = [
     isInternal: true,
   },
   {
+    name: 'resume',
+    url: '/ston/resume',
+    type: 'page',
+    color: 'var(--color-term-dir)',
+    icon: <HiDocumentText />,
+    description: 'what i\'ve built',
+    isInternal: true,
+  },
+  {
     name: 'loose rules (to live by)',
     url: '/ston/blog/2026-01-12/loose-rules',
     type: 'blog',

@@ -1,115 +1,167 @@
 ---
-import BlogLayout from "../../layouts/BlogLayout.astro";
+import BlogLayout from '../../layouts/BlogLayout.astro'
 
-const ic = [
-    {
-        name: "back2vibing",
-        tag: "independent",
-        url: "https://back2vibing.builtby.win/",
-        description:
-            "i was spending way too much time combing through terminal tabs to babysit my agents. i built back2vibing so i can see what every agent is doing, get notified when they need me, and jump straight into the right session.",
-        linkUrl: null,
-        linkLabel: null,
-    },
-    {
-        name: "areyougo.ing",
-        tag: "independent",
-        url: "https://areyougo.ing/",
-        description:
-            "there's magic in bumping into a friend at a live music event or fomo in finding out a homie went without you. areyougo.ing works by syncing ticket emails and marking attendance automatically, so you never miss out",
-        linkUrl: null,
-        linkLabel: null,
-    },
-    {
-        name: "zero stack",
-        tag: "independent",
-        url: "https://zerostack.builtby.win/",
-        description:
-            "a reusable boilerplate i built to scaffold websites quickly on cloudflare with auth, payments, and email set up in under 10 minutes.",
-        linkUrl: null,
-        linkLabel: null,
-    },
-    {
-        name: "import magic",
-        tag: "independent",
-        url: "https://importmagic.app",
-        description:
-            "i got really into cameras during the pandemic and convinced myself i was going to become a youtuber. instead, i built import magic to automate offloading photos/videos and catch duplicates because doing it in finder was painfully slow.",
-        linkUrl: null,
-        linkLabel: null,
-    },
-    {
-        name: "youtube",
-        tag: "creator",
-        url: "https://youtube.com/@winnieletsgo",
-        description:
-            "i always wanted to make videos, so before i turned 30 i made 30 videos in 30 days and grew the channel to around 1k subscribers.",
-        linkUrl: null,
-        linkLabel: null,
-    },
-    {
-        name: "japan + germany launch",
-        tag: "doordash",
-        url: null,
-        description:
-            "i was part of the team leading doordash's japan and germany launches. the hard part was tech debt: localizing copy, supporting different currency, and finding all the weird edge cases that show up when a product goes international.",
-        linkUrl:
-            "https://careersatdoordash.com/blog/overcoming-localization-internalization-challenges/",
-        linkLabel: "i wrote this cringe blog about it here.",
-    },
-    {
-        name: "item modal rebuild",
-        tag: "doordash",
-        url: null,
-        description:
-            "probably the most technically difficult project i've worked on in my career: rebuilding doordash's most complex ui component.",
-        linkUrl:
-            "https://careersatdoordash.com/blog/managing-react-state-using-the-class-pattern/",
-        linkLabel: "i wrote this technical blog about it here.",
-    },
-    {
-        name: "sigfig",
-        tag: "earlier",
-        url: null,
-        description: "software engineer for 1.5 years.",
-        linkUrl: null,
-        linkLabel: null,
-    },
-    {
-        name: "financialforce",
-        tag: "earlier",
-        url: null,
-        description: "software engineer for 1 year.",
-        linkUrl: null,
-        linkLabel: null,
-    },
-];
-
-const leadership = [
-    {
-        name: "gdpr privacy compliance",
-        tag: "doordash",
-        url: null,
-        description:
-            "as we were launching germany, i led a cross-functional team of 15 between legal and engineering to meet eu privacy standards and unblock the germany launch.",
-        linkUrl: null,
-        linkLabel: null,
-    },
-    {
-        name: "japanese dasher payouts",
-        tag: "doordash",
-        url: null,
-        description:
-            "japan was doordash's first country outside north america, and stripe kyc required ids the dasher app didn't support yet. i led a last-minute full-stack team to add the missing id support and ship dasher payouts before launch.",
-        linkUrl: null,
-        linkLabel: null,
-    },
-];
-
-const groups = [
-    { label: "individual contributor", items: ic },
-    { label: "leadership", items: leadership },
-];
+const timeline = [
+  {
+    role: 'Solo projects',
+    dates: 'Aug 2022 — Present',
+    summary: 'Things I’ve been building after DoorDash: small products, client sites, and content.',
+    groups: [
+      {
+        label: null,
+        items: [
+          {
+            name: 'back2vibing',
+            dates: 'Oct 2025 — Present',
+            url: 'https://back2vibing.builtby.win/',
+            description:
+              'I was spending way too much time combing through terminal tabs to babysit my agents. I built back2vibing so I can see what every agent is doing, get notified when they need me, and jump straight into the right session.',
+            links: [],
+          },
+          {
+            name: 'areyougo.ing',
+            dates: 'Dec 2025 — Present',
+            url: 'https://areyougo.ing/',
+            description:
+              "There's magic in bumping into a friend at a live music event or FOMO in finding out a homie went without you. areyougo.ing works by syncing ticket emails and marking attendance automatically, so you never miss out.",
+            links: [],
+          },
+          {
+            name: 'Zero Stack',
+            dates: 'Jan 2026 — Present',
+            url: 'https://zerostack.builtby.win/',
+            description:
+              "I'm using Zero Stack to help non-technical small business owners start vibe coding real sites and apps. Examples:",
+            links: [
+              {
+                label: 'CFW Productions',
+                url: 'https://cfwproductions.com/',
+              },
+              {
+                label: 'Flash',
+                url: 'https://flash.handlworks.com/',
+              },
+              {
+                label: 'Import Bonds',
+                url: 'https://import-bonds.reddata.io/',
+              },
+            ],
+          },
+          {
+            name: 'Import Magic',
+            dates: 'Aug 2022 — Present',
+            url: 'https://importmagic.app',
+            description:
+              'I got really into cameras during the pandemic and convinced myself I was going to become a YouTuber. Instead, I built Import Magic to automate offloading photos/videos and catch duplicates because doing it in Finder was painfully slow.',
+            links: [],
+          },
+          {
+            name: 'YouTube',
+            dates: '2024 — 1 month',
+            url: 'https://youtube.com/@winnieletsgo',
+            description:
+              'I always wanted to make videos, so before I turned 30 I made 30 videos in 30 days and grew the channel to around 1k subscribers.',
+            links: [],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    role: 'DoorDash',
+    dates: 'Aug 2019 — Aug 2022',
+    summary:
+      'I worked on two teams: SWAT and Shopping Experience, building 0 → 1 projects across the entire stack.',
+    groups: [
+      {
+        label: 'SWAT team',
+        items: [
+          {
+            name: 'Japan + Germany launch',
+            dates: null,
+            url: null,
+            description:
+              "I was part of the team leading DoorDash's Japan and Germany launches. The hard part was tech debt: localizing copy, supporting different currency, and finding all the weird edge cases that show up when a product goes international.",
+            links: [
+              {
+                label: 'I wrote this technical blog about the launch work here.',
+                url: 'https://careersatdoordash.com/blog/overcoming-localization-internalization-challenges/',
+              },
+            ],
+          },
+          {
+            name: 'GDPR privacy compliance',
+            dates: null,
+            url: null,
+            description:
+              'As we were launching Germany, I led a cross-functional team of 15 between legal and engineering to meet EU privacy standards and unblock the Germany launch.',
+            links: [],
+          },
+          {
+            name: 'Japanese Dasher payouts',
+            dates: null,
+            url: null,
+            description:
+              "Japan was DoorDash's first country outside North America, and Stripe KYC required IDs the Dasher app didn't support yet. I led a last-minute full-stack team to add the missing ID support and ship Dasher payouts before launch.",
+            links: [],
+          },
+        ],
+      },
+      {
+        label: 'Shopping Experience team',
+        items: [
+          {
+            name: 'Item modal rebuild',
+            dates: null,
+            url: null,
+            description:
+              "Probably the most technically difficult project I've worked on in my career: rebuilding DoorDash's most complex UI component.",
+            links: [
+              {
+                label: 'I wrote this technical blog about it here.',
+                url: 'https://careersatdoordash.com/blog/managing-react-state-using-the-class-pattern/',
+              },
+            ],
+          },
+          {
+            name: 'Impossible item validation',
+            dates: null,
+            url: null,
+            description:
+              'Identified ~50k requests/day trying to create impossible order-to-item states, then assembled a team across merchant orgs and my team to add backend validation before those items entered the system.',
+            links: [],
+          },
+          {
+            name: 'DoorDash landing page',
+            dates: null,
+            url: 'https://www.doordash.com/',
+            description: 'Built the DoorDash landing page that is still used today.',
+            links: [],
+          },
+          {
+            name: 'Item re-ordering',
+            dates: null,
+            url: null,
+            description: 'Built item re-ordering for shopping flows.',
+            links: [],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    role: 'SigFig',
+    dates: 'Apr 2018 — Aug 2019',
+    summary: 'Software engineer.',
+    groups: [],
+  },
+  {
+    role: 'FinancialForce',
+    dates: 'Apr 2017 — Apr 2018',
+    summary: 'Software engineer.',
+    groups: [],
+  },
+]
 ---
 
 <BlogLayout
@@ -120,71 +172,92 @@ const groups = [
 >
     <header class="page-header">
         <h1>resume/</h1>
-        <p class="page-description">what i've built</p>
+        <p class="page-description">What I've built</p>
     </header>
 
     <section class="intro-section">
         <p>
-            i've been a software engineer for about 10 years. i studied chemical
-            engineering at ucla and did a coding bootcamp after graduating. here
-            are some things i've built and shipped that i'm really proud of.
+            I've been a software engineer for about 10 years. I studied chemical
+            engineering at UCLA and did a coding bootcamp after graduating. Here
+            are some things I've built and shipped that I'm really proud of.
         </p>
     </section>
 
-    <section class="strengths">
-        <h2>strengths:</h2>
+    <section class="timeline">
+        <h2>Timeline:</h2>
 
         {
-            groups.map((group) => (
-                <div class="strength-group">
-                    <h3 class="group-label">{group.label}</h3>
-                    <ul class="items-list">
-                        {group.items.map((item) => (
-                            <li class="item">
-                                <div class="item-header">
-                                    {item.url ? (
-                                        <a
-                                            href={item.url}
-                                            target={
-                                                item.url.startsWith("http")
-                                                    ? "_blank"
-                                                    : undefined
-                                            }
-                                            rel={
-                                                item.url.startsWith("http")
-                                                    ? "noopener noreferrer"
-                                                    : undefined
-                                            }
-                                            class="item-name"
-                                        >
-                                            {item.name}
-                                        </a>
-                                    ) : (
-                                        <span class="item-name">
-                                            {item.name}
-                                        </span>
-                                    )}
-                                    <span class="item-tag">{item.tag}</span>
-                                </div>
-                                <p class="item-description">
-                                    {item.description}
-                                    {item.linkUrl && item.linkLabel ? (
-                                        <>
-                                            {" "}
-                                            <a
-                                                href={item.linkUrl}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                {item.linkLabel}
-                                            </a>
-                                        </>
-                                    ) : null}
-                                </p>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
+            timeline.map((entry) => (
+                <article class="timeline-entry">
+                    <div class="timeline-header">
+                        <h3 class="timeline-title">{entry.role}</h3>
+                        <span class="timeline-date">{entry.dates}</span>
+                    </div>
+                    {entry.summary ? (
+                        <p class="timeline-summary">{entry.summary}</p>
+                    ) : null}
+                    {entry.groups.map((group) => (
+                        <div class="item-group">
+                            {group.label ? (
+                                <h4 class="team-label">{group.label}</h4>
+                            ) : null}
+                            <ul class="items-list">
+                                {group.items.map((item) => (
+                                    <li class="item">
+                                        <div class="item-header">
+                                            {item.url ? (
+                                                <a
+                                                    href={item.url}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    class="item-name"
+                                                >
+                                                    {item.name}
+                                                </a>
+                                            ) : (
+                                                <span class="item-name">
+                                                    {item.name}
+                                                </span>
+                                            )}
+                                            {item.dates ? (
+                                                <span class="item-date">
+                                                    {item.dates}
+                                                </span>
+                                            ) : null}
+                                        </div>
+                                        <p class="item-description">
+                                            {item.description}
+                                            {item.links.length > 0 ? (
+                                                <>
+                                                    {" "}
+                                                    {item.links.map(
+                                                        (link, index) => (
+                                                            <>
+                                                                <a
+                                                                    href={link.url}
+                                                                    target="_blank"
+                                                                    rel="noopener noreferrer"
+                                                                >
+                                                                    {link.label}
+                                                                </a>
+                                                                {index <
+                                                                item.links
+                                                                    .length -
+                                                                    1
+                                                                    ? ", "
+                                                                    : null}
+                                                            </>
+                                                        ),
+                                                    )}
+                                                </>
+                                            ) : null}
+                                        </p>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    ))}
+                </article>
             ))
         }
     </section>
@@ -219,47 +292,78 @@ const groups = [
         margin: 0;
     }
 
-    .strengths {
+    .timeline {
         margin-top: 3rem;
     }
 
-    .strengths h2 {
+    .timeline h2 {
         font-size: 1rem;
         font-weight: 500;
         color: var(--color-term-dir);
         margin: 0 0 1.5rem 0;
     }
 
-    .strength-group {
-        margin-bottom: 2.5rem;
-    }
-
-    .group-label {
-        font-size: 0.875rem;
-        font-weight: 500;
-        color: var(--color-term-purple);
-        margin: 0 0 1rem 0;
-    }
-
-    .items-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-
-    .item {
+    .timeline-entry {
         border-left: 2px solid var(--color-term-fg-muted);
+        margin-bottom: 2.5rem;
         padding-left: 1rem;
     }
 
+    .timeline-header,
     .item-header {
         display: flex;
         align-items: baseline;
+        flex-wrap: wrap;
         gap: 0.625rem;
         margin-bottom: 0.5rem;
+    }
+
+    .timeline-title {
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: var(--color-term-purple);
+        margin: 0;
+    }
+
+    .timeline-date,
+    .item-date {
+        font-size: 0.75rem;
+        color: var(--color-term-fg-muted);
+    }
+
+    .timeline-summary {
+        color: var(--color-term-fg);
+        font-size: 0.875rem;
+        line-height: 1.6;
+        margin: 0;
+        opacity: 0.85;
+    }
+
+    .item-group {
+        margin-top: 1rem;
+    }
+
+    .team-label {
+        color: var(--color-term-fg-muted);
+        font-size: 0.8rem;
+        font-weight: 500;
+        margin: 0 0 0.75rem 0;
+    }
+
+    .items-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin: 0 0 0 1.25rem;
+        padding: 0;
+    }
+
+    .item {
+        padding-left: 0.25rem;
+    }
+
+    .item::marker {
+        color: var(--color-term-fg-muted);
     }
 
     .item-name {
@@ -271,11 +375,6 @@ const groups = [
 
     a.item-name:hover {
         opacity: 0.8;
-    }
-
-    .item-tag {
-        font-size: 0.75rem;
-        color: var(--color-term-fg-muted);
     }
 
     .item-description {

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { FaGithub, FaInstagram, FaTicketAlt, FaYoutube } from 'react-icons/fa'
+import { FaEnvelope, FaGithub, FaInstagram, FaTicketAlt, FaYoutube } from 'react-icons/fa'
 import { HiDocumentText } from 'react-icons/hi'
 
 interface TerminalItem {
@@ -90,6 +90,14 @@ const socialLinks: TerminalItem[] = [
     color: 'var(--color-term-orange)',
     icon: <FaYoutube />,
     description: 'long form videos about life',
+  },
+  {
+    name: 'email',
+    url: 'mailto:ston@builtby.win',
+    type: 'social',
+    color: 'var(--color-term-link)',
+    icon: <FaEnvelope />,
+    description: 'email me',
   },
 ]
 

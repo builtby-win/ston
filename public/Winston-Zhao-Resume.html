@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Winston Zhao — Resume</title>
+  <style>
+    @page { size: 20in 11.25in; margin: 0; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #101216; color: #d7dbe0; font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
+    main { width: 100vw; height: 100vh; padding: 52px 76px; }
+    .shell { height: 100%; border: 1px solid #39414c; padding: 30px 36px; }
+    .prompt { color: #7ee787; font-size: 16px; margin: 0 0 22px; }
+    .muted { color: #8b949e; }
+    header { align-items: end; border-bottom: 1px solid #39414c; display: flex; justify-content: space-between; padding-bottom: 20px; }
+    h1 { color: #7ee787; font-size: 38px; letter-spacing: -1.5px; line-height: 1; margin: 0 0 10px; }
+    .role { color: #c9d1d9; font-size: 17px; margin: 0; }
+    .contact { font-size: 15px; margin: 0; text-align: right; }
+    .contact + .contact { margin-top: 7px; }
+    a { color: #58a6ff; text-decoration: none; }
+    .grid { display: grid; grid-template-columns: 1.45fr 1fr; gap: 48px; margin-top: 25px; }
+    h2 { color: #d2a8ff; font-size: 16px; letter-spacing: 0.7px; margin: 0 0 12px; text-transform: uppercase; }
+    article { border-left: 2px solid #4b5563; margin: 0 0 18px; padding-left: 15px; }
+    .job { align-items: baseline; display: flex; justify-content: space-between; gap: 16px; }
+    h3 { color: #e6edf3; font-size: 16px; margin: 0; }
+    time { color: #8b949e; font-size: 13px; white-space: nowrap; }
+    ul { margin: 8px 0 0; padding-left: 17px; }
+    li { font-size: 13px; line-height: 1.45; margin: 0 0 5px; }
+    .summary { font-size: 14px; line-height: 1.5; margin: 0 0 24px; }
+    .projects { list-style: none; margin: 0 0 24px; padding: 0; }
+    .projects li { border-left: 2px solid #4b5563; margin-bottom: 10px; padding-left: 12px; }
+    .projects span { color: #8b949e; display: block; font-size: 12px; margin-top: 2px; }
+    .footer { border-top: 1px solid #39414c; color: #8b949e; font-size: 12px; margin-top: 13px; padding-top: 15px; }
+    strong { color: #e6edf3; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="shell">
+      <p class="prompt">~ /builtby.win/ston/resume <span class="muted">git:(main)</span></p>
+      <header>
+        <div><h1>Winston Zhao</h1><p class="role">Software Engineer · 0→1 Products · Full Stack</p></div>
+        <div><p class="contact"><a href="mailto:ston@builtby.win">ston@builtby.win</a></p><p class="contact"><a href="https://builtby.win/ston">builtby.win/ston</a></p></div>
+      </header>
+      <div class="grid">
+        <section>
+          <h2>Experience</h2>
+          <article>
+            <div class="job"><h3>Independent Product Builder <span class="muted">/ builtby.win</span></h3><time>Aug 2022 — Present</time></div>
+            <ul>
+              <li>Build and ship full-stack products, client sites, and developer tools independently, from product concept through production release.</li>
+              <li>Created <a href="https://back2vibing.builtby.win/">back2vibing</a>, an agent-session dashboard that surfaces agent activity, notifications, and direct session access.</li>
+              <li>Built products including <a href="https://areyougo.ing/">areyougo.ing</a> for event-attendance discovery and <a href="https://importmagic.app">Import Magic</a> for automated media offloading and duplicate detection.</li>
+            </ul>
+          </article>
+          <article>
+            <div class="job"><h3>Software Engineer <span class="muted">/ DoorDash</span></h3><time>Aug 2019 — Aug 2022</time></div>
+            <ul>
+              <li>Led engineering for Japan and Germany launches, resolving localization, currency, and legacy-system edge cases.</li>
+              <li>Led a 15-person legal and engineering group to deliver GDPR compliance and unblock the Germany launch.</li>
+              <li>Delivered the identity support Stripe KYC required for Japanese Dasher payouts before launch.</li>
+              <li>Identified roughly 50k daily invalid order-to-item requests and coordinated backend validation across teams.</li>
+              <li>Rebuilt the item-modal UI, built the DoorDash landing page still in use, and delivered item re-ordering.</li>
+            </ul>
+          </article>
+          <article>
+            <div class="job"><h3>Software Engineer <span class="muted">/ SigFig</span></h3><time>Apr 2018 — Aug 2019</time></div>
+          </article>
+          <article>
+            <div class="job"><h3>Software Engineer <span class="muted">/ FinancialForce</span></h3><time>Apr 2017 — Apr 2018</time></div>
+          </article>
+        </section>
+        <aside>
+          <h2>Summary</h2>
+          <p class="summary">Software engineer with about 10 years of experience building full-stack, 0→1 products and launch-critical systems.</p>
+          <h2>Selected Products</h2>
+          <ul class="projects">
+            <li><a href="https://back2vibing.builtby.win/">back2vibing</a><span>Agent-session dashboard</span></li>
+            <li><a href="https://areyougo.ing/">areyougo.ing</a><span>Event-attendance discovery</span></li>
+            <li><a href="https://zerostack.builtby.win/">Zero Stack</a><span>Sites and apps for small businesses</span></li>
+            <li><a href="https://importmagic.app">Import Magic</a><span>Media offloading and duplicate detection</span></li>
+          </ul>
+          <h2>Education</h2>
+          <p class="summary"><strong>University of California, Los Angeles</strong><br><span class="muted">Chemical Engineering</span></p>
+          <h2>Writing</h2>
+          <p class="summary"><a href="https://careersatdoordash.com/blog/overcoming-localization-internalization-challenges/">International launch engineering</a><br><a href="https://careersatdoordash.com/blog/managing-react-state-using-the-class-pattern/">Managing React state</a></p>
+        </aside>
+      </div>
+      <div class="footer">Available at <a href="https://builtby.win/ston/resume">builtby.win/ston/resume</a></div>
+    </div>
+  </main>
+</body>
+</html>

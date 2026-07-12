@@ -93,7 +93,7 @@ const socialLinks: TerminalItem[] = [
   },
   {
     name: 'email',
-    url: 'mailto:ston@builtby.win',
+    url: 'mailto:winston.j.zhao@gmail.com',
     type: 'social',
     color: 'var(--color-term-link)',
     icon: <FaEnvelope />,

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Winston Zhao — Software Engineer</title>
+  <style>
+    @page { size: Letter; margin: 0; }
+    * { box-sizing: border-box; }
+    body { background: #101216; color: #d7dbe0; font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; margin: 0; }
+    main { height: 11in; padding: 0.35in 0.4in; width: 8.5in; }
+    .shell { border: 1px solid #39414c; height: 100%; padding: 0.22in 0.24in; }
+    .prompt { color: #7ee787; font-size: 10pt; margin: 0 0 0.18in; }
+    .muted { color: #8b949e; }
+    header { align-items: end; border-bottom: 1px solid #39414c; display: flex; justify-content: space-between; padding-bottom: 0.17in; }
+    h1 { color: #7ee787; font-size: 27pt; letter-spacing: -1px; line-height: 1; margin: 0 0 7px; }
+    .role { color: #c9d1d9; font-size: 10.5pt; margin: 0; }
+    .contact { font-size: 9pt; margin: 0; text-align: right; }
+    .contact + .contact { margin-top: 6px; }
+    a { color: #58a6ff; text-decoration: none; }
+    .grid { display: grid; grid-template-columns: 1.48fr 1fr; gap: 0.22in; margin-top: 0.18in; }
+    h2 { color: #d2a8ff; font-size: 10pt; letter-spacing: 0.5px; margin: 0 0 9px; text-transform: uppercase; }
+    article { border-left: 2px solid #4b5563; break-inside: avoid; margin: 0 0 13px; padding-left: 11px; }
+    .job { align-items: baseline; display: flex; gap: 8px; justify-content: space-between; }
+    h3 { color: #e6edf3; font-size: 10pt; margin: 0; }
+    time { color: #8b949e; font-size: 8pt; white-space: nowrap; }
+    ul { margin: 6px 0 0; padding-left: 14px; }
+    li { font-size: 8.5pt; line-height: 1.35; margin: 0 0 4px; }
+    .summary { font-size: 9pt; line-height: 1.45; margin: 0 0 16px; }
+    .stack { color: #c9d1d9; font-size: 8.5pt; line-height: 1.45; margin: 0 0 16px; }
+    .products { list-style: none; margin: 0 0 16px; padding: 0; }
+    .products li { border-left: 2px solid #4b5563; margin-bottom: 9px; padding-left: 9px; }
+    .products span { color: #8b949e; display: block; font-size: 8pt; margin-top: 2px; }
+    .education { margin: 0 0 16px; }
+    .education p { font-size: 8.5pt; line-height: 1.4; margin: 0; }
+    .footer { border-top: 1px solid #39414c; color: #8b949e; font-size: 7.5pt; margin-top: 12px; padding-top: 9px; }
+    strong { color: #e6edf3; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="shell">
+      <p class="prompt">~ /builtby.win/ston/resume <span class="muted">git:(main)</span></p>
+      <header>
+        <div><h1>Winston Zhao</h1><p class="role">Software Engineer · 0→1 Products · Full Stack</p></div>
+        <div><p class="contact"><a href="mailto:winston.j.zhao@gmail.com">winston.j.zhao@gmail.com</a></p><p class="contact"><a href="https://builtby.win/ston">builtby.win/ston</a></p></div>
+      </header>
+      <div class="grid">
+        <section>
+          <h2>Product work</h2>
+          <article>
+            <div class="job"><h3><a href="https://back2vibing.builtby.win/">back2vibing</a> <span class="muted">/ Desktop — Tauri, Rust/React/ObjC</span></h3><time>Dec 2025 — Present</time></div>
+            <ul>
+              <li>Built a Tauri desktop app in Rust with a React and TypeScript UI, using an Objective-C bridge for macOS window control.</li>
+              <li>Coordinates parallel AI coding sessions, surfacing agents that need input, permission, or review and opening the relevant tmux session.</li>
+              <li>Supports Claude Code, Codex, OpenCode, Antigravity CLI, Pi, Oh My Pi, and Amp Code across Conductor.app, iTerm2, Kitty, Ghostty, Warp, WezTerm, tmux, and Zellij.</li>
+            </ul>
+          </article>
+          <article>
+            <div class="job"><h3><a href="https://areyougo.ing/">areyougo.ing</a> <span class="muted">/ Web app — Astro, React</span></h3><time>Dec 2025 — Present</time></div>
+            <ul>
+              <li>Built a React web app on Astro, hosted on Cloudflare with self-hosted services deployed through Coolify.</li>
+              <li>Implemented IMAP ticket-email synchronization and DeepSeek V4 Flash XML parsing to automatically update event attendance.</li>
+            </ul>
+          </article>
+          <article>
+            <div class="job"><h3><a href="https://importmagic.app">Import Magic</a> <span class="muted">/ Desktop app — Electron, React</span></h3><time>Aug 2022 — Present</time></div>
+            <ul><li>Launched Windows and macOS desktop apps for automated media offloading and duplicate detection.</li></ul>
+          </article>
+          <h2>DoorDash</h2>
+          <article>
+            <div class="job"><h3>Software Engineer</h3><time>Aug 2019 — Aug 2022</time></div>
+            <ul>
+              <li>Led engineering for Japan and Germany launches, resolving localization, currency, and legacy-system edge cases.</li>
+              <li>Led a 15-person legal and engineering group to deliver GDPR compliance and unblock the Germany launch.</li>
+              <li>Delivered identity support Stripe KYC required for Japanese Dasher payouts before launch.</li>
+              <li>Identified roughly 50k daily invalid order-to-item requests and coordinated backend validation across teams.</li>
+              <li>Rebuilt the item-modal UI, built the DoorDash landing page still in use, and delivered item re-ordering.</li>
+            </ul>
+          </article>
+        </section>
+        <aside>
+          <h2>Summary</h2>
+          <p class="summary">Software engineer with about 10 years of experience building full-stack, 0→1 products and launch-critical systems.</p>
+          <h2>Stack</h2>
+          <p class="stack">Rust · TypeScript · React · Tauri · Electron · Astro · Objective-C · Cloudflare · Coolify · IMAP · DeepSeek V4 Flash · tmux · Zellij</p>
+          <h2>Products</h2>
+          <ul class="products">
+            <li><a href="https://back2vibing.builtby.win/">back2vibing</a><span>Agent-session desktop app</span></li>
+            <li><a href="https://areyougo.ing/">areyougo.ing</a><span>Live-event discovery web app</span></li>
+            <li><a href="https://importmagic.app">Import Magic</a><span>Media desktop app for Windows and macOS</span></li>
+            <li><a href="https://zerostack.builtby.win/">Zero Stack</a><span>Sites and apps for small businesses</span></li>
+          </ul>
+          <h2>Education</h2>
+          <div class="education"><p><strong>University of California, Los Angeles</strong><br><span class="muted">Chemical Engineering</span></p></div>
+          <h2>Writing</h2>
+          <p class="summary"><a href="https://careersatdoordash.com/blog/overcoming-localization-internalization-challenges/">International launch engineering</a><br><a href="https://careersatdoordash.com/blog/managing-react-state-using-the-class-pattern/">Managing React state</a></p>
+        </aside>
+      </div>
+      <div class="footer">Available at <a href="https://builtby.win/ston/resume">builtby.win/ston/resume</a></div>
+    </div>
+  </main>
+</body>
+</html>

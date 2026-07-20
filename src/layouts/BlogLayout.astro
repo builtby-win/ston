@@ -12,13 +12,15 @@ interface Props {
   description?: string;
   pathSegments?: PathSegment[];
   backHref?: string;
+  wide?: boolean;
 }
 
 const {
   title,
   description = 'Daily findings and learnings',
   pathSegments = [],
-  backHref = '/ston'
+  backHref = '/ston',
+  wide = false
 } = Astro.props;
 ---
 
@@ -46,7 +48,7 @@ const {
     <meta property="twitter:description" content={description} />
   </head>
   <body>
-    <div class="blog-container">
+    <div class:list={['blog-container', { wide }]}>
       <nav class="terminal-header">
         <span class="prompt-arrow">→</span>
         <a href="/ston" class="path-base">~/builtby.win/ston</a>{pathSegments.map((segment) => (
@@ -73,6 +75,10 @@ const {
     margin: 0 auto;
     padding: 2rem 1.5rem;
     min-height: 100vh;
+  }
+
+  .blog-container.wide {
+    max-width: 90rem;
   }
 
   .terminal-header {

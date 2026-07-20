@@ -10,9 +10,9 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
     const dateStr = post.data.date.toISOString().split('T')[0];
     return {
       title: post.data.title,
-      slug: post.slug,
+      slug: post.id,
       date: dateStr,
-      url: `/ston/blog/${dateStr}/${post.slug}`
+      url: `/ston/blog/${dateStr}/${post.id}`
     };
   });
 ---

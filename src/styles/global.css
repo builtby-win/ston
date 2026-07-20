@@ -163,6 +163,8 @@
   /* Table Styling */
   .prose table {
     width: 100%;
+    display: block;
+    overflow-x: auto;
     border-collapse: collapse;
     margin: 1.5em 0;
     font-size: 0.9em;
@@ -185,7 +187,8 @@
     background-color: rgba(255, 255, 255, 0.02);
   }
 
-  .prose img {
+  .prose img,
+  .prose video {
     max-width: 100%;
     height: auto;
     border-radius: 0.375rem;

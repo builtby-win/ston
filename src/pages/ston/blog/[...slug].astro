@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BlogLayout from '../../../layouts/BlogLayout.astro';
+import TableOfContents from '../../../components/TableOfContents.astro';
 
 export async function getStaticPaths() {
   const isDev = import.meta.env.DEV;
@@ -9,14 +10,14 @@ export async function getStaticPaths() {
   return posts.map((post) => {
     const dateStr = post.data.date.toISOString().split('T')[0];
     return {
-      params: { slug: `${dateStr}/${post.slug}` },
+      params: { slug: `${dateStr}/${post.id}` },
       props: { post },
     };
   });
 }
 
 const { post } = Astro.props;
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
 
 const formatDate = (date: Date) => {
   return date.toLocaleDateString('en-US', {
@@ -31,7 +32,7 @@ const dateStr = post.data.date.toISOString().split('T')[0];
 const pathSegments = [
   { name: 'blog', href: '/ston/blog' },
   { name: dateStr, href: null },
-  { name: post.slug, href: null }
+  { name: post.id, href: null }
 ];
 ---
 
@@ -40,10 +41,14 @@ const pathSegments = [
   description={post.data.description}
   pathSegments={pathSegments}
   backHref="/ston/blog"
+  wide
 >
-  <article class="post">
+  <article class="post-layout">
     <header class="post-header">
       <h1 class="post-title">{post.data.title}</h1>
+      {post.data.description && (
+        <p class="post-description">{post.data.description}</p>
+      )}
       <time class="post-date" datetime={post.data.date.toISOString()}>
         {formatDate(post.data.date)}
       </time>
@@ -55,6 +60,9 @@ const pathSegments = [
         </div>
       )}
     </header>
+    <aside class="post-outline">
+      <TableOfContents headings={headings} />
+    </aside>
     <div class="prose">
       <Content />
     </div>
@@ -62,8 +70,21 @@ const pathSegments = [
 </BlogLayout>
 
 <style>
+  .post-layout {
+    max-width: 75ch;
+    margin: 0 auto;
+  }
+
   .post-header {
     margin-bottom: 2.5rem;
+  }
+
+  .post-outline {
+    margin-bottom: 2.5rem;
+  }
+
+  .prose {
+    min-width: 0;
   }
 
   .post-title {
@@ -72,6 +93,13 @@ const pathSegments = [
     color: var(--color-term-fg);
     margin: 0 0 0.5rem 0;
     line-height: 1.3;
+  }
+
+  .post-description {
+    color: var(--color-term-fg-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0 0 1rem;
   }
 
   .post-date {

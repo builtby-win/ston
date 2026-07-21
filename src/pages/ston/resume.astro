@@ -414,3 +414,9 @@ const timeline = [
         color: var(--color-term-prompt);
     }
 </style>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    window.posthog?.capture('resume_viewed')
+  })
+</script>

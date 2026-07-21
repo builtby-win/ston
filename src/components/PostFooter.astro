@@ -1,0 +1,78 @@
+<footer class="post-footer">
+  <section class="newsletter" aria-labelledby="newsletter-heading">
+    <h2 id="newsletter-heading">new posts on building apps</h2>
+    <p>ai coding, parallel agents, worktrees, macos apps, product lessons, and what broke along the way.</p>
+    <div class="kit-form">
+      <script is:inline async data-uid="f4bc8b57b4" src="https://built-by-win.kit.com/f4bc8b57b4/index.js"></script>
+    </div>
+  </section>
+</footer>
+
+<style>
+  .post-footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-term-bg-lighter);
+  }
+
+  .newsletter {
+    border-left: 2px solid var(--color-term-dir);
+    padding-left: 1rem;
+  }
+
+  h2 {
+    margin: 0 0 0.75rem;
+    color: var(--color-term-dir);
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  p {
+    margin: 0 0 1rem;
+    color: var(--color-term-fg-muted);
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+
+  .kit-form {
+    min-height: 3.25rem;
+  }
+
+  .kit-form :global(.formkit-form) {
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+    background: transparent !important;
+    border: 0 !important;
+  }
+
+  .kit-form :global(.formkit-fields) {
+    gap: 0.5rem !important;
+  }
+
+  .kit-form :global(.formkit-input) {
+    color: var(--color-term-fg) !important;
+    background: var(--color-term-bg-lighter) !important;
+    border: 1px solid var(--color-term-fg-muted) !important;
+    border-radius: 0 !important;
+    font-family: var(--font-mono) !important;
+  }
+
+  .kit-form :global(.formkit-submit) {
+    color: var(--color-term-bg) !important;
+    background: var(--color-term-dir) !important;
+    border-radius: 0 !important;
+    font-family: var(--font-mono) !important;
+    font-weight: 600 !important;
+  }
+
+  .kit-form :global(.formkit-powered-by-convertkit-container) {
+    display: none !important;
+  }
+
+  @media (max-width: 40rem) {
+    .kit-form :global(.formkit-fields) {
+      flex-direction: column !important;
+    }
+  }
+</style>

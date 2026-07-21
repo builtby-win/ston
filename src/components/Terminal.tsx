@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { FaEnvelope, FaGithub, FaInstagram, FaTicketAlt, FaYoutube } from 'react-icons/fa'
-import { HiDocumentText } from 'react-icons/hi'
+import { HiBriefcase, HiDocumentText, HiUser } from 'react-icons/hi'
 
 interface TerminalItem {
   name: string
@@ -189,8 +189,8 @@ const pinned: TerminalItem[] = [
     name: 'about',
     url: '/ston/about',
     type: 'page',
-    color: 'var(--color-term-dir)',
-    icon: <HiDocumentText />,
+    color: 'var(--color-term-purple)',
+    icon: <HiUser />,
     description: 'now',
     isInternal: true,
   },
@@ -200,7 +200,16 @@ const pinned: TerminalItem[] = [
     type: 'page',
     color: 'var(--color-term-dir)',
     icon: <HiDocumentText />,
-    description: 'what i\'ve built',
+    description: "what i've built",
+    isInternal: true,
+  },
+  {
+    name: 'work with me',
+    url: '/ston/work-with-me',
+    type: 'page',
+    color: 'var(--color-term-prompt)',
+    icon: <HiBriefcase />,
+    description: '1:1 ai coding coaching',
     isInternal: true,
   },
   {
@@ -364,6 +373,12 @@ export default function Terminal({ blogPosts = [] }: TerminalProps) {
   }, [])
 
   const navigateToItem = useCallback((item: TerminalItem) => {
+    window.posthog?.capture('terminal_item_opened', {
+      item_name: item.name,
+      item_type: item.type,
+      item_url: item.url,
+      is_internal: item.isInternal ?? false,
+    })
     if (item.isInternal) {
       window.location.href = item.url
     } else {
@@ -401,6 +416,12 @@ export default function Terminal({ blogPosts = [] }: TerminalProps) {
         }
       } else if (e.key === 'Enter' && selectedIndex !== null) {
         e.preventDefault()
+        if (searchQuery) {
+          window.posthog?.capture('terminal_searched', {
+            query: searchQuery,
+            result_count: filteredIndices.length,
+          })
+        }
         navigateToItem(allItems[selectedIndex])
       } else if (e.key === 'Escape') {
         e.preventDefault()
@@ -462,6 +483,12 @@ export default function Terminal({ blogPosts = [] }: TerminalProps) {
       // Mobile: Two-click behavior
       if (selectedIndex === index) {
         // Second click on same item: Navigate
+        if (searchQuery) {
+          window.posthog?.capture('terminal_searched', {
+            query: searchQuery,
+            result_count: filteredIndices.length,
+          })
+        }
         navigateToItem(item)
       } else {
         // First click or different item: Just select
@@ -469,6 +496,12 @@ export default function Terminal({ blogPosts = [] }: TerminalProps) {
       }
     } else {
       // Desktop: Navigate immediately
+      if (searchQuery) {
+        window.posthog?.capture('terminal_searched', {
+          query: searchQuery,
+          result_count: filteredIndices.length,
+        })
+      }
       navigateToItem(item)
     }
   }

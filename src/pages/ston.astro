@@ -1,20 +1,21 @@
 ---
-import '../styles/global.css';
-import Terminal from '../components/Terminal';
-import { getCollection } from 'astro:content';
+import '../styles/global.css'
+import { getCollection } from 'astro:content'
+import Terminal from '../components/Terminal'
+import PostHog from '../components/posthog.astro'
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 3)
-  .map(post => {
-    const dateStr = post.data.date.toISOString().split('T')[0];
+  .map((post) => {
+    const dateStr = post.data.date.toISOString().split('T')[0]
     return {
       title: post.data.title,
       slug: post.id,
       date: dateStr,
-      url: `/ston/blog/${dateStr}/${post.id}`
-    };
-  });
+      url: `/ston/blog/${dateStr}/${post.id}`,
+    }
+  })
 ---
 
 <!doctype html>
@@ -31,6 +32,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
 
     <!-- Primary Meta Tags -->
     <title>builtby.win</title>
+    <PostHog />
     <meta name="title" content="builtby.win" />
     <meta name="description" content="Apps and tools built by Winston" />
 

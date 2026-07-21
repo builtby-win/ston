@@ -1,39 +1,40 @@
 ---
-import { getCollection, render } from 'astro:content';
-import BlogLayout from '../../../layouts/BlogLayout.astro';
-import TableOfContents from '../../../components/TableOfContents.astro';
+import { getCollection, render } from 'astro:content'
+import TableOfContents from '../../../components/TableOfContents.astro'
+import PostFooter from '../../../components/PostFooter.astro'
+import BlogLayout from '../../../layouts/BlogLayout.astro'
 
 export async function getStaticPaths() {
-  const isDev = import.meta.env.DEV;
-  const posts = await getCollection('blog', ({ data }) => isDev || !data.draft);
+  const isDev = import.meta.env.DEV
+  const posts = await getCollection('blog', ({ data }) => isDev || !data.draft)
 
   return posts.map((post) => {
-    const dateStr = post.data.date.toISOString().split('T')[0];
+    const dateStr = post.data.date.toISOString().split('T')[0]
     return {
       params: { slug: `${dateStr}/${post.id}` },
       props: { post },
-    };
-  });
+    }
+  })
 }
 
-const { post } = Astro.props;
-const { Content, headings } = await render(post);
+const { post } = Astro.props
+const { Content, headings } = await render(post)
 
 const formatDate = (date: Date) => {
   return date.toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
-    timeZone: 'UTC'
-  });
-};
+    timeZone: 'UTC',
+  })
+}
 
-const dateStr = post.data.date.toISOString().split('T')[0];
+const dateStr = post.data.date.toISOString().split('T')[0]
 const pathSegments = [
   { name: 'blog', href: '/ston/blog' },
   { name: dateStr, href: null },
-  { name: post.id, href: null }
-];
+  { name: post.id, href: null },
+]
 ---
 
 <BlogLayout
@@ -66,8 +67,19 @@ const pathSegments = [
     <div class="prose">
       <Content />
     </div>
+    <PostFooter />
   </article>
 </BlogLayout>
+
+<script is:inline define:vars={{ postTitle: post.data.title, postSlug: post.id, postDate: post.data.date.toISOString().split('T')[0] }}>
+  document.addEventListener('DOMContentLoaded', () => {
+    window.posthog?.capture('blog_post_read', {
+      post_title: postTitle,
+      post_slug: postSlug,
+      post_date: postDate,
+    })
+  })
+</script>
 
 <style>
   .post-layout {

@@ -1,38 +1,43 @@
 ---
-import BlogLayout from '../../layouts/BlogLayout.astro';
+import BlogLayout from '../../layouts/BlogLayout.astro'
 
 const repos = [
   {
     name: 'dotfiles',
     url: 'https://github.com/builtby-win/dotfiles',
     tagline: 'my dev environment',
-    description: 'my personal development setup - zsh, tmux, and all the little tweaks that make coding feel like home. optimized for vibe coding with claude code and back2vibing.',
+    description:
+      'my personal development setup - zsh, tmux, and all the little tweaks that make coding feel like home. optimized for vibe coding with claude code and back2vibing.',
   },
   {
     name: 'configs',
     url: 'https://github.com/builtby-win/configs',
     tagline: 'sensible biome configs',
-    description: 'drop-in biome configurations for typescript projects. strict but pragmatic - catches real bugs without fighting you on formatting opinions.',
+    description:
+      'drop-in biome configurations for typescript projects. strict but pragmatic - catches real bugs without fighting you on formatting opinions.',
   },
   {
     name: 'skills',
     url: 'https://github.com/builtby-win/skills',
     tagline: 'claude code skills',
-    description: 'custom claude skills to streamline development workflows. includes commit helpers, code review prompts, and project scaffolding commands.',
+    description:
+      'custom claude skills to streamline development workflows. includes commit helpers, code review prompts, and project scaffolding commands.',
   },
   {
     name: 'generate-app-cli',
     url: 'https://github.com/builtby-win/generate-app-cli',
     tagline: 'app boilerplate generator',
-    description: 'cli tool to scaffold production-ready desktop and web apps. optimized for ai-assisted development - clean architecture that claude can understand and extend.',
+    description:
+      'cli tool to scaffold production-ready desktop and web apps. optimized for ai-assisted development - clean architecture that claude can understand and extend.',
   },
   {
     name: 'ston',
     url: 'https://github.com/builtby-win/ston',
     tagline: 'this website',
-    description: 'the source code for this portfolio. built with astro, react, and tailwind. features a terminal-style ui with keyboard navigation.',
+    description:
+      'the source code for this portfolio. built with astro, react, and tailwind. features a terminal-style ui with keyboard navigation.',
   },
-];
+]
 ---
 
 <BlogLayout
@@ -64,6 +69,20 @@ const repos = [
     </a>
   </div>
 </BlogLayout>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.repo-link').forEach((link) => {
+      link.addEventListener('click', () => {
+        const nameEl = link.querySelector('.repo-name')
+        window.posthog?.capture('repo_link_clicked', {
+          repo_name: nameEl?.textContent?.trim() ?? '',
+          repo_url: link.getAttribute('href') ?? '',
+        })
+      })
+    })
+  })
+</script>
 
 <style>
   .page-header {

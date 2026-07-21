@@ -1,5 +1,5 @@
 ---
-import BlogLayout from '../../layouts/BlogLayout.astro';
+import BlogLayout from '../../layouts/BlogLayout.astro'
 
 const apps = [
   {
@@ -16,7 +16,8 @@ const apps = [
     emoji: '✨',
     color: 'var(--color-term-link)',
     tagline: 'file transfer for professionals',
-    description: 'a file transfer app like shotput pro or hedge offshoot. designed for photographers, videographers, and anyone who needs reliable media ingestion with verification.',
+    description:
+      'a file transfer app like shotput pro or hedge offshoot. designed for photographers, videographers, and anyone who needs reliable media ingestion with verification.',
   },
   {
     name: 'areyougo.ing',
@@ -24,9 +25,10 @@ const apps = [
     emoji: '🚀',
     color: 'var(--color-term-dir)',
     tagline: 'plan adventures together',
-    description: 'a whimsical app for planning adventures. create trips, invite friends, and coordinate plans without the chaos of group chats.',
+    description:
+      'a whimsical app for planning adventures. create trips, invite friends, and coordinate plans without the chaos of group chats.',
   },
-];
+]
 ---
 
 <BlogLayout
@@ -53,6 +55,20 @@ const apps = [
     ))}
   </ul>
 </BlogLayout>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.app-link').forEach((link) => {
+      link.addEventListener('click', () => {
+        const nameEl = link.querySelector('.app-name')
+        window.posthog?.capture('app_link_clicked', {
+          app_name: nameEl?.textContent?.trim() ?? '',
+          app_url: link.getAttribute('href') ?? '',
+        })
+      })
+    })
+  })
+</script>
 
 <style>
   .page-header {

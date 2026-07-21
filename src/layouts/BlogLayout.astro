@@ -1,18 +1,19 @@
 ---
-import '../styles/global.css';
-import Lightbox from '../components/Lightbox.astro';
+import '../styles/global.css'
+import Lightbox from '../components/Lightbox.astro'
+import PostHog from '../components/posthog.astro'
 
 interface PathSegment {
-  name: string;
-  href: string | null;
+  name: string
+  href: string | null
 }
 
 interface Props {
-  title: string;
-  description?: string;
-  pathSegments?: PathSegment[];
-  backHref?: string;
-  wide?: boolean;
+  title: string
+  description?: string
+  pathSegments?: PathSegment[]
+  backHref?: string
+  wide?: boolean
 }
 
 const {
@@ -20,8 +21,8 @@ const {
   description = 'Daily findings and learnings',
   pathSegments = [],
   backHref = '/ston',
-  wide = false
-} = Astro.props;
+  wide = false,
+} = Astro.props
 ---
 
 <!doctype html>
@@ -35,6 +36,7 @@ const {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
+    <PostHog />
     <title>{title} | ston</title>
     <meta name="title" content={`${title} | ston`} />
     <meta name="description" content={description} />

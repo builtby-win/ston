@@ -6,21 +6,9 @@ tags: ["ai", "oh-my-pi", "conductor", "tmux", "git-worktrees", "workflow"]
 draft: false
 ---
 
-my attention is completely fried now.
+running several coding agents at once is the whole game for me now. the thing that makes it work is git worktrees — every agent gets its own isolated checkout of the repo, so a handful of them can run at the same time without stepping on each other's toes.
 
-when i started playing around with claude code last year, my jaw was on the floor... it can CREATE files??
-no more right clicking to click a new file in the sidebar of vscode and typing a file name...
-i was in complete disbelief; this was the time when people would say stuff like "i like cursor it has the best auto-complete"
-i used to be this vimlord and stickler for typesafety just so the autocomplete worked perfectly.
-now... i don't even have a text editor open most days.
-
-my agents do everything and though i'm not sure this is a good thing overall as my skills as a code writer have fallen off a cliff but i'm now able to solve so many different problems.
-
-it feels like anything that comes to my mind i can basically have shipped at the end of the day at the cost of not knowing how any of the code works except from approving some architecture markdown files
-
-i've tried basically every serious coding harness and model: [claude code](https://www.anthropic.com/claude-code), [codex](https://openai.com/codex/), [opencode](https://opencode.ai/), [deepseek](https://www.deepseek.com/), [pi](https://github.com/badlogic/pi-mono), [oh-my-pi](https://github.com/can1357/oh-my-pi), and [cursor](https://www.cursor.com/), alongside many different apps and GUIs, to find the best workflow.
-
-i've settled on my personal workflow as of july 2026, which at the rate everything is going will be completely different by next year.
+the hard part is wrangling all those worktrees. i've tried doing it from the terminal with [workmux](https://github.com/raine/workmux), worktrunk, and a few other CLIs, but honestly a GUI helps a lot. [conductor](https://www.conductor.build/) is the one that stuck — a new worktree is one click, and i can watch every agent at a glance instead of hunting through terminal tabs.
 
 disclosure up front: one of the tools below is [back2vibing](https://back2vibing.builtby.win/), which i built myself. discount me accordingly. the problem it addresses is real whether or not you use my thing.
 
@@ -28,22 +16,16 @@ here's the whole loop, start to finish, before i break down the pieces:
 
 <video src="/blog/workflow-full.mp4" autoplay loop muted playsinline width="1110" height="720" aria-label="the full loop: create a conductor workspace, sync with spotlight, open a PR, then merge and clean up the worktree and tmux session"></video>
 
-## the apps
+## the setup
 
-- [conductor](https://www.conductor.build/) - the UI makes it super easy to create new workspaces (git worktrees) for agents to run in. worktrees are the key to running parallel agents without having them step on each other's toes. i used to do this in the terminal with [workmux](https://github.com/raine/workmux) and dropped it entirely once conductor clicked for me
+- [conductor](https://www.conductor.build/) - my main cockpit for all of this. creating a worktree workspace is one click and i can watch every agent side by side
 - [oh-my-pi](https://github.com/can1357/oh-my-pi) - even though conductor's chat is decent, i still do most of my agent work in the terminal. i found oh-my-pi about a month ago and have been driving it ever since. it pretty much does everything i could think of before i can think of it: advisor mode, LSP, steering, etc.
 - [ghostty](https://ghostty.org/) + [tmux](https://github.com/tmux/tmux) - i've tried most terminals, but i've settled on ghostty + tmux because they are super performant and handle everything i need (leader key op)
 - [codex desktop app](https://openai.com/codex/) - i really like the codex desktop app, but working in worktrees through its chat interface is clunky compared to conductor and the way i run parallel agents. codex's computer use is quite good, though, so i use it for serious UI debugging
 - [back2vibing](https://back2vibing.builtby.win/) - i've integrated the popular coding agents and terminals into back2vibing so they feel like one system. conductor, codex desktop, and my terminal all tell me when they're done or need me, and i can jump directly to the correct agent in a split second
 - typewhisper - a voice-to-text app that mutes and pauses media while active. i still mostly type, but i do like to talk from time to time
 
-## the models
-
-right now, i pay for chatgpt pro ($200), claude code pro ($20), and gemini ($20) per month.
-i don't have enough credits to unleash fable 5 to its limits, but 5.6 sol has been pretty much a godsend.
-i have oh-my-pi set up with 5.6 sol auto for everything and advisor mode with gemini 3.5 flash. then i use fable 5 to review the code before merging to main.
-
-## the workflow
+day to day, a single change moves through all of it like this:
 
 1. create a workspace in conductor
 2. run a conductor startup command that creates a tmux session, opens ghostty, and switches to the session named after the workspace
@@ -52,6 +34,12 @@ i have oh-my-pi set up with 5.6 sol auto for everything and advisor mode with ge
 5. use conductor's spotlight mode to sync changes to my main repo for testing, instead of recreating my entire dev setup and copying environment variables into every worktree
 6. once the fix or feature is implemented, go back to conductor, create a PR, ask fable 5 to review the code, and merge it into github
 7. conductor runs clean up -> deletes worktree -> then i run a conductor clean up script to remove the tmux session also.
+
+## the models
+
+right now, i pay for chatgpt pro ($200), claude code pro ($20), and gemini ($20) per month.
+i don't have enough credits to unleash fable 5 to its limits, but 5.6 sol has been pretty much a godsend.
+i have oh-my-pi set up with 5.6 sol auto for everything and advisor mode with gemini 3.5 flash. then i use fable 5 to review the code before merging to main.
 
 ## here's where my attention is cooked
 

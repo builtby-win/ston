@@ -86,8 +86,8 @@ const bookingHref = 'https://cal.com/builtbywin/20-min-ai-sprint-fit-call'
     </p>
     <p>
       i am a problem solver and a builder, so i will help you build exactly what you need as
-      cheaply as possible. you do not need a new bill, you need a new skill:
-      building and improving the app yourself.
+      cheaply as possible—and teach you how to be your own developer. you do not need a new bill.
+      you need a new skill.
     </p>
   </section>
 
@@ -96,19 +96,16 @@ const bookingHref = 'https://cal.com/builtbywin/20-min-ai-sprint-fit-call'
     <ol>
       <li>
         book a free call and tell me about your business, the work that takes too long, and where
-        your customers or staff get stuck. good sprint-sized problems include:
-        <ul>
-          <li>
-            turning an existing google sheet into a customer portal where users can log in and
-            download files while your team uploads new ones
-          </li>
-          <li>
-            replacing emailed forms and manual copy-paste with customer intake and a searchable
-            admin view
-          </li>
-          <li>giving customers one place to view project status, reports, or documents</li>
-          <li>building an internal app for staff to track jobs, requests, or files</li>
-        </ul>
+        your customers or staff get stuck.
+        <details>
+          <summary>some ideas</summary>
+          <ul>
+            <li>upload files for customers to download</li>
+            <li>collect customer requests in one place</li>
+            <li>show customers project status or reports</li>
+            <li>track jobs, requests, or files for your staff</li>
+          </ul>
+        </details>
       </li>
       <li>we discuss what would be useful for your business and whether the sprint is a good fit</li>
       <li>if it is, i send the scope, call schedule, and payment link</li>
@@ -202,6 +199,20 @@ const bookingHref = 'https://cal.com/builtbywin/20-min-ai-sprint-fit-call'
 
   li + li {
     margin-top: 0.75rem;
+  }
+
+  details {
+    margin-top: 0.75rem;
+  }
+
+  details ul {
+    margin-top: 0.75rem;
+  }
+
+  summary {
+    width: fit-content;
+    color: var(--color-term-link);
+    cursor: pointer;
   }
 
   a {

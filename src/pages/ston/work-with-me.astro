@@ -6,58 +6,68 @@ const bookingHref = 'https://cal.com/builtbywin/20-min-ai-sprint-fit-call'
 
 <BlogLayout
   title="work with me"
-  description="A four-week AI app sprint for business owners who want to build and ship with AI coding tools"
+  description="A four-call AI app sprint for business owners who want to launch an app and keep building it with AI"
   pathSegments={[{ name: 'work-with-me', href: null }]}
   backHref="/ston"
 >
   <header class="page-header">
     <h1>work-with-me/</h1>
-    <p class="page-description">1:1 ai coding coaching for business owners</p>
+    <p class="page-description">from scratch to a shipped app with ai coding</p>
   </header>
 
   <section class="hero">
-    <h2>build your app and learn how to keep shipping it</h2>
+    <h2>go from an idea to a live app you can keep building with ai</h2>
     <p>
-      i work 1:1 with business owners on their real app, internal tool, or product idea. over four
-      weeks, we set up the right ai coding workflow and ship one useful feature together.
+      no coding background required. over four 1:1 calls, we will set up your ai coding
+      environment, launch your app on the web, and ship one useful feature for your business.
     </p>
     <a class="primary-cta" href={bookingHref} data-work-with-me-cta="hero">
       book a free 20-minute call →
     </a>
-    <p class="availability">4 weeks · $1,500 · three founding-client spots</p>
+    <p class="availability">4 calls · $1,500 · three founding-client spots · mac required</p>
   </section>
 
   <section>
-    <h2>the 4-week ai app sprint</h2>
+    <h2>what you will get</h2>
     <ul>
-      <li>four weekly 1:1 working sessions on your project</li>
-      <li>setup for claude code, codex, your repository, and the tools around them</li>
-      <li>a practical workflow for planning, prompting, reviewing, debugging, and deploying</li>
-      <li>one real feature planned, built, reviewed, and shipped together</li>
-      <li>async help between sessions when you get stuck</li>
+      <li>an ai coding and development environment configured on your mac</li>
+      <li>a working starter app deployed at a public URL after our first call</li>
+      <li>one useful business feature working end to end and shipped online</li>
+      <li>a repeatable workflow for continuing to build the app yourself</li>
+      <li>async help between calls when you get stuck</li>
     </ul>
   </section>
 
   <section>
-    <h2>what you leave with</h2>
-    <ul>
-      <li>a working ai coding environment set up around your app</li>
-      <li>a shipped feature—not another tutorial project</li>
-      <li>a repeatable way to make changes without guessing</li>
-      <li>the ability to keep building without waiting on me for every update</li>
-    </ul>
+    <h2>what to expect</h2>
+    <ol>
+      <li>
+        <strong>call 1—set up and launch:</strong> configure your ai coding tools and developer
+        environment, create the app, and deploy it to the web. after this call, you can begin
+        prompting and building.
+      </li>
+      <li>
+        <strong>calls 2–4—scope, build, and ship:</strong> choose one useful feature for your
+        business and work together to get it working end to end. you can make progress between
+        calls, then bring back anything that is blocked, broken, or ready for review.
+      </li>
+      <li>
+        <strong>if you need more help:</strong> add another call whenever you need to get unstuck
+        or want help shipping the next part.
+      </li>
+    </ol>
   </section>
 
   <section>
-    <h2>this is for you if</h2>
+    <h2>founding-client requirements</h2>
     <ul>
-      <li>you run a business and have an app idea, an existing app, or an internal tool to build</li>
-      <li>you want to make changes yourself instead of waiting on a developer for every update</li>
-      <li>you have tried ai coding tools but keep getting stuck, breaking things, or losing track of the work</li>
-      <li>you learn best by working on your own project with someone beside you</li>
+      <li>you use a mac that you can install developer tools on</li>
+      <li>you have an app idea, internal tool, or useful business feature in mind</li>
+      <li>you are willing to work hands-on during the calls</li>
     </ul>
     <p class="muted">
-      this is hands-on coaching, not a passive course or a full-service development agency.
+      no coding experience is required. the founding sprint is mac-only so i can provide one
+      reliable setup while the offer is new.
     </p>
   </section>
 
@@ -79,21 +89,20 @@ const bookingHref = 'https://cal.com/builtbywin/20-min-ai-sprint-fit-call'
   <section>
     <h2>what happens next</h2>
     <ol>
-      <li>book a call and tell me what you are building, what you have tried, and where you are stuck</li>
+      <li>book a call and tell me what you want to build and where you are stuck</li>
       <li>we spend 20 minutes deciding whether the sprint fits</li>
-      <li>if it does, i send the scope, start date, and payment link</li>
+      <li>if it does, i send the scope, call schedule, and payment link</li>
     </ol>
   </section>
 
   <section class="final-cta">
-    <h2>want to ship something real in the next four weeks?</h2>
-    <p>bring your app, your idea, or the broken workflow. we will work on the real thing.</p>
+    <h2>want your app live after our first call?</h2>
+    <p>bring the idea. we will set up the tools and get it onto the web together.</p>
     <a class="primary-cta" href={bookingHref} data-work-with-me-cta="footer">
       book a free 20-minute call →
     </a>
   </section>
 </BlogLayout>
-
 <script is:inline>
   document.querySelectorAll('[data-work-with-me-cta]').forEach((link) => {
     link.addEventListener('click', () => {

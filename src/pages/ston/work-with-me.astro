@@ -1,13 +1,12 @@
 ---
 import BlogLayout from '../../layouts/BlogLayout.astro'
 
-const emailHref =
-  'mailto:winston.j.zhao@gmail.com?subject=AI%20coding%20coaching&body=What%20are%20you%20building%3F%0ACurrent%20tools%3A%0AWhere%20are%20you%20stuck%3F%0A'
+const bookingHref = 'https://cal.com/builtbywin/20-min-ai-sprint-fit-call'
 ---
 
 <BlogLayout
   title="work with me"
-  description="1:1 AI coding coaching and workflow setup for business owners building apps"
+  description="A four-week AI app sprint for business owners who want to build and ship with AI coding tools"
   pathSegments={[{ name: 'work-with-me', href: null }]}
   backHref="/ston"
 >
@@ -17,24 +16,35 @@ const emailHref =
   </header>
 
   <section class="hero">
-    <h2>build your app and get productive with ai coding</h2>
+    <h2>build your app and learn how to keep shipping it</h2>
     <p>
-      i help business owners use claude code, codex, and other coding agents to build and maintain
-      their apps. we work 1:1 on your real project, set up a workflow you understand, and ship
-      something useful together.
+      i work 1:1 with business owners on their real app, internal tool, or product idea. over four
+      weeks, we set up the right ai coding workflow and ship one useful feature together.
     </p>
-    <a class="primary-cta" href={emailHref} data-hire-cta="hero">tell me what you're building →</a>
-    <p class="availability">1:1 coaching · hands-on setup · remote</p>
+    <a class="primary-cta" href={bookingHref} data-work-with-me-cta="hero">
+      book a free 20-minute call →
+    </a>
+    <p class="availability">4 weeks · $1,500 · three founding-client spots</p>
   </section>
 
   <section>
-    <h2>how i can help</h2>
+    <h2>the 4-week ai app sprint</h2>
     <ul>
-      <li>set up claude code, codex, your repository, and the tools around them</li>
-      <li>teach you how to plan, prompt, review, debug, and ship changes without guessing</li>
-      <li>build a real feature with you so the workflow sticks</li>
-      <li>add worktrees and parallel agents when they solve a real problem—not because they look impressive</li>
-      <li>leave you with a repeatable setup you can keep using on your own</li>
+      <li>four weekly 1:1 working sessions on your project</li>
+      <li>setup for claude code, codex, your repository, and the tools around them</li>
+      <li>a practical workflow for planning, prompting, reviewing, debugging, and deploying</li>
+      <li>one real feature planned, built, reviewed, and shipped together</li>
+      <li>async help between sessions when you get stuck</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>what you leave with</h2>
+    <ul>
+      <li>a working ai coding environment set up around your app</li>
+      <li>a shipped feature—not another tutorial project</li>
+      <li>a repeatable way to make changes without guessing</li>
+      <li>the ability to keep building without waiting on me for every update</li>
     </ul>
   </section>
 
@@ -47,7 +57,7 @@ const emailHref =
       <li>you learn best by working on your own project with someone beside you</li>
     </ul>
     <p class="muted">
-      this is coaching and hands-on setup, not a passive course or a full-service development agency.
+      this is hands-on coaching, not a passive course or a full-service development agency.
     </p>
   </section>
 
@@ -69,24 +79,28 @@ const emailHref =
   <section>
     <h2>what happens next</h2>
     <ol>
-      <li>email me what you are building, what tools you have tried, and where you are stuck</li>
-      <li>we spend 20 minutes deciding whether i can help</li>
-      <li>if it fits, i recommend either a focused coaching session or a hands-on setup</li>
+      <li>book a call and tell me what you are building, what you have tried, and where you are stuck</li>
+      <li>we spend 20 minutes deciding whether the sprint fits</li>
+      <li>if it does, i send the scope, start date, and payment link</li>
     </ol>
   </section>
 
   <section class="final-cta">
-    <h2>want to build without guessing?</h2>
+    <h2>want to ship something real in the next four weeks?</h2>
     <p>bring your app, your idea, or the broken workflow. we will work on the real thing.</p>
-    <a class="primary-cta" href={emailHref} data-hire-cta="footer">tell me what you're building →</a>
+    <a class="primary-cta" href={bookingHref} data-work-with-me-cta="footer">
+      book a free 20-minute call →
+    </a>
   </section>
 </BlogLayout>
 
 <script is:inline>
-  document.querySelectorAll('[data-hire-cta]').forEach((link) => {
+  document.querySelectorAll('[data-work-with-me-cta]').forEach((link) => {
     link.addEventListener('click', () => {
-      window.posthog?.capture('hire_cta_clicked', {
-        cta_location: link.getAttribute('data-hire-cta'),
+      window.posthog?.capture('work_with_me_cta_clicked', {
+        cta_location: link.getAttribute('data-work-with-me-cta'),
+        offer: 'ai_app_sprint',
+        price_usd: 1500,
       })
     })
   })

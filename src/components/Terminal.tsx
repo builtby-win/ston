@@ -132,7 +132,7 @@ const apps: TerminalItem[] = [
     type: 'app',
     color: 'var(--color-term-dir)',
     icon: <FaTicketAlt />,
-    description: 'a whimsical app for planning adventures',
+    description: 'a live event database with set times, planned with friends',
   },
 ]
 
@@ -236,7 +236,7 @@ const pinned: TerminalItem[] = [
     type: 'page',
     color: 'var(--color-term-prompt)',
     icon: <HiBriefcase />,
-    description: '1:1 ai coding coaching',
+    description: '4-call ai app sprint · $1,500',
     isInternal: true,
   },
   {

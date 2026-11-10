@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "ston",
+  "main": "src/worker.ts",
+  "compatibility_date": "2025-12-24",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+  "routes": [
+    {
+      "pattern": "builtby.win/*",
+      "zone_name": "builtby.win"
+    }
+  ]
+}

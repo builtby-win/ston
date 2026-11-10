@@ -15,9 +15,7 @@ so it is my turn to change your life as well.
 introducing [stremio](https://www.stremio.com) + [torbox](https://torbox.app/subscription?referral=da3a3cb3-f505-42f4-bdac-a1f4f74d6600) (referral link, i get a little credit if you sign up through it. [here's the plain link](https://torbox.app) if you'd rather not).
 
 **a quick tldr:**
-stremio is a client you can download on your phone, tablet, laptop, or tv that lets you watch your own content.
-however, people have cooked up addons that let you stream torrents directly into stremio.
-but streaming torrents directly can be problematic because it's direct traffic tied to you, so you need a debrid service. torbox downloads the streams on its servers and you stream from torbox instead of from other peers. (it's not a vpn, it just keeps you out of the swarm.)
+stremio is a client for your phone, tablet, laptop, or tv. addons can stream torrents straight into it, but that ties the traffic to you, so you add a debrid service. torbox downloads the streams on its servers and you stream from torbox instead of from other peers. (not a vpn, it just keeps you out of the swarm.)
 
 once you complete the following steps, your ship is ready to sail! 🏴‍☠️🏴‍☠️
 

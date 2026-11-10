@@ -3,7 +3,7 @@ title: "how to set up stremio: the best way to stream in 2026"
 date: 2026-11-10
 description: "one stremio account on every screen, torbox for streams, and the bootstrapper so you never configure addons by hand. about 15 minutes."
 tags: ["stremio", "torbox", "guide"]
-draft: true
+draft: false
 ---
 
 since my days as a wee lad, i've been cruising the high seas from baka-updates leecher to zoechip chud.
@@ -33,23 +33,23 @@ always sign in with the same stremio account. the setup lives on the account, so
 
 ## 2. make a torbox account
 
-1. make an account at [torbox.app](https://torbox.app) and **stay logged in**. then open [my referral link](https://torbox.app/subscription?referral=da3a3cb3-f505-42f4-bdac-a1f4f74d6600). a popup asks you to confirm the code. hit ok and you should see a notification at the bottom of the screen. no popup? **don't buy anything yet.** turn off your popup/ad blocker or try another browser, because the referral won't apply without it.
+1. make an account at [torbox.app](https://torbox.app/subscription?referral=da3a3cb3-f505-42f4-bdac-a1f4f74d6600). <- this is my referral link.
 2. pick a plan. the free one is fine to try it out, but you'll want the $3/month plan to stream more than a show or two a day.
 3. copy your **api key** from [torbox.app/settings](https://torbox.app/settings?section=account) and stash it in your notes app. you'll need it in a minute.
 
-**what the referral gets you:** an extra 7 days for every month you buy, added to your plan. i get the same bonus on mine. so 1 month gets you 7 extra days, 3 months gets you 21, a year gets you 84. it only applies to your first purchase and stacks with plan discounts. it costs you nothing extra, and if you'd rather skip it, just don't open my link.
+**what the referral gets you:** an extra 7 days for every month you buy, added to your plan. we both get the same bonus. so 1 month gets you 7 extra days, 3 months gets you 21, a year gets you 84. it only applies to your first purchase and stacks with plan discounts. my referral code is: da3a3cb3-f505-42f4-bdac-a1f4f74d6600
 
 ## 3. run the bootstrapper
 
 this is the last step. open [bootstrapper.stremaddon.net](https://bootstrapper.stremaddon.net/).
 
-it takes a preset of addons and writes it into your stremio account, already wired up for torbox. **it wipes your existing addon setup**, so hit the backup button first if you've customized anything.
+it takes a preset of addons and writes it into your stremio account, **it wipes your existing addon setup**, so hit the backup button first if you've customized anything.
 
 **1. log in** with the same stremio email + password from step 1. the email and password boxes are the simple route.
 
 ![bootstrapper login with email and password vs auth key](/blog/stremio-bootstrapper-login.png)
 
-if you signed up with apple or google, you have to use the auth key box instead. the "?" next to it walks you through it.
+if you signed up with apple or facebook, you have to use the auth key box instead. the "?" next to it walks you through it.
 
 ![the bootstrapper's how to get the stremio authkey popup](/blog/stremio-bootstrapper-authkey.png)
 
@@ -59,7 +59,7 @@ if you signed up with apple or google, you have to use the auth key box instead.
 
 ![picking torbox and pasting the api key](/blog/stremio-bootstrapper-debrid.gif)
 
-don't skip this. the bootstrapper itself warns that without a debrid key "you will be torrenting" and to review your country's policies first.
+don't skip this! if you are streaming without a debrid key "you will be torrenting"
 
 **4. you don't need the rpdb key or anything else.**
 

@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css'
+import { Font } from 'astro:assets'
 import { getCollection } from 'astro:content'
 import Terminal from '../components/Terminal'
 import PostHog from '../components/posthog.astro'
@@ -41,10 +42,7 @@ const crawlLinks = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- JetBrains Mono font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <Font cssVariable="--font-jetbrains-mono" preload />
 
     <!-- Primary Meta Tags -->
     <title>builtby.win</title>

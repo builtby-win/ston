@@ -22,6 +22,7 @@ function rehypeLazyImages() {
 export default defineConfig({
   site: 'https://builtby.win',
   output: 'static',
+  trailingSlash: 'always',
   // Inline CSS into the HTML: no render-blocking stylesheet request.
   build: { inlineStylesheets: 'always' },
   // Prefetch internal links on hover/focus so navigation feels instant.

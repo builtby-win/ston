@@ -21,7 +21,7 @@ const {
   title,
   description = 'Daily findings and learnings',
   pathSegments = [],
-  backHref = '/ston',
+  backHref = '/ston/',
   wide = false,
 } = Astro.props
 
@@ -57,7 +57,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://builtby.win
     <div class:list={['blog-container', { wide }]}>
       <nav class="terminal-header">
         <span class="prompt-arrow">→</span>
-        <a href="/ston" class="path-base">~/builtby.win/ston</a>{pathSegments.map((segment) => (
+        <a href="/ston/" class="path-base">~/builtby.win/ston</a>{pathSegments.map((segment) => (
           segment.href ? (
             <a href={segment.href} class="path-segment">/{segment.name}</a>
           ) : (

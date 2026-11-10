@@ -31,7 +31,7 @@ const formatDate = (date: Date) => {
 
 const dateStr = post.data.date.toISOString().split('T')[0]
 const pathSegments = [
-  { name: 'blog', href: '/ston/blog' },
+  { name: 'blog', href: '/ston/blog/' },
   { name: dateStr, href: null },
   { name: post.id, href: null },
 ]
@@ -41,7 +41,7 @@ const pathSegments = [
   title={post.data.title}
   description={post.data.description}
   pathSegments={pathSegments}
-  backHref="/ston/blog"
+  backHref="/ston/blog/"
   wide
 >
   <article class="post-layout">

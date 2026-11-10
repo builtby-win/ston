@@ -45,7 +45,7 @@ then it's:
 2. **backup** your current config. recommended, takes a second.
 3. **pick a preset.** the options are minimal, standard, full, all-in-one, http-only, no streams, and factory. factory resets the account to a fresh one.
 4. **pick a language.**
-5. **choose torbox** as your debrid service and paste the api key from above. you can skip this, but then you get a setup with no debrid in it.
+5. **choose torbox** as your debrid service and paste the api key from above. don't skip this: the bootstrapper itself warns that without a debrid key "you will be torrenting" and to check your country's policies first.
 6. **click "sync to stremio."** done.
 
 it's the "auth key" thing from earlier: you don't need to grab one yourself if you log in with email + password, the site gets it for you. which is the whole point of not using apple.
@@ -64,3 +64,7 @@ treat that key like a password. anyone with it is logged in as you.
 ## last step
 
 open stremio on each screen, pull up something, hit play. if one device is missing the addons, it's signed into a different account. every time.
+
+## disclaimer
+
+this is a setup guide for stremio and torbox, not a content recommendation. i don't host or link to any content. stremio works fine with legal sources (public domain, your own library, free legal addons), and you're responsible for following your local laws and only watching things you have the rights to.

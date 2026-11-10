@@ -40,6 +40,12 @@ export default defineConfig({
     },
   ],
   markdown: {
+    // Footnote label as a visible <p class="footnotes-label"> (default is an sr-only <h2>, which would also land in the TOC).
+    remarkRehype: {
+      footnoteLabel: 'footnotes',
+      footnoteLabelTagName: 'p',
+      footnoteLabelProperties: { className: ['footnotes-label'] },
+    },
     rehypePlugins: [
       rehypeLazyImages,
       [rehypeMermaid, { strategy: 'pre-mermaid' }]

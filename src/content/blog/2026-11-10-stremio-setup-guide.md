@@ -12,14 +12,20 @@ i've wasted a lot of time working around blocked websites or patched methods, bu
 
 so it is my turn to change your life as well.
 
-introducing [stremio](https://www.stremio.com) + [torbox](https://torbox.app/subscription?referral=da3a3cb3-f505-42f4-bdac-a1f4f74d6600) (that's my referral link. we both get free premium time if you use it, [details in step 2](#2-make-a-torbox-account)).
+introducing [stremio](https://www.stremio.com) + [torbox](https://torbox.app/subscription?referral=da3a3cb3-f505-42f4-bdac-a1f4f74d6600)[^1]
 
 **a quick tldr:**
 this guide is for setting up on your laptop, but after you do it once it works on your tv, phone, or tablet too. start to finish it takes about 15 minutes.
 
-stremio is a client for your phone, tablet, laptop, or tv to watch your own content. but people have cooked up addons to stream torrents straight into stremio. but without a debrid service, it ties the traffic to you. torbox is a debrid service that i recommned; it downloads the streams on its servers and you stream from torbox instead of the torrent directly. (in essence it kind of works like a VPN)
+- stremio is a client for your phone, tablet, laptop, or tv to watch your own content.
+- people have cooked up addons to stream torrents straight into stremio.
+- without a debrid service, that ties the traffic to you.
+- torbox is a debrid service that i recommend. it downloads the streams on its servers and you stream from torbox instead of the torrent directly.
+- in essence, it works kind of like a VPN.
 
 once you complete the following steps, your ship is ready to sail! 🏴‍☠️🏴‍☠️
+
+[^1]: referral link. we both get free premium time if you use it, [details in step 2](#2-make-a-torbox-account).
 
 ## 1. make a stremio account
 
@@ -37,7 +43,13 @@ always sign in with the same stremio account. the setup lives on the account, so
 2. pick a plan. the free one is fine to try it out, but you'll want the $3/month plan to stream more than a show or two a day.
 3. copy your **api key** from [torbox.app/settings](https://torbox.app/settings?section=account) and stash it in your notes app. you'll need it in a minute.
 
-**what the referral gets you:** an extra 7 days for every month you buy, added to your plan. we both get the same bonus. so 1 month gets you 7 extra days, 3 months gets you 21, a year gets you 84. it only applies to your first purchase and stacks with plan discounts. my referral code is: da3a3cb3-f505-42f4-bdac-a1f4f74d6600
+**what the referral gets you:** an extra 7 days for every month you buy, added to your plan. we both get the same bonus. so 1 month gets you 7 extra days, 3 months gets you 21, a year gets you 84. it only applies to your first purchase and stacks with plan discounts.
+
+my referral code (click to copy):
+
+```
+da3a3cb3-f505-42f4-bdac-a1f4f74d6600
+```
 
 ## 3. run the bootstrapper
 

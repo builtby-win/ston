@@ -12,7 +12,7 @@ i've wasted a lot of time working around blocked websites or patched methods, bu
 
 so it is my turn to change your life as well.
 
-introducing [stremio](https://www.stremio.com) + [torbox](https://torbox.app/subscription?referral=da3a3cb3-f505-42f4-bdac-a1f4f74d6600)\*
+introducing [stremio](https://www.stremio.com) + [torbox](https://torbox.app/subscription?referral=da3a3cb3-f505-42f4-bdac-a1f4f74d6600)[^1]
 
 **a quick tldr:**
 this guide is for setting up on your laptop, but after you do it once it works on your tv, phone, or tablet too. start to finish it takes about 15 minutes.
@@ -25,7 +25,7 @@ this guide is for setting up on your laptop, but after you do it once it works o
 
 once you complete the following steps, your ship is ready to sail! 🏴‍☠️🏴‍☠️
 
-\*referral link. we both get free premium time if you use it, [details in step 2](#2-make-a-torbox-account).
+[^1]: referral link. we both get free premium time if you use it, [details in step 2](#2-make-a-torbox-account).
 
 ## 1. make a stremio account
 

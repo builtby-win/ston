@@ -47,17 +47,17 @@ it takes a preset of addons and writes it into your stremio account, **it wipes 
 
 **1. log in** with the same stremio email + password from step 1. the email and password boxes are the simple route.
 
-![bootstrapper login with email and password vs auth key](/blog/stremio-bootstrapper-login.png)
+![bootstrapper login with email and password vs auth key](/blog/stremio-bootstrapper-login.avif)
 
 if you signed up with apple or facebook, you have to use the auth key box instead. the "?" next to it walks you through it.
 
-![the bootstrapper's how to get the stremio authkey popup](/blog/stremio-bootstrapper-authkey.png)
+![the bootstrapper's how to get the stremio authkey popup](/blog/stremio-bootstrapper-authkey.avif)
 
 **2. go with the standard preset.**
 
 **3. the settings are straightforward.** the one thing you need is the debrid step: pick torbox and paste your api key.
 
-![picking torbox and pasting the api key](/blog/stremio-bootstrapper-debrid.gif)
+<video autoplay loop muted playsinline width="800" height="470" aria-label="picking torbox and pasting the api key"><source src="/blog/stremio-bootstrapper-debrid.av1.mp4" type='video/mp4; codecs="av01.0.08M.08"' /><source src="/blog/stremio-bootstrapper-debrid.mp4" type="video/mp4" /></video>
 
 don't skip this! if you are streaming without a debrid key "you will be torrenting"
 

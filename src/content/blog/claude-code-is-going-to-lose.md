@@ -10,7 +10,7 @@ the best things in life are free. the next best things in life are startups ligh
 
 for the last month of 2025, i decided to bite the bullet and upgrade my $20/month claude code plan to the $100/month claude max plan. this turned out to be one of the greatest return on investment i've ever gotten. $100 for $2k of credits in one month. i was genuinely blown away with the quality of opus 4.5 and how much i was able to build, but after my subscription ended, i decided to shop around just to play around with the other models.
 
-![claude max actual usage](/blog/claude-max-usage.png)
+![claude max actual usage](/blog/claude-max-usage.avif)
 
 **figure 1: my actual claude code usage across december to january**
 
@@ -43,7 +43,7 @@ my friend and i did a 12 hour hackathon last week and we both only ran into gemi
 
 but both of us found that this weekend that gemini servers are getting absolutely slammed.
 
-![gemini servers getting slammed](/blog/gemini-servers-slammed.png)
+![gemini servers getting slammed](/blog/gemini-servers-slammed.avif)
 
 maybe google will start tightening up its bootstraps and push people to pay for their google AI ultra plan as well? i think it would be wise for google to use its war chest to completely overtake anthropic while claude code is getting some bad press.
 

@@ -1,69 +1,69 @@
 ---
-title: "stremio setup guide: laptop, tv, phone, and torbox"
+title: "how to set up stremio: the best way to stream in 2026"
 date: 2026-11-10
-description: "one stremio account on every screen, torbox for streams, and the bootstrapper so you don't configure addons by hand."
+description: "one stremio account on every screen, torbox for streams, and the bootstrapper so you never configure addons by hand. about 15 minutes."
 tags: ["stremio", "torbox", "guide"]
 draft: true
 ---
 
-the one thing that will ruin your afternoon: **do not sign up with apple.**
+i've wasted a lot of time over the years working around blocked websites and patched methods. then a mutual friend showed me stremio + torbox earlier this year and it changed how i watch everything.
 
-it looks like the easy button. it isn't. an account made through apple (or facebook) has no stremio password, and the bootstrapper in step 3 wants one. its own login text literally says "if you have created your account through facebook, please use the latter," meaning you go dig your auth key out of the browser console by hand. pain in the butt.
+so now it's my turn to change your life.
 
-sign up with **email and password**. write them down. you'll type them on every screen.
+**quick tldr:** stremio is a client you can install on your phone, tablet, laptop, or tv. on its own it plays whatever sources you point it at, through addons. some addons can stream torrents straight into stremio, but then the traffic is tied directly to your connection. that's where a debrid service comes in. torbox downloads the stream on its servers and you stream from torbox instead of from other peers.
 
-## 1. make the account on your laptop
+set up once and it works on every device. start to finish it takes about 15 minutes.
 
-grab the desktop app from [stremio.com/downloads](https://www.stremio.com/downloads) (windows, macos, linux), open it, hit sign up, email + password.
+> i use a torbox referral link in this guide. if you sign up through it, i get a little credit. you can go to [torbox.app](https://torbox.app) directly instead and nothing changes for you.
 
-do this first. typing credentials with a tv remote is miserable and you only want to do it once.
+## 1. make a stremio account
 
-## 2. phone and tv
+sign up at [web.stremio.com](https://web.stremio.com) and install the app for your laptop from [stremio.com/downloads](https://www.stremio.com/downloads).
 
-same account everywhere and your addons and library follow you around.
+**do not use "sign in with apple" or "sign in with google."**
 
-- **android:** google play.
-- **iphone:** this is the annoying one. the downloads page lists ios as a "limited version," which is just the [web app](https://blog.stremio.com/using-stremio-web-on-iphone-ipad/) on your home screen. the full app is only on [altstore pal](https://altstore.io/source/dl.strem.io/apple/altstore/source.json?app=com.stremio.pal), and that's europe, brazil and japan only.
-- **tv:** the downloads page lists android tv, apple tv, samsung (2019+), lg (2020+), and sony/philips/hisense. search "stremio" in your tv's app store. fire tv isn't on the list, so i can't promise anything there.
+it looks easier. it isn't. those accounts have no stremio password, and the bootstrapper in step 3 wants one. you'd have to log in on the web, open the dev tools and dig out an auth key by hand. slightly annoying. email + password takes ten seconds.
 
-sign in with the email + password from step 1.
+always sign in with the same stremio account. the setup lives on the account, so once it's done it's done everywhere.
 
-## 3. torbox first, then the bootstrapper
+## 2. make a torbox account
 
-get torbox sorted before you touch the bootstrapper:
+1. sign up at [torbox.app](https://torbox.app/subscription?referral=da3a3cb3-f505-42f4-bdac-a1f4f74d6600) (referral link) and pick a plan. the free one is fine to try it out, but you'll want the $3/month plan to stream more than a show or two a day.
+2. copy your **api key** from [torbox.app/settings](https://torbox.app/settings) and stash it in your notes app. you'll need it in a minute.
 
-1. make an account and pick a plan at [torbox.app](https://torbox.app).
-2. copy your api key from [torbox.app/settings](https://torbox.app/settings).
+## 3. run the bootstrapper
 
-now open [bootstrapper.stremaddon.net](https://bootstrapper.stremaddon.net/). it takes a preset of addons and writes it straight into your stremio account, already wired up for your debrid service. no hunting for addons, no pasting urls.
+this is the last step. open [bootstrapper.stremaddon.net](https://bootstrapper.stremaddon.net/).
 
-**heads up: it wipes your existing addon setup.** the page says so in bold. there's a backup button, so hit it first.
+it takes a preset of addons and writes it into your stremio account, already wired up for torbox. **it wipes your existing addon setup**, so hit the backup button first if you've customized anything.
 
-then it's:
+**1. log in** with the same stremio email + password from step 1. the email and password boxes are the simple route. the auth key box is the annoying one.
 
-1. **log in** with your stremio email + password (this is the step apple sign-in breaks).
-2. **backup** your current config. recommended, takes a second.
-3. **pick a preset.** the options are minimal, standard, full, all-in-one, http-only, no streams, and factory. factory resets the account to a fresh one.
-4. **pick a language.**
-5. **choose torbox** as your debrid service and paste the api key from above. don't skip this: the bootstrapper itself warns that without a debrid key "you will be torrenting" and to check your country's policies first.
-6. **click "sync to stremio."** done.
+![bootstrapper login with email and password vs auth key](/blog/stremio-bootstrapper-login.png)
 
-it's the "auth key" thing from earlier: you don't need to grab one yourself if you log in with email + password, the site gets it for you. which is the whole point of not using apple.
+**2. pick the standard preset.**
 
-## already signed up with apple?
+![standard preset selected](/blog/stremio-bootstrapper-preset.png)
 
-you can still do it, just the hard way. the bootstrapper lets you paste an auth key instead of a password:
+**3. the rest of the settings are straightforward.** the one thing you need is the debrid step: pick torbox and paste your api key.
 
-1. log in at [web.stremio.com](https://web.stremio.com) in a laptop browser.
-2. open the developer console.
-3. run `JSON.parse(localStorage.getItem("profile")).auth.key`
-4. paste the output into the bootstrapper.
+![picking torbox and pasting the api key](/blog/stremio-bootstrapper-debrid.gif)
 
-treat that key like a password. anyone with it is logged in as you.
+don't skip this. the bootstrapper itself warns that without a debrid key "you will be torrenting" and to review your country's policies first.
 
-## last step
+**4. you don't need the rpdb key or anything else.**
 
-open stremio on each screen, pull up something, hit play. if one device is missing the addons, it's signed into a different account. every time.
+**5. press bootstrap account.**
+
+**6. open stremio on your computer and check the addons tab.** you should see a list of addons installed.
+
+## 4. use it
+
+search for a show and hit play. then install stremio on your tv and every other device and sign in with the same account. the addons come with it.
+
+## note for ios
+
+the stremio iphone app isn't a real native app. it's the [web version](https://blog.stremio.com/using-stremio-web-on-iphone-ipad/), so for video formats it can't play you need an external video player. their guide covers it. the full native app is only on [altstore pal](https://altstore.io/source/dl.strem.io/apple/altstore/source.json?app=com.stremio.pal), which is europe, brazil and japan only.
 
 ## disclaimer
 

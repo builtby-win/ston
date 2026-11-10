@@ -160,6 +160,18 @@
     opacity: 0.3;
   }
 
+  /* Footnotes */
+  .prose .footnotes {
+    margin-top: 2em;
+    font-size: 0.875em;
+    color: var(--color-term-fg-muted);
+  }
+
+  .prose .footnotes-label {
+    margin: 0 0 0.5em;
+    font-weight: 600;
+  }
+
   /* Table Styling */
   .prose table {
     width: 100%;

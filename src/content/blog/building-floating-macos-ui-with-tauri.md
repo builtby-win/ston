@@ -6,7 +6,7 @@ tags: ["rust", "tauri", "macos", "nspanel", "back2vibing"]
 draft: false
 ---
 
-![Floating dock demo showing the back2vibing session dock](/blog/floating-dock-demo.gif)
+<video autoplay loop muted playsinline width="800" height="520" aria-label="Floating dock demo showing the back2vibing session dock"><source src="/blog/floating-dock-demo.mp4" type="video/mp4" /></video>
 
 while building [back2vibing](https://back2vibing.builtby.win/), i needed a floating session dock that stays above all windows, lets you peek other app windows on hover, and doesn't get in your way. sounds simple right?
 

@@ -14,7 +14,7 @@ disclosure up front: one of the tools below is [back2vibing](https://back2vibing
 
 here's the whole loop, start to finish, before i break down the pieces:
 
-<video src="/blog/workflow-full.mp4" autoplay loop muted playsinline width="1110" height="720" aria-label="the full loop: create a conductor workspace, sync with spotlight, open a PR, then merge and clean up the worktree and tmux session"></video>
+<video autoplay loop muted playsinline width="1110" height="720" aria-label="the full loop: create a conductor workspace, sync with spotlight, open a PR, then merge and clean up the worktree and tmux session"><source src="/blog/workflow-full.mp4" type="video/mp4" /></video>
 
 ## the setup
 
@@ -47,7 +47,7 @@ we're shipping faster than ever but still agents can take between either 30 seco
 i think we're all realizing that...why don't i just fire up a couple more agents while i wait for others to finish?
 it's greedy and the workflow seems fine but once you get more than 2-3 agents going at a time, it gets really hard to keep track of.
 
-<video src="/blog/back2vibing-peeking.mp4" autoplay loop muted playsinline width="1110" height="720" aria-label="peeking at several agents running across conductor, codex desktop, and the terminal, then jumping to the one that needs attention"></video>
+<video autoplay loop muted playsinline width="1110" height="720" aria-label="peeking at several agents running across conductor, codex desktop, and the terminal, then jumping to the one that needs attention"><source src="/blog/back2vibing-peeking.mp4" type="video/mp4" /></video>
 
 ## the real bottleneck is my attention
 

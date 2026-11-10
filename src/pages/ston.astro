@@ -14,7 +14,7 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
       title: post.data.title,
       slug: post.id,
       date: dateStr,
-      url: `/ston/blog/${dateStr}/${post.id}`,
+      url: `/ston/blog/${dateStr}/${post.id}/`,
     }
   })
 

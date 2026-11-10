@@ -21,49 +21,49 @@ interface TerminalSection {
 const sectionHeaders: TerminalItem[] = [
   {
     name: 'pinned/',
-    url: '/ston/pinned',
+    url: '/ston/pinned/',
     type: 'header',
     color: 'var(--color-term-fg-muted)',
     isInternal: true,
   },
   {
     name: 'referrals/',
-    url: '/ston/raw',
+    url: '/ston/raw/',
     type: 'header',
     color: 'var(--color-term-fg-muted)',
     isInternal: true,
   },
   {
     name: 'blog/',
-    url: '/ston/blog',
+    url: '/ston/blog/',
     type: 'header',
     color: 'var(--color-term-fg-muted)',
     isInternal: true,
   },
   {
     name: 'socials/',
-    url: '/ston/socials',
+    url: '/ston/socials/',
     type: 'header',
     color: 'var(--color-term-fg-muted)',
     isInternal: true,
   },
   {
     name: 'apps/',
-    url: '/ston/apps',
+    url: '/ston/apps/',
     type: 'header',
     color: 'var(--color-term-fg-muted)',
     isInternal: true,
   },
   {
     name: 'repos/',
-    url: '/ston/repos',
+    url: '/ston/repos/',
     type: 'header',
     color: 'var(--color-term-fg-muted)',
     isInternal: true,
   },
   {
     name: 'misc/',
-    url: '/ston/misc',
+    url: '/ston/misc/',
     type: 'header',
     color: 'var(--color-term-fg-muted)',
     isInternal: true,
@@ -190,7 +190,7 @@ const repos: TerminalItem[] = [
 const misc: TerminalItem[] = [
   {
     name: 'fonts',
-    url: '/ston/misc/fonts',
+    url: '/ston/misc/fonts/',
     type: 'page',
     color: 'var(--color-term-purple)',
     icon: <HiDocumentText />,
@@ -222,7 +222,7 @@ const referrals: TerminalItem[] = [
 const pinned: TerminalItem[] = [
   {
     name: 'about',
-    url: '/ston/about',
+    url: '/ston/about/',
     type: 'page',
     color: 'var(--color-term-purple)',
     icon: <HiUser />,
@@ -231,7 +231,7 @@ const pinned: TerminalItem[] = [
   },
   {
     name: 'resume',
-    url: '/ston/resume',
+    url: '/ston/resume/',
     type: 'page',
     color: 'var(--color-term-dir)',
     icon: <HiDocumentText />,
@@ -240,7 +240,7 @@ const pinned: TerminalItem[] = [
   },
   {
     name: 'work with me',
-    url: '/ston/work-with-me',
+    url: '/ston/work-with-me/',
     type: 'page',
     color: 'var(--color-term-prompt)',
     icon: <HiBriefcase />,
@@ -249,7 +249,7 @@ const pinned: TerminalItem[] = [
   },
   {
     name: 'loose rules (to live by)',
-    url: '/ston/blog/2026-01-12/loose-rules',
+    url: '/ston/blog/2026-01-12/loose-rules/',
     type: 'blog',
     color: 'var(--color-term-orange)',
     icon: <HiDocumentText />,
@@ -537,7 +537,7 @@ export default function Terminal({ blogPosts = [] }: TerminalProps) {
     <div className="min-h-screen flex flex-col justify-center px-6 py-12 max-w-4xl mx-auto">
       {/* Terminal prompt */}
       <div className="mb-8">
-        <div className={isMobile ? '' : 'inline'}>
+        <div className="md:inline">
           <span style={{ color: 'var(--color-term-prompt)' }}>→</span>
           <span className="ml-2" style={{ color: 'var(--color-term-dir)' }}>
             ~/builtby.win/ston
@@ -548,8 +548,8 @@ export default function Terminal({ blogPosts = [] }: TerminalProps) {
           <span style={{ color: 'var(--color-term-branch)' }}>main</span>
           <span style={{ color: 'var(--color-term-fg-muted)' }}>)</span>
         </div>
-        {isMobile && <br />}
-        <span className={isMobile ? '' : 'ml-2'}>cd</span>
+        <br className="md:hidden" />
+        <span className="md:ml-2">cd</span>
         {(searchQuery || selectedIndex !== null) && (
           <span
             className="ml-1"
@@ -678,28 +678,23 @@ export default function Terminal({ blogPosts = [] }: TerminalProps) {
 
       {/* Instructions */}
       <div className="pl-5 mt-12 text-[var(--color-term-fg-muted)] text-sm">
-        {isMobile ? (
-          <>
-            <span className="opacity-60">Tap to switch, tap again to open</span>
-          </>
-        ) : (
-          <>
-            <span className="opacity-60">Type to filter,</span>
-            <kbd className="mx-1 px-1.5 py-0.5 bg-[var(--color-term-bg-lighter)] rounded text-xs">
-              Tab
-            </kbd>
-            <span className="opacity-60">to cycle,</span>
-            <span className="opacity-60 ml-1">press</span>
-            <kbd className="mx-1 px-1.5 py-0.5 bg-[var(--color-term-bg-lighter)] rounded text-xs">
-              Enter
-            </kbd>
-            <span className="opacity-60">to open,</span>
-            <kbd className="mx-1 px-1.5 py-0.5 bg-[var(--color-term-bg-lighter)] rounded text-xs">
-              Esc
-            </kbd>
-            <span className="opacity-60">to clear</span>
-          </>
-        )}
+        <span className="md:hidden opacity-60">Tap to switch, tap again to open</span>
+        <span className="hidden md:inline">
+          <span className="opacity-60">Type to filter,</span>
+          <kbd className="mx-1 px-1.5 py-0.5 bg-[var(--color-term-bg-lighter)] rounded text-xs">
+            Tab
+          </kbd>
+          <span className="opacity-60">to cycle,</span>
+          <span className="opacity-60 ml-1">press</span>
+          <kbd className="mx-1 px-1.5 py-0.5 bg-[var(--color-term-bg-lighter)] rounded text-xs">
+            Enter
+          </kbd>
+          <span className="opacity-60">to open,</span>
+          <kbd className="mx-1 px-1.5 py-0.5 bg-[var(--color-term-bg-lighter)] rounded text-xs">
+            Esc
+          </kbd>
+          <span className="opacity-60">to clear</span>
+        </span>
       </div>
     </div>
   )

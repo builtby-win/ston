@@ -40,6 +40,8 @@ export default defineConfig({
     },
   ],
   markdown: {
+    // Footnote label as a <p>, not an <h2>: no unstyled sr-only heading, and it stays out of the TOC.
+    remarkRehype: { footnoteLabel: 'footnotes', footnoteLabelTagName: 'p' },
     rehypePlugins: [
       rehypeLazyImages,
       [rehypeMermaid, { strategy: 'pre-mermaid' }]

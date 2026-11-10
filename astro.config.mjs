@@ -12,7 +12,7 @@ export default defineConfig({
   output: 'static',
   markdown: {
     rehypePlugins: [
-      [rehypeMermaid, { strategy: 'inline-svg' }]
+      [rehypeMermaid, { strategy: 'pre-mermaid' }]
     ],
     syntaxHighlight: {
       type: 'shiki',

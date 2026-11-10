@@ -73,6 +73,15 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://builtby.win
       </main>
     </div>
     <Lightbox />
+
+    <script>
+      // Mermaid is large; load it only on pages that actually contain diagrams.
+      if (document.querySelector('pre.mermaid')) {
+        const { default: mermaid } = await import('mermaid')
+        mermaid.initialize({ startOnLoad: false, theme: 'dark' })
+        await mermaid.run({ querySelector: 'pre.mermaid' })
+      }
+    </script>
   </body>
 </html>
 

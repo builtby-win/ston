@@ -1,59 +1,66 @@
 ---
 title: "stremio setup guide: laptop, tv, phone, and torbox"
 date: 2026-11-10
-description: "get stremio running on every screen, grab your auth key with the bootstrapper, and hook up torbox."
+description: "one stremio account on every screen, torbox for streams, and the bootstrapper so you don't configure addons by hand."
 tags: ["stremio", "torbox", "guide"]
 draft: true
 ---
 
-this is the setup i'd walk a friend through. one account, every screen, torbox doing the heavy lifting.
+the one thing that will ruin your afternoon: **do not sign up with apple.**
 
-## 0. read this before you sign up
+it looks like the easy button. it isn't. an account made through apple (or facebook) has no stremio password, and the bootstrapper in step 3 wants one. its own login text literally says "if you have created your account through facebook, please use the latter," meaning you go dig your auth key out of the browser console by hand. pain in the butt.
 
-**do not use "sign in with apple."**
+sign up with **email and password**. write them down. you'll type them on every screen.
 
-it looks easier. it isn't. the account ends up behind a hidden relay email, and the bootstrapper in step 2 needs a plain email + password to log in. you'll hit a wall and have to untangle it later.
+## 1. make the account on your laptop
 
-make the account with **email and password**. save them somewhere. you'll use them on every device.
+grab the desktop app from [stremio.com/downloads](https://www.stremio.com/downloads) (windows, macos, linux), open it, hit sign up, email + password.
 
-## 1. install stremio everywhere
+do this first. typing credentials with a tv remote is miserable and you only want to do it once.
 
-grab it from [stremio.com/downloads](https://www.stremio.com/downloads).
+## 2. phone and tv
 
-- **laptop:** mac / windows / linux app. install, open, sign up with email + password.
-- **phone:** ios app store or android play store. sign in with the same email + password.
-- **tv:** android tv / google tv / fire tv / apple tv builds exist. install from your tv's app store and sign in with the same account.
+same account everywhere and your addons and library follow you around.
 
-same account on all three means addons and library sync everywhere. set it up once and the rest just inherit it.
+- **android:** google play.
+- **iphone:** this is the annoying one. the downloads page lists ios as a "limited version," which is just the [web app](https://blog.stremio.com/using-stremio-web-on-iphone-ipad/) on your home screen. the full app is only on [altstore pal](https://altstore.io/source/dl.strem.io/apple/altstore/source.json?app=com.stremio.pal), and that's europe, brazil and japan only.
+- **tv:** the downloads page lists android tv, apple tv, samsung (2019+), lg (2020+), and sony/philips/hisense. search "stremio" in your tv's app store. fire tv isn't on the list, so i can't promise anything there.
 
-> tip: typing an email + password on a tv remote is miserable. do the signup on the laptop first, then only type credentials once on the tv.
+sign in with the email + password from step 1.
 
-## 2. get your auth key with the bootstrapper
+## 3. torbox first, then the bootstrapper
 
-open [bootstrapper.stremaddon.net](https://bootstrapper.stremaddon.net/).
+get torbox sorted before you touch the bootstrapper:
 
-1. log in with the same stremio email + password from step 0 (this is why apple sign-in breaks things).
-2. grab your **auth key** from the page.
-3. keep it private. it's basically a login token for your account. don't paste it in screenshots or discord.
+1. make an account and pick a plan at [torbox.app](https://torbox.app).
+2. copy your api key from [torbox.app/settings](https://torbox.app/settings).
 
-<!-- TODO(winston): confirm exact button labels / screenshot of the bootstrapper page -->
+now open [bootstrapper.stremaddon.net](https://bootstrapper.stremaddon.net/). it takes a preset of addons and writes it straight into your stremio account, already wired up for your debrid service. no hunting for addons, no pasting urls.
 
-## 3. set up torbox
+**heads up: it wipes your existing addon setup.** the page says so in bold. there's a backup button, so hit it first.
 
-1. make an account at [torbox.app](https://torbox.app) and pick a plan.
-2. copy your **api key** from the torbox settings page.
-3. install a torbox-compatible addon in stremio and paste your torbox api key when it asks.
+then it's:
 
-<!-- TODO(winston): which addon / how you use the bootstrapper to push it (torrentio, comet, mediafusion, etc.) -->
+1. **log in** with your stremio email + password (this is the step apple sign-in breaks).
+2. **backup** your current config. recommended, takes a second.
+3. **pick a preset.** the options are minimal, standard, full, all-in-one, http-only, no streams, and factory. factory resets the account to a fresh one.
+4. **pick a language.**
+5. **choose torbox** as your debrid service and paste the api key from above. you can skip this, but then you get a setup with no debrid in it.
+6. **click "sync to stremio."** done.
 
-because the addon lives on your stremio account, it shows up on the laptop, phone, and tv without redoing anything.
+it's the "auth key" thing from earlier: you don't need to grab one yourself if you log in with email + password, the site gets it for you. which is the whole point of not using apple.
 
-## checklist
+## already signed up with apple?
 
-- [ ] account made with email + password (not apple)
-- [ ] stremio installed + signed in on laptop, phone, tv
-- [ ] auth key grabbed from the bootstrapper
-- [ ] torbox api key added to your addon
-- [ ] play something on each screen to confirm
+you can still do it, just the hard way. the bootstrapper lets you paste an auth key instead of a password:
 
-if something breaks, nine times out of ten it's a device signed into a different account.
+1. log in at [web.stremio.com](https://web.stremio.com) in a laptop browser.
+2. open the developer console.
+3. run `JSON.parse(localStorage.getItem("profile")).auth.key`
+4. paste the output into the bootstrapper.
+
+treat that key like a password. anyone with it is logged in as you.
+
+## last step
+
+open stremio on each screen, pull up something, hit play. if one device is missing the addons, it's signed into a different account. every time.

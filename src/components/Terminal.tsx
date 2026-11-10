@@ -134,6 +134,14 @@ const apps: TerminalItem[] = [
     icon: <FaTicketAlt />,
     description: 'a live event database with set times, planned with friends',
   },
+  {
+    name: 'maple-closet',
+    url: 'https://maple-closet.builtby.win/',
+    type: 'app',
+    color: 'var(--color-term-branch)',
+    icon: '🍁',
+    description: 'dress-up preview for maplestory classic world',
+  },
 ]
 
 const repos: TerminalItem[] = [

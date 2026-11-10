@@ -2,15 +2,14 @@
 title: "loose rules (to live by)"
 date: 2026-01-12
 description: "for a loose life"
-tags: ["meta", "life"]
+tags: ["life"]
 ---
 
 # principles to live by (in no particular order)
 
 1. [how > why > what](#how--why--what)
 2. [move at the pace of patience](#move-at-the-pace-of-patience)
-3. [make some space](#make-some-space)
-4. [leave more love](#leave-more-love)
+3. [leave more love](#leave-more-love)
 
 ## how > why > what
 
@@ -46,50 +45,6 @@ I see that things are rarely so straightforward and good things take time.
 
 I can wait and I can walk, so the only thing between me and the top is time.
 
-## make some space
-
-<iframe width="100%" height="400" src="https://www.youtube.com/embed/le-vty-28o0" title="Midnight Gospel - Spaciousness" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-There was a time when I was very depressed, all I wanted to was be "cured". I couldn't accept that I was depressed and wanted to be "fixed" and "happy" again.
-I tried lots of things and read studies to **research** how I could cure myself
-
-I tried walking 10k steps everyday.
-
-I started taking fish oil.
-
-I got married.
-
-I got promoted.
-
-I took anti-depressants.
-
-I went to therapy.
-
-I tried meditation.
-
-Nothing helped. I made no room for this depression in my life.
-I pretended like everything was okay while it wasn't at all. I remember when everything changed it was at a lunch with some friends and they asked me how I was. I have no idea why..
-
-but I just blurted out:
-
-"honestly, things have not been good lately, I've been really depressed".
-
-It was like admitting to myself that "yeah, I'm depressed." It was when I started to accept it and started to feel it all that I started getting better.
-
-In so many ways, my life was a recurring cycle of problem -> inability to accept problem -> solution -> find new problem.
-
-I couldn't make space for anything or let anything go, so I just kept getting in the way of... well everything.
-
-So I say, feel it all. Don't reject, don't judge. Make space for it.
-
-Let it come in and let it go out just as easily as it came in.
-
-It ebbs, it flows, it breathes in, it breathes out.
-
-You'll see. There's room for you. There's room for me.
-
-We just gotta make some space.
-
 ## leave more love
 
 The only thing we leave here is love.
@@ -114,7 +69,7 @@ But his love continues through me and it's my responsibility to keep filtering t
 ## thank you
 
 We hear in songs and cliché after cliché these basic lessons, rehashed again and again by different people on how to live.
-We want to impart a little wisdom so others can learn from it, so I can't help but want to impart some of mine. (at the cost of sounding like a fool)
+We want to impart a little wisdom so others can learn from it, so I can't help but want to impart some of mine.
 I hope 2026 is lit and you experience amazing things and keep growing.
 
 > "Wisdom cannot be imparted. Wisdom that a wise man attempts to impart always sounds like foolishness to someone else ... Knowledge can be communicated, but not wisdom. One can find it, live it, do wonders through it, but one cannot communicate and teach it."

@@ -12,20 +12,20 @@ i've wasted a lot of time working around blocked websites or patched methods, bu
 
 so it is my turn to change your life as well.
 
-introducing [stremio](https://www.stremio.com) + [torbox](https://torbox.app/subscription?referral=da3a3cb3-f505-42f4-bdac-a1f4f74d6600) (referral link, i get a little credit if you sign up through it. [here's the plain link](https://torbox.app) if you'd rather not).
+introducing [stremio](https://www.stremio.com) + [torbox](https://torbox.app/subscription?referral=da3a3cb3-f505-42f4-bdac-a1f4f74d6600) (that's my referral link. we both get free premium time if you use it, [details in step 2](#2-make-a-torbox-account)).
 
 **a quick tldr:**
-stremio is a client for your phone, tablet, laptop, or tv. addons can stream torrents straight into it, but that ties the traffic to you, so you add a debrid service. torbox downloads the streams on its servers and you stream from torbox instead of from other peers. (not a vpn, it just keeps you out of the swarm.)
+this guide is for setting up on your laptop, but after you do it once it works on your tv, phone, or tablet too. start to finish it takes about 15 minutes.
+
+stremio is a client for your phone, tablet, laptop, or tv to watch your own content. but people have cooked up addons to stream torrents straight into stremio. but without a debrid service, it ties the traffic to you. torbox is a debrid service that i recommned; it downloads the streams on its servers and you stream from torbox instead of the torrent directly. (in essence it kind of works like a VPN)
 
 once you complete the following steps, your ship is ready to sail! 🏴‍☠️🏴‍☠️
 
-this guide is for setting up on your laptop, but after you do it once it works on your tv, phone, or tablet too. start to finish it takes about 15 minutes.
-
 ## 1. make a stremio account
 
-sign up at [web.stremio.com](https://web.stremio.com) and install the app for your laptop from [stremio.com/downloads](https://www.stremio.com/downloads).
+sign up at [web.stremio.com](https://web.stremio.com/#/intro) and install the app for your laptop from [stremio.com/downloads](https://www.stremio.com/downloads).
 
-**do not use "sign in with apple" or "sign in with google."**
+**do not use "sign in with apple" or "continue with facebook"**
 
 it looks easier. it isn't. those accounts have no stremio password, and the bootstrapper in step 3 wants one. you'd have to log in on the web, open the dev tools and dig out an auth key by hand. slightly annoying. email + password takes ten seconds.
 
@@ -33,8 +33,11 @@ always sign in with the same stremio account. the setup lives on the account, so
 
 ## 2. make a torbox account
 
-1. sign up at [torbox.app](https://torbox.app/subscription?referral=da3a3cb3-f505-42f4-bdac-a1f4f74d6600) and pick a plan. the free one is fine to try it out, but you'll want the $3/month plan to stream more than a show or two a day.
-2. copy your **api key** from [torbox.app/settings](https://torbox.app/settings) and stash it in your notes app. you'll need it in a minute.
+1. make an account at [torbox.app](https://torbox.app) and **stay logged in**. then open [my referral link](https://torbox.app/subscription?referral=da3a3cb3-f505-42f4-bdac-a1f4f74d6600). a popup asks you to confirm the code. hit ok and you should see a notification at the bottom of the screen. no popup? **don't buy anything yet.** turn off your popup/ad blocker or try another browser, because the referral won't apply without it.
+2. pick a plan. the free one is fine to try it out, but you'll want the $3/month plan to stream more than a show or two a day.
+3. copy your **api key** from [torbox.app/settings](https://torbox.app/settings?section=account) and stash it in your notes app. you'll need it in a minute.
+
+**what the referral gets you:** an extra 7 days for every month you buy, added to your plan. i get the same bonus on mine. so 1 month gets you 7 extra days, 3 months gets you 21, a year gets you 84. it only applies to your first purchase and stacks with plan discounts. it costs you nothing extra, and if you'd rather skip it, just don't open my link.
 
 ## 3. run the bootstrapper
 

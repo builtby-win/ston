@@ -6,15 +6,22 @@ tags: ["stremio", "torbox", "guide"]
 draft: true
 ---
 
-i've wasted a lot of time over the years working around blocked websites and patched methods. then a mutual friend showed me stremio + torbox earlier this year and it changed how i watch everything.
+since my days as a wee lad, i've been cruising the high seas from baka-updates leecher to zoechip chud.
 
-so now it's my turn to change your life.
+i've wasted a lot of time working around blocked websites or patched methods, but my life was changed earlier this year thanks to a mutual friend.
 
-**quick tldr:** stremio is a client you can install on your phone, tablet, laptop, or tv. on its own it plays whatever sources you point it at, through addons. some addons can stream torrents straight into stremio, but then the traffic is tied directly to your connection. that's where a debrid service comes in. torbox downloads the stream on its servers and you stream from torbox instead of from other peers.
+so it is my turn to change your life as well.
 
-set up once and it works on every device. start to finish it takes about 15 minutes.
+introducing [stremio](https://www.stremio.com) + [torbox](https://torbox.app/subscription?referral=da3a3cb3-f505-42f4-bdac-a1f4f74d6600) (referral link, i get a little credit if you sign up through it. [here's the plain link](https://torbox.app) if you'd rather not).
 
-> i use a torbox referral link in this guide. if you sign up through it, i get a little credit. you can go to [torbox.app](https://torbox.app) directly instead and nothing changes for you.
+**a quick tldr:**
+stremio is a client you can download on your phone, tablet, laptop, or tv that lets you watch your own content.
+however, people have cooked up addons that let you stream torrents directly into stremio.
+but streaming torrents directly can be problematic because it's direct traffic tied to you, so you need a debrid service. torbox downloads the streams on its servers and you stream from torbox instead of from other peers. (it's not a vpn, it just keeps you out of the swarm.)
+
+once you complete the following steps, your ship is ready to sail! 🏴‍☠️🏴‍☠️
+
+this guide is for setting up on your laptop, but after you do it once it works on your tv, phone, or tablet too. start to finish it takes about 15 minutes.
 
 ## 1. make a stremio account
 
@@ -28,7 +35,7 @@ always sign in with the same stremio account. the setup lives on the account, so
 
 ## 2. make a torbox account
 
-1. sign up at [torbox.app](https://torbox.app/subscription?referral=da3a3cb3-f505-42f4-bdac-a1f4f74d6600) (referral link) and pick a plan. the free one is fine to try it out, but you'll want the $3/month plan to stream more than a show or two a day.
+1. sign up at [torbox.app](https://torbox.app/subscription?referral=da3a3cb3-f505-42f4-bdac-a1f4f74d6600) and pick a plan. the free one is fine to try it out, but you'll want the $3/month plan to stream more than a show or two a day.
 2. copy your **api key** from [torbox.app/settings](https://torbox.app/settings) and stash it in your notes app. you'll need it in a minute.
 
 ## 3. run the bootstrapper
@@ -37,15 +44,17 @@ this is the last step. open [bootstrapper.stremaddon.net](https://bootstrapper.s
 
 it takes a preset of addons and writes it into your stremio account, already wired up for torbox. **it wipes your existing addon setup**, so hit the backup button first if you've customized anything.
 
-**1. log in** with the same stremio email + password from step 1. the email and password boxes are the simple route. the auth key box is the annoying one.
+**1. log in** with the same stremio email + password from step 1. the email and password boxes are the simple route.
 
 ![bootstrapper login with email and password vs auth key](/blog/stremio-bootstrapper-login.png)
 
-**2. pick the standard preset.**
+if you signed up with apple or google, you have to use the auth key box instead. the "?" next to it walks you through it.
 
-![standard preset selected](/blog/stremio-bootstrapper-preset.png)
+![the bootstrapper's how to get the stremio authkey popup](/blog/stremio-bootstrapper-authkey.png)
 
-**3. the rest of the settings are straightforward.** the one thing you need is the debrid step: pick torbox and paste your api key.
+**2. go with the standard preset.**
+
+**3. the settings are straightforward.** the one thing you need is the debrid step: pick torbox and paste your api key.
 
 ![picking torbox and pasting the api key](/blog/stremio-bootstrapper-debrid.gif)
 
@@ -53,13 +62,15 @@ don't skip this. the bootstrapper itself warns that without a debrid key "you wi
 
 **4. you don't need the rpdb key or anything else.**
 
-**5. press bootstrap account.**
+**5. scroll down to the "bootstrap account" step and hit "sync to stremio."**
 
 **6. open stremio on your computer and check the addons tab.** you should see a list of addons installed.
 
-## 4. use it
+## 4. 🏴‍☠️🏴‍☠️🏴‍☠️
 
-search for a show and hit play. then install stremio on your tv and every other device and sign in with the same account. the addons come with it.
+finally, search up a show and boom, you're sailing.
+
+install stremio on your tv and every device you want to watch on, sign in with the same account, and the addons come with it.
 
 ## note for ios
 

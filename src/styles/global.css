@@ -2,7 +2,7 @@
 
 @theme {
   /* Terminal-style Typography */
-  --font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', Menlo, Monaco, 'Courier New', monospace;
+  --font-mono: var(--font-jetbrains-mono), monospace;
 
   /* Terminal Colors - inspired by popular terminal themes */
   --color-term-bg: #0d1117;
